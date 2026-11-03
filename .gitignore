@@ -1,0 +1,21 @@
+# big or rebuildable stuff - never commit these
+data/raw/
+data/processed/
+adapters/
+deploy/merged/
+deploy/mlc/
+archive/old_adapter/
+*.safetensors
+*.bin
+*.pt
+
+# rating keys must never end up anywhere raters can see them
+results/rating_sheets/*KEY*
+
+# python / notebooks
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.venv/
+venv/
+.env

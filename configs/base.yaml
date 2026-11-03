@@ -1,0 +1,49 @@
+# base.yaml - settings shared by every experiment.
+# Model files in configs/models/ override anything here.
+
+# ---------- data ----------
+data:
+  raw_dir: data/raw/empatheticdialogues
+  processed_dir: data/processed
+  # These 6 emotions are NEVER seen in training or prompt tuning. They only show up
+  # in test_unseen, which is how I define "unseen emotional scenarios" (RQ1).
+  # 5 negative + 1 positive, all common in real support conversations.
+  heldout_emotions: [lonely, guilty, devastated, apprehensive, ashamed, hopeful]
+  min_reply_words: 4
+  min_prompt_words: 3
+  fewshot_k: 4            # examples in the tuned prompt, picked from val (seen emotions only)
+  eval_limit: 500         # how many test pairs I generate for per test set (keeps compute sane)
+
+# ---------- prompts ----------
+# "plain" is used for zero-shot AND for fine-tuning, so the only difference between
+# those two conditions is the training. "tuned" = plain + extra guidance + few-shot.
+prompts_file: configs/prompts.yaml
+
+# ---------- LoRA / training ----------
+train:
+  load_in_4bit: true      # QLoRA (Dettmers et al. 2023)
+  lora_r: 16
+  lora_alpha: 32
+  lora_dropout: 0.05
+  max_len: 512            # BN et al. used 80, which cuts replies off. 512 covers ~all ED pairs.
+  epochs: 1
+  lr: 2.0e-4
+  batch_size: 4
+  grad_accum: 4
+  warmup_ratio: 0.03
+  eval_steps: 250
+  seeds: [1, 2, 3]        # 3 seeds per model so I can report variance, not one lucky run
+
+# ---------- generation ----------
+generate:
+  load_in_4bit: true      # evaluate quantized, closer to how it runs on-device
+  max_new_tokens: 200
+  temperature: 0.7
+  top_p: 0.9
+  batch_size: 16
+
+output:
+  adapters_dir: adapters
+  generations_dir: results/generations
+  metrics_dir: results/metrics
+  rating_dir: results/rating_sheets

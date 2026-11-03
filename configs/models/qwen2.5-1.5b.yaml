@@ -1,0 +1,6 @@
+# qwen2.5-1.5b - second family, small
+name: qwen2.5-1.5b
+base_model: Qwen/Qwen2.5-1.5B-Instruct
+# prebuilt WebLLM id, used for the browser benchmarks (RQ3)
+webllm_id: Qwen2.5-1.5B-Instruct-q4f16_1-MLC
+lora_targets: [q_proj, k_proj, v_proj, o_proj, gate_proj, up_proj, down_proj]
