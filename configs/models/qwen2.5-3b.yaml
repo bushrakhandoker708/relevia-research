@@ -4,3 +4,4 @@ base_model: Qwen/Qwen2.5-3B-Instruct
 # prebuilt WebLLM id, used for the browser benchmarks (RQ3)
 webllm_id: Qwen2.5-3B-Instruct-q4f16_1-MLC
 lora_targets: [q_proj, k_proj, v_proj, o_proj, gate_proj, up_proj, down_proj]
+mlc_conv_template: qwen2

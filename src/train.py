@@ -33,12 +33,21 @@ def main():
     ap.add_argument("--model", required=True, help="configs/models/<name>.yaml")
     ap.add_argument("--seed", type=int, default=1)
     ap.add_argument("--limit", type=int, default=None, help="only use N training rows (smoke test)")
+    ap.add_argument("--lr", type=float, default=None, help="override learning rate (used by lr_sweep.py)")
+    ap.add_argument("--tag", default="", help="suffix for the adapter folder, so sweep runs don't overwrite each other")
+    ap.add_argument("--eval-steps", type=int, default=None, help="evaluate more often (short sweep runs)")
     args = ap.parse_args()
 
     cfg = load_config(args.model)
     tcfg, mcfg = cfg["train"], cfg["model"]
+    if args.lr is not None:
+        tcfg["lr"] = args.lr
+    if args.eval_steps:
+        tcfg["eval_steps"] = args.eval_steps
     set_seed(args.seed)
     out_dir = adapter_dir(cfg, args.seed)
+    if args.tag:
+        out_dir = out_dir.with_name(f"{out_dir.name}_{args.tag}")
     print(f"=== training {mcfg['name']} seed {args.seed} -> {out_dir} ===")
 
     # ---- tokenizer + 4-bit base ----
@@ -131,8 +140,11 @@ def main():
     model.save_pretrained(out_dir)
     tok.save_pretrained(out_dir)
     # log everything I need for the paper's training-details table
+    evals = [h["eval_loss"] for h in trainer.state.log_history if "eval_loss" in h]
     log = {
         "model": mcfg["name"], "base_model": mcfg["base_model"], "seed": args.seed,
+        "lr": tcfg["lr"], "final_eval_loss": evals[-1] if evals else None,
+        "best_eval_loss": min(evals) if evals else None,
         "train_rows": len(train_ds), "minutes": round(minutes, 1),
         "gpu": torch.cuda.get_device_name(0) if torch.cuda.is_available() else "cpu",
         "train_cfg": tcfg, "history": trainer.state.log_history,
