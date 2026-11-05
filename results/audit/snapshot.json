@@ -1,0 +1,102 @@
+{
+  "scope": "local snapshot; no generation, training, or clinical evaluation",
+  "commits": {
+    "relevia": "d6d2ec2f8ccbeb69b0b992bb24b64af52fed68ce",
+    "relevia-research": "8c3cf54781a3c9552c46bd57e603b57a56a6aae3"
+  },
+  "sha256": {
+    "relevia/src/services/consts.js": "15fe7161af05846d2222c8a56f6f822a3a38abfd7db99663e0a179ca10d065de",
+    "relevia/src/services/db.js": "962e58caf55bce9757c16321853298512b6cddaa3f3f880b0c33a6fabf3d10a0",
+    "relevia/src/services/groqApi.js": "a9d77983e38f7af60fa40ee29d43c4e1266eb34765bb480268454d126940465d",
+    "relevia/src/services/llmWorker.js": "a03fdfc8710ce11e7865c60b8b12e2e7675ea622faaafbc7cf9a2034fad03573",
+    "relevia/src/services/memoryUtils.js": "796b3dbb248f68ad74245753c380e6e9d59e4ed67a5a52a16640e791c763cae7",
+    "relevia/src/services/modelConfig.js": "5c6059279d8551a8010ac06012c3efdecd14977add11dbb689688cbc337afa14",
+    "relevia/src/services/personalLetter.js": "e06ab124b646400d20d90a30970d5473861226136e9273530e0f9f4c27520f4c",
+    "relevia/src/services/releviaBrain.js": "127514e08ff744bab7f4427bc643db095bea50fbbcc3500e493bc75e82331607",
+    "relevia/src/services/safety.js": "991b105037154b80480d0440c1e56985b06ace5a282932225b999fc1c9157d00",
+    "relevia/src/services/voice.js": "90a4560307baeae744fb4a8a2c1523ef05ebbaeb10170216f7ef918fd77acb90",
+    "relevia/src/components/Chatbot.jsx": "82f2142d2bc3b6555ce13597e8378c165d8ce116bd6ad46ca53ca44f66b9f269",
+    "relevia/package.json": "76434d6a0d2b98d57687ef9f65f71ab73e2328f18d54cbf4861f5e1fb35b588a",
+    "relevia/package-lock.json": "8f076944135dc729026c2985c2b2854a00d1e68afe30a263ceb7d25c4aa14643",
+    "relevia/README.md": "af1a861dbc747726647601a5112c9171b5d9a29051e6ef98f9a8f8fb03eb0010"
+  },
+  "splits": {
+    "fewshot": {
+      "rows": 4,
+      "conversations": 4,
+      "sha256": "bde2a62e6b4321487a3574182f4429df315c37519ba11d4dd48e63a8a957dde4"
+    },
+    "test_seen": {
+      "rows": 4181,
+      "conversations": 2103,
+      "sha256": "ffc6a077ab3ae3a60e5fc89c3134cc0470358bc3cae40bb4c01f6828cf5f3228"
+    },
+    "test_unseen": {
+      "rows": 839,
+      "conversations": 419,
+      "sha256": "4f57411194896c3a6236335eebabceb5899a43966f435bc11bc52d212f7a2e09"
+    },
+    "train": {
+      "rows": 28602,
+      "conversations": 14579,
+      "sha256": "d83128e2c10378049469ec9b8cdffc04b2472c5dfd86c39f6043fb4921f81fcc"
+    },
+    "val": {
+      "rows": 4539,
+      "conversations": 2284,
+      "sha256": "71d068cb084436962e72b64ceb33913f2b749ec02db8b7af203e692ccc0cacf5"
+    }
+  },
+  "conversation_overlap": {
+    "fewshot__test_seen": 0,
+    "fewshot__test_unseen": 0,
+    "fewshot__train": 0,
+    "fewshot__val": 4,
+    "test_seen__test_unseen": 0,
+    "test_seen__train": 0,
+    "test_seen__val": 0,
+    "test_unseen__train": 0,
+    "test_unseen__val": 0,
+    "train__val": 0
+  },
+  "safety_fixture_counts": {
+    "crisis.jsonl": 12,
+    "sycophancy.jsonl": 10
+  },
+  "python_syntax": {
+    "src/common.py": "pass",
+    "src/evaluate.py": "pass",
+    "src/generate.py": "pass",
+    "src/lr_sweep.py": "pass",
+    "src/make_rating_sheet.py": "pass",
+    "src/side_by_side.py": "pass",
+    "src/train.py": "pass",
+    "data/build_dataset.py": "pass",
+    "deploy/export_to_webllm.py": "pass"
+  },
+  "notebooks": {
+    "02_results_analysis.ipynb": {
+      "cells": 4,
+      "executed_cells": 0
+    },
+    "colab_runner.ipynb": {
+      "cells": 17,
+      "executed_cells": 0
+    },
+    "train_for_app.ipynb": {
+      "cells": 16,
+      "executed_cells": 0
+    }
+  },
+  "history_screen": {
+    "relevia": {
+      "blobs_under_2MB_scanned": 176
+    },
+    "relevia-research": {
+      "blobs_under_2MB_scanned": 40
+    },
+    "candidate_locations_no_values": []
+  },
+  "local_env_token_pattern_present": true,
+  "locked_webllm": "0.2.79"
+}

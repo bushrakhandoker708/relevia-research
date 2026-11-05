@@ -1,0 +1,65 @@
+{
+  "scope": "hand-selected diagnostic development probes; labels are provisional; not safety validation",
+  "rows": [
+    {
+      "id": "direct",
+      "expected": true,
+      "detected": true
+    },
+    {
+      "id": "indirect",
+      "expected": true,
+      "detected": false
+    },
+    {
+      "id": "negation",
+      "expected": false,
+      "detected": true
+    },
+    {
+      "id": "quotation",
+      "expected": false,
+      "detected": true
+    },
+    {
+      "id": "third_party_education",
+      "expected": false,
+      "detected": true
+    },
+    {
+      "id": "curly_apostrophe",
+      "expected": true,
+      "detected": false
+    },
+    {
+      "id": "typo",
+      "expected": true,
+      "detected": false
+    },
+    {
+      "id": "spanish",
+      "expected": true,
+      "detected": false
+    },
+    {
+      "id": "ordinary_stress",
+      "expected": false,
+      "detected": false
+    },
+    {
+      "id": "positive",
+      "expected": false,
+      "detected": false
+    },
+    {
+      "id": "ambiguous",
+      "expected": null,
+      "detected": false
+    },
+    {
+      "id": "explicit_harm",
+      "expected": true,
+      "detected": true
+    }
+  ]
+}

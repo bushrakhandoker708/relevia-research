@@ -1,0 +1,21 @@
+# Research notebook blueprint
+
+Notebooks should narrate and invoke shared scripts rather than contain divergent training implementations. Existing notebooks are retained; their presence does not establish execution. Each notebook starts with status (proposed/pilot/final), source SHA, data and configuration hashes, environment and a fail-closed prerequisites cell.
+
+| Notebook | Purpose and inputs | Methods | Required outputs and explanation |
+|---|---|---|---|
+| 00_audit_and_protocol.ipynb (new) | Source commits, audit JSON, privacy contract | Reproduce diagnostics, distinguish claims from observations, freeze RQs | Evidence table, architecture, issue IDs, why training is gated |
+| 01_data_audit.ipynb (new) | Authorized ED/ESConv manifests; no live chats | Schema validation, group splits, duplicate/PII screening, source-aware counts | Dataset card, source/class/length charts, exclusions, checksum and leakage report; explain why empathy data do not establish safety |
+| 02_prompt_baselines.ipynb (new) | Pinned 1B revision, development prompts then locked scenarios | A/B controlled generation, fixed decoding, blinded rating export | Run manifests, failures, paired quality and independent safety metrics; explain development versus test separation |
+| colab_runner.ipynb (existing, revise) | Licensed train/validation, frozen baseline, compatible GPU | Verify precision/memory; template and target-mask tests; tiny LoRA smoke run then pilot | Actual losses, truncation counts, runtime/memory, adapter hashes; explain W'=W+(alpha/r)BA and why loss is insufficient |
+| 03_safety_evaluation.ipynb (new) | Reviewed synthetic scenario groups and response annotations | S0 offline, S1 original regex, S2 improved rules; classify escalation separately from output harm | Confusion matrices, denominators, Wilson or cluster intervals, false-positive/negative examples; document ambiguous cases |
+| 04_browser_systems.ipynb (new) | Exported browser traces and hardware manifest | Separate uncached download, cached initialization and warm generation; ~30 warm trials; controlled worker/animation ablations | TTFT and total-latency distributions, throughput, measured memory, failures; explain measurement limitations and GPU contention |
+| 05_selective_inference.ipynb (new, gated) | Fixed-tier traces and development route labels | Fixed-small/large, deterministic router, optional learned router; validation thresholds | Quality/safety/cost Pareto plots including switching overhead; explain abstention and worst-category failures |
+| 02_results_analysis.ipynb (existing, expand last) | Locked outputs, blind ratings, seed manifests | Paired group bootstrap; reliability analysis; predeclared ablations and sensitivity analysis | Actual comparison tables, intervals, failure clusters, report figures; no placeholder numbers or fabricated curves |
+| train_for_app.ipynb (existing, gated) | Approved adapter and base/runtime revisions | Merge/export, tokenizer/config parity, post-conversion regression and safety evaluation | Export manifest and model card; only propose app activation after release review |
+
+Every notebook's Markdown uses this sequence: research question; prerequisites; evidence and alternatives; mathematical/statistical definitions; exact procedure; code invocation; real outputs; interpretation; failure analysis; threats to validity; decision diary link; next step. Empty outputs remain explicitly “not run.” A failed cell is evidence to diagnose, not something to hide before presentation.
+
+The baseline estimate is a paired difference d_i=q_C,i−q_B,i, summarized over independent scenario groups. An interval crossing zero is not proof of equivalence. A superiority or non-inferiority margin needs justification before unblinding. Human agreement measures rater consistency, not clinical validity. Exact test cases, model outputs and identities must not leak into prompt development.
+
+Scientific figures use plotting scripts and actual data, accessible colors, labeled units and uncertainty. No loss curves, latency plots or Pareto front will be generated until measurements exist. The initial diagnostic probes belong to development and must never be relabeled as the final test benchmark.
