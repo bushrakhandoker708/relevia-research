@@ -1,23 +1,15 @@
-# build_dataset.py - turns EmpatheticDialogues into my train/val/test files.
-#
-# Run:  python data/build_dataset.py
-#
-# Output (data/processed/):
-#   train.jsonl        official train split, seen emotions only      -> fine-tuning
-#   val.jsonl          official valid split, seen emotions only      -> prompt tuning, early checks
-#   fewshot.jsonl      k examples from val, used in the tuned prompt
-#   test_seen.jsonl    official test split, seen emotions            -> in-distribution test
-#   test_unseen.jsonl  official test split, HELD-OUT emotions only   -> "unseen scenarios" (RQ1)
-#   split_info.json    counts + settings, goes straight into the paper
-#
-# Why I do it this way:
-#   - Official splits (Rashkin et al. 2019) are split by the speaker who wrote the situation,
-#     so nobody's story leaks from train into test. My old script only read train.csv.
-#   - Held-out emotions are removed from train AND val, so neither fine-tuning nor
-#     prompt tuning ever sees them.
-#   - valid.csv / test.csv have an extra 9th column (retrieval distractors) that ISN'T
-#     in the header. A plain DictReader treats ~half of those rows as broken. I just
-#     keep the first 8 columns. Only a handful of rows are truly broken (<8 columns).
+# Build conversation-separated EmpatheticDialogues partitions.
+# Run: python data/build_dataset.py
+# Outputs under data/processed/: train, dev, fewshot, val, test_seen, test_unseen,
+# and split_info.json. The manifest records preprocessing, not model results.
+# Development and few-shot groups are reserved from official training groups.
+# Previously exposed validation groups are quarantined. Held-out emotion labels
+# define a particular generalisation test, not proof of entirely unseen scenarios.
+# Preserve official test membership and the recorded test bytes; verify group
+# separation with scripts/check_leakage.py after rebuilding.
+# Group disjointness does not rule out near-duplicates or pretraining contamination.
+# The parser keeps the eight declared columns and ignores trailing retrieval fields;
+# short malformed rows are counted and excluded rather than silently repaired.
 
 import csv, json, random, sys
 from collections import defaultdict, Counter
@@ -27,6 +19,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
 from common import ROOT, write_jsonl  # noqa: E402
 
 import yaml
+from splits import reserve_development, assert_disjoint
 
 sys.stdout.reconfigure(encoding="utf-8")
 cfg = yaml.safe_load(open(ROOT / "configs" / "base.yaml", encoding="utf-8"))["data"]
@@ -133,9 +126,22 @@ def main():
     assert not HELDOUT & {r["emotion"] for r in train + val}, "held-out emotion leaked into train/val"
     assert not {r["conv_id"] for r in train} & {r["conv_id"] for r in test_seen + test_unseen}, "conv leak"
 
-    for name, rows in [("train", train), ("val", val), ("fewshot", fewshot),
-                       ("test_seen", test_seen), ("test_unseen", test_unseen)]:
+    # Preserve the original deterministic test order by consuming the original
+    # shuffle sequence before replacing training/development partitions.
+    original = dict(train=train, val=val, fewshot=fewshot,
+                    test_seen=test_seen, test_unseen=test_unseen)
+    for rows in original.values():
         random.shuffle(rows)
+    # Previously exposed validation conversations are quarantined, not relabeled
+    # as pristine validation. New examples come only from reserved TRAIN groups.
+    exposed_groups = {r['conv_id'] for r in fewshot}
+    clean_val = sorted((r for r in val if r['conv_id'] not in exposed_groups), key=lambda r: r['id'])
+    info['quarantined_validation_groups'] = sorted(exposed_groups)
+    partitions = reserve_development(train, clean_val, cfg['fewshot_k'])
+    partitions.update(test_seen=test_seen, test_unseen=test_unseen)
+    assert_disjoint(partitions)
+    info.update(dataset_version='ed-group-v2', seed=42, development_source='official train groups')
+    for name, rows in partitions.items():
         write_jsonl(OUT / f"{name}.jsonl", rows)
         info[name] = {"pairs": len(rows), "conversations": len({r["conv_id"] for r in rows})}
         print(f"{name:12s} {len(rows):6d} pairs")

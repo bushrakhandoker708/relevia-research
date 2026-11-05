@@ -11,7 +11,7 @@ data:
   heldout_emotions: [lonely, guilty, devastated, apprehensive, ashamed, hopeful]
   min_reply_words: 4
   min_prompt_words: 3
-  fewshot_k: 4            # examples in the tuned prompt, picked from val (seen emotions only)
+  fewshot_k: 4            # examples in the tuned prompt, picked from reserved train groups (seen emotions only)
   eval_limit: 500         # how many test pairs I generate for per test set (keeps compute sane)
 
 # ---------- prompts ----------

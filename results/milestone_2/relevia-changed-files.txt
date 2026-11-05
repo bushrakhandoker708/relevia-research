@@ -1,0 +1,14 @@
+ M README.md
+ M eslint.config.js
+ M package.json
+ M src/components/Chatbot.jsx
+ M src/components/ErrorBoundary.jsx
+ M src/services/db.js
+ M src/services/groqApi.js
+ M src/services/personalLetter.js
+ M src/services/releviaBrain.js
+?? .github/
+?? src/components/ChatPrivacy.jsx
+?? src/components/errorBoundaryHelpers.jsx
+?? src/services/chatStorage.js
+?? tests/

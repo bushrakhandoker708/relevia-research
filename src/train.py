@@ -1,20 +1,12 @@
-# train.py - QLoRA empathy fine-tune for ONE model and ONE seed.
-#
-# Run:
-#   python src/train.py --model configs/models/llama-3.2-3b.yaml --seed 1
-#   python src/train.py --model configs/models/llama-3.2-3b.yaml --seed 1 --limit 200   # quick smoke test
-#
-# Output: adapters/<model>_seed<N>/  (adapter + tokenizer + train_log.json)
-#
-# Carried over from my v2 fixes (archive/v2_llama8b_scripts/train_lora.py):
-#   - 4-bit base + bf16 compute, no fp16 crash
-#   - loss ONLY on the assistant reply, including its end-of-turn token, so it learns to stop
-#   - padding masked through attention_mask, not by token id
-#   - same chat template + system prompt as generate.py (both come from common.py)
-# New:
-#   - everything comes from configs, nothing hardcoded
-#   - seed is an argument so I can run 3 seeds per model
-#   - early-turn history is included so later replies make sense
+# Proposed QLoRA training for one configured model and seed.
+# Deferred beyond Milestone 2; no successful training run is established here.
+# Run later: python src/train.py --model configs/models/llama-3.2-3b.yaml --seed 1
+# Output: adapters/<model>_seed<N>/ (adapter, tokenizer and training log).
+# The implementation freezes a quantised base and trains adapters. It masks prompt
+# and padding tokens to focus loss on replies. Truncation can still remove reply
+# content or the end token; check target coverage before interpreting the loss.
+# bf16 support depends on hardware. Configuration and shared prompt utilities
+# reduce duplication, but do not establish runtime compatibility or dialogue quality.
 
 import argparse, json, sys, time
 from pathlib import Path

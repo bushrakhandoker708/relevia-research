@@ -1,0 +1,2 @@
+# Milestone 2 CPU-only preprocessing. The research ML environment is separate.
+PyYAML==6.0.3

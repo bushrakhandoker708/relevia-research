@@ -31,10 +31,20 @@ def read_jsonl(path):
 
 
 def write_jsonl(path, rows):
-    os.makedirs(os.path.dirname(path), exist_ok=True)
-    with open(path, "w", encoding="utf-8") as f:
-        for r in rows:
-            f.write(json.dumps(r, ensure_ascii=False) + "\n")
+    # A failed/interrupted write must not expose a partial JSONL file to readers.
+    import tempfile
+    path = Path(path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    temp_name = None
+    try:
+        with tempfile.NamedTemporaryFile(mode="w", encoding="utf-8", dir=path.parent, delete=False) as stream:
+            temp_name = stream.name
+            for row in rows:
+                stream.write(json.dumps(row, ensure_ascii=False) + "\n")
+        os.replace(temp_name, path)
+    finally:
+        if temp_name and os.path.exists(temp_name):
+            os.unlink(temp_name)
 
 
 def set_seed(seed):

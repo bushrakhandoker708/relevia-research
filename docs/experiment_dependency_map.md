@@ -1,5 +1,7 @@
 # Experiment dependencies and stopping rules
 
+I want later experiments to depend on evidence that the earlier stages can actually provide. The order below keeps adaptation behind a controlled baseline and routing behind measured device costs. These are proposed dependencies, not a record of completed runs. Milestone 2 remains the active gate.
+
 ```mermaid
 flowchart TD
  A[Source audit and privacy repairs] --> B[Reproducible environment and data permissions]
@@ -23,7 +25,7 @@ flowchart TD
  H --> P
 ```
 
-Training starts only after the audit, reproducibility checks and frozen baseline. Safety fixture development and environment work may proceed alongside prompt pilots. Browser benchmarks of **base** models do not require adapted weights. Exported adapters require renewed quality/safety evaluation because conversion changes numerical behavior. Routing requires credible fixed-tier costs and outcome labels first.
+Training starts only after the audit, reproducibility checks and frozen baseline. Safety fixture development and environment work may proceed alongside prompt pilots. Browser benchmarks of **base** models do not require adapted weights. Exported adapters require renewed quality/safety evaluation because conversion changes numerical behaviour. Routing requires credible fixed-tier costs and outcome labels first.
 
 | Question | Treatment and controls | Primary observations | What could contradict the hypothesis? |
 |---|---|---|---|
@@ -34,6 +36,6 @@ Training starts only after the audit, reproducibility checks and frozen baseline
 
 Pre-register a practically important quality difference and safety acceptance criteria **before final evaluation** with reviewer input. Do not invent clinical thresholds. For paired ratings, aggregate related paraphrases within scenario groups and bootstrap groups, not individual correlated turns. Report each quality dimension; any composite must be defined in advance. Treat training seed and generation seed separately. For independent binary scenario outcomes, report Wilson intervals; use cluster-aware analysis when variants share a scenario. Report missing/failed generations and denominators. Use paired binary tests where appropriate, control multiple comparisons, and report descriptive intervals if power is insufficient.
 
-A routing formulation is to minimize expected measured cost E[C(route,x,device)] subject to predeclared quality and risk constraints. Cost includes queueing, model loading/switching and generation; it is not just output token cost. The constraints are research acceptance criteria, not medical guarantees. If no policy satisfies them, report that result and do not deploy it.
+A routing formulation is to minimise expected measured cost E[C(route,x,device)] subject to predeclared quality and risk constraints. Cost includes queueing, model loading/switching and generation; it is not just output token cost. The constraints are research acceptance criteria, not medical guarantees. If no policy satisfies them, report that result and do not deploy it.
 
 MUST: A/B baseline, validated protocol, safety diagnostics, honest report. TARGET: one controlled LoRA pilot and one-device browser study. STRETCH: additional seeds/devices, learned routing and broader ablations. The November application narrative must stand without successful training.

@@ -1,0 +1,26 @@
+ M README.md
+ M configs/base.yaml
+ M configs/prompts.yaml
+ M data/build_dataset.py
+ M docs/decision_log.md
+ M docs/known_issues.md
+ M notebooks/02_results_analysis.ipynb
+ M notebooks/colab_runner.ipynb
+ M notebooks/train_for_app.ipynb
+ M src/common.py
+?? .github/
+?? configs/experiment_01.template.json
+?? data/synthetic_dev.jsonl
+?? docs/dataset_leakage_report.md
+?? docs/experiment_01_protocol.md
+?? docs/milestone_2_report.md
+?? docs/privacy_design_decisions.md
+?? docs/storage_test_results.md
+?? requirements-foundation.txt
+?? results/milestone_2/
+?? scripts/check_leakage.py
+?? scripts/run_experiment.py
+?? scripts/security_audit.py
+?? scripts/verify_milestone_2.py
+?? src/splits.py
+?? tests/

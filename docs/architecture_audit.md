@@ -1,5 +1,7 @@
 # Architecture audit — 5 November 2026
 
+Reading context: this document records the initial audit and proposed controls. Later implementation and verification are recorded in [Milestone 2](milestone_2_report.md). Retaining the original findings makes the correction traceable; present-tense statements below describe the audited baseline unless a dated follow-up says otherwise. The audit and subsequent implementation were agent-assisted.
+
 Status: initial source audit and local build checks, not a deployment certification. All paths below are relative to the supplied workspace unless stated otherwise. Findings are tracked in [known issues](known_issues.md).
 
 ## Provenance and preservation

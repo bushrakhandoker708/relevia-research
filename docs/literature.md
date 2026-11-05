@@ -1,6 +1,8 @@
 # Literature notes and the gap
 
-PDFs are in `../../research papers/`. These notes come from reading them in full.
+These are historical working notes, retained so that the development of the research question remains visible. Their original claim that every paper had been read in full is not established by the current evidence. Treat the detailed numerical and comparative statements below as claims requiring source verification, not as confirmed findings for a report.
+
+Use [the audited literature-review notes](../research/notes/LITERATURE_REVIEW.md) for the recorded verification status. In particular, the account of *The Pursuit of Empathy* needs reconciliation with the paper’s reported conclusions. Full-text verification of the cited Nature study was not completed during this work. Neither note supports an established novelty claim. The proposed comparisons are research intentions, not completed experiments.
 
 ## Closest work
 

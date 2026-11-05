@@ -5,9 +5,9 @@
 #   tuned_prompt     -> tuned prompt + few-shot examples, base model   (the strong baseline
 #                       BN et al. 2025 didn't have)
 #   finetuned        -> plain prompt, LoRA model
-#   finetuned_tuned  -> tuned prompt + few-shot, LoRA model           (optional)
+#   finetuned_tuned  -> tuned prompt + few-shot, LoRA model           (primary adapted comparison)
 #
-# RULE: I only edit "tuned" while looking at VAL outputs, never test. I log every
+# RULE: I only edit "tuned" while looking at DEV outputs, never test. I log every
 # version I try in docs/prompt_log.md so the tuning is reported honestly.
 
 plain: >-

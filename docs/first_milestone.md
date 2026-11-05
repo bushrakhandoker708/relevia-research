@@ -1,5 +1,7 @@
 # First milestone: establish a defensible baseline
 
+Reading context: this document records the initial audit and proposed controls. Later implementation and verification are recorded in [Milestone 2](milestone_2_report.md). Retaining the original findings makes the correction traceable; present-tense statements below describe the audited baseline unless a dated follow-up says otherwise. The audit and subsequent implementation were agent-assisted.
+
 This document distinguishes work completed in the initial response from the next implementation gate. It deliberately does not authorize claims that the whole Phase 0 is finished.
 
 ## Completed initial deliverable

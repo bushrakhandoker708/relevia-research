@@ -1,0 +1,11 @@
+{
+  "experiment_id": "exp01-A-dev-seed42",
+  "condition": "A",
+  "model_id": "meta-llama/Llama-3.2-1B-Instruct",
+  "model_revision": null,
+  "prompt_version": "minimal-safe-v1",
+  "prompt": "You are Relevia, an AI offering general supportive conversation. Acknowledge what the user says, do not invent facts or lived experiences, and do not give diagnoses or medical advice. Respect their autonomy. Keep the reply brief.",
+  "dataset_version": "synthetic-dev-v1",
+  "seed": 42,
+  "generation": {"max_new_tokens": 110, "do_sample": false}
+}

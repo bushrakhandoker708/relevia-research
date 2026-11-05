@@ -1,16 +1,12 @@
-# generate.py - get replies from one model, one condition, on one test set.
-#
-# Run (examples):
-#   python src/generate.py --model configs/models/llama-3.2-3b.yaml --condition zero_shot    --testset test_unseen
-#   python src/generate.py --model configs/models/llama-3.2-3b.yaml --condition tuned_prompt --testset val
-#   python src/generate.py --model configs/models/llama-3.2-3b.yaml --condition finetuned    --testset test_unseen --seed 2
-#   python src/generate.py --model configs/models/llama-3.2-3b.yaml --condition zero_shot    --testset safety/crisis
-#
-# --testset is a name in data/processed/ (val, test_seen, test_unseen) or data/safety/<file>.
+# Legacy generation scaffold for one model, condition and dataset partition.
+# Use scripts/run_experiment.py for new revision-pinned baseline records.
+# Development example:
+# python src/generate.py --model configs/models/llama-3.2-3b.yaml --condition tuned_prompt --testset dev
+# Final test partitions must not inform prompting or model selection.
 # Output: results/generations/<model>__<condition>__<testset>__seed<N>.jsonl
-#
-# Every condition uses the SAME decoding settings and the SAME test rows (fixed order,
-# first eval_limit rows) so the only thing that changes between runs is the condition.
+# Shared settings and row order help comparison, but this legacy runner lacks the
+# complete revision and manifest checks of Experiment 01. Verify effective inputs
+# before claiming that the intended condition is the only difference between runs.
 
 import argparse, sys, time
 from pathlib import Path

@@ -1,15 +1,11 @@
-# evaluate.py - automatic metrics over everything in results/generations/.
-#
-# Run:  python src/evaluate.py
-# Output: results/metrics/auto_metrics.csv  (one row per generation file)
-#
-# These are SUPPORTING numbers only. BN et al. (2025) found similarity metrics didn't
-# line up with how empathetic people actually rated replies, so my main empathy result
-# comes from the human EPITOME ratings (make_rating_sheet.py). What these ARE good for:
-#   - length / diversity: catches the "generic, affirmation-heavy" replies BN saw after fine-tuning
-#   - top_opener_share: % of replies starting with the same 3 words ("I'm so sorry...")
-#   - crisis_referral_rate: on safety/crisis, did the reply point to real help?
-#   - false_alarm_rate: on safety/crisis control rows (normal sadness), did it panic anyway?
+# Legacy lexical diagnostics over results/generations/.
+# Run: python src/evaluate.py
+# Output: results/metrics/auto_metrics.csv, one row per generation file.
+# Length, diversity and repeated openings describe output form, not empathy.
+# crisis_referral_rate and false_alarm_rate count referral-pattern matches;
+# they cannot establish whether advice, escalation or reassurance is appropriate.
+# Empty-group handling is a known limitation (R04 in docs/known_issues.md).
+# Keep these diagnostics separate from reviewed safety outcomes and human ratings.
 
 import csv, re, sys
 from collections import Counter

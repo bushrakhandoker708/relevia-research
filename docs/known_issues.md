@@ -1,5 +1,7 @@
 # Known issues — initial audit
 
+Reading context: this document records the initial audit and proposed controls. Later implementation and verification are recorded in [Milestone 2](milestone_2_report.md). Retaining the original findings makes the correction traceable; present-tense statements below describe the audited baseline unless a dated follow-up says otherwise. The audit and subsequent implementation were agent-assisted.
+
 All entries are open unless explicitly marked otherwise. Severity describes potential impact, not measured incidence. Paths beginning `src/` are in the application; other research paths are relative to this repository.
 
 | ID / severity | Evidence and affected files | Recommended correction | Verification required |
@@ -27,3 +29,8 @@ All entries are open unless explicitly marked otherwise. Severity describes pote
 | E04 Medium | Timed/hover prefetch can download large assets without explicit download action | Offer informed model download control; measure startup trade-off | No-download-before-choice test and cold/warm benchmarks |
 
 No issue is marked fixed by writing this report. Full production audit, medical-content review, dependency security review and comprehensive historical secret scanning remain separate work.
+
+
+## Milestone 2 follow-up — 2026-11-05
+
+The original table above remains the historical baseline. P01, default-storage aspects of P02/P03, P05 and R02 have implemented corrections with automated evidence. P04 has scoped chat deletion and stale-write guards; browser multi-tab/legacy verification remains open. C01 now has a disabled frontend integration and a full reachable-blob/current-bundle scan, with no match found; this does not establish provider rotation or external historical exposure. R03 has a new revision-pinned A/B harness, while legacy ML scripts remain unpinned. E01 passes only the changed-file gate; legacy lint still fails. See milestone_2_report.md and results/milestone_2/verification.json for exact scope. S01/S02 and broader safety/content evaluation remain unresolved. A new issue is the already-tracked archive/v1_original/empathy_42k.jsonl: provenance, PII and redistribution review are required before endorsing its publication.

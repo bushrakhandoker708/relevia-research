@@ -1,5 +1,7 @@
 # Privacy and threat model — proposed controls, not implemented guarantees
 
+Reading context: this document records the initial audit and proposed controls. Later implementation and verification are recorded in [Milestone 2](milestone_2_report.md). Retaining the original findings makes the correction traceable; present-tense statements below describe the audited baseline unless a dated follow-up says otherwise. The audit and subsequent implementation were agent-assisted.
+
 ## Assets and boundaries
 
 Assets include raw messages, inferred distress, names, journal entries/drafts, visit history, model outputs, local credentials and research datasets. Browser origin isolation separates websites; it does not separate people sharing a browser profile. A UID field is not authentication. IndexedDB is not differential privacy and does not provide application-managed encryption.

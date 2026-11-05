@@ -1,0 +1,37 @@
+{
+  "old_fewshot": [
+    {
+      "id": "hit:8618_conv:17236_t2",
+      "conversation_group_id": "hit:8618_conv:17236",
+      "validation_row_ids": [
+        "hit:8618_conv:17236_t4"
+      ]
+    },
+    {
+      "id": "hit:2701_conv:5402_t2",
+      "conversation_group_id": "hit:2701_conv:5402",
+      "validation_row_ids": [
+        "hit:2701_conv:5402_t4",
+        "hit:2701_conv:5402_t6"
+      ]
+    },
+    {
+      "id": "hit:3758_conv:7517_t2",
+      "conversation_group_id": "hit:3758_conv:7517",
+      "validation_row_ids": [
+        "hit:3758_conv:7517_t4"
+      ]
+    },
+    {
+      "id": "hit:7735_conv:15471_t2",
+      "conversation_group_id": "hit:7735_conv:15471",
+      "validation_row_ids": [
+        "hit:7735_conv:15471_t6"
+      ]
+    }
+  ],
+  "test_hashes": {
+    "test_seen": "ffc6a077ab3ae3a60e5fc89c3134cc0470358bc3cae40bb4c01f6828cf5f3228",
+    "test_unseen": "4f57411194896c3a6236335eebabceb5899a43966f435bc11bc52d212f7a2e09"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "dataset_version": "ed-group-v2",
+  "seed": 42,
+  "counts": {
+    "train": 25721,
+    "dev": 2873,
+    "fewshot": 4,
+    "val": 4534,
+    "test_seen": 4181,
+    "test_unseen": 839
+  },
+  "overlap": {
+    "train__dev": 0,
+    "train__fewshot": 0,
+    "train__val": 0,
+    "train__test_seen": 0,
+    "train__test_unseen": 0,
+    "dev__fewshot": 0,
+    "dev__val": 0,
+    "dev__test_seen": 0,
+    "dev__test_unseen": 0,
+    "fewshot__val": 0,
+    "fewshot__test_seen": 0,
+    "fewshot__test_unseen": 0,
+    "val__test_seen": 0,
+    "val__test_unseen": 0,
+    "test_seen__test_unseen": 0
+  },
+  "sha256": {
+    "train": "fea592b7ad462e191cd5fe56b3b5b21751be4bcb7f2dd92798114b2a51101fd6",
+    "dev": "7de5f8178abb6446bdcc0f02495d7f11001b769824d633dcbc68224f9d81ae83",
+    "fewshot": "05f8e5b21e6b2e6c0f7b9dd602796261cbf4b5dd8126f47a92f3eddc3ffa6eb9",
+    "val": "2982dec8db703a6760f1dcf1aae1f8a8c68090017d7c171bee644d0aba4c1be2",
+    "test_seen": "ffc6a077ab3ae3a60e5fc89c3134cc0470358bc3cae40bb4c01f6828cf5f3228",
+    "test_unseen": "4f57411194896c3a6236335eebabceb5899a43966f435bc11bc52d212f7a2e09"
+  }
+}

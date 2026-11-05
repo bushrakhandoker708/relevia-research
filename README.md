@@ -1,67 +1,61 @@
 # Relevia research
 
-**Does empathy fine-tuning beat a well-tuned prompt for small on-device language models, and what does it cost in safety and in-browser performance?**
+I am investigating whether adapting a small language model improves supportive dialogue beyond a carefully developed prompt, and what either approach costs in safety and browser performance. The [Relevia application](https://github.com/bushrakhandoker708/relevia) provides the implementation context: limited device resources, sensitive conversations and the need to explain what the system can actually support.
 
-This is the research side of [Relevia](../relevia), my mental health support web app. The app is also the testbed for the deployment benchmarks.
+The investigation begins with an engineering problem. Local inference alone did not prevent shared history, inconsistent expiry or misleading privacy claims. The research pipeline also reused validation conversations as prompting examples. Those issues needed correction before a comparison between models could be interpreted credibly. Milestone 2 therefore concentrates on privacy boundaries, data separation and reproducible experiment records.
 
-## Layout
+This is ongoing research, with agent-assisted implementation and documentation for my review. No model-quality results, successful fine-tuning run or measured clinical benefit are claimed.
 
-```
-configs/
-  base.yaml              shared settings: held-out emotions, LoRA, decoding
-  models/*.yaml          one file per model (Llama-3.2-1B/3B, Qwen2.5-1.5B/3B)
-  prompts.yaml           "plain" and "tuned" system prompts
-data/
-  build_dataset.py       EmpatheticDialogues -> train / val / fewshot / test_seen / test_unseen
-  raw/                   downloaded data (gitignored)
-  processed/             built splits (gitignored, rebuild anytime)
-  safety/                crisis + sycophancy test sets (evaluation only)
-src/
-  common.py              config loading + prompt building, shared by everything
-  train.py               QLoRA fine-tune, one model x one seed
-  generate.py            replies for one model x condition x test set
-  evaluate.py            automatic metrics -> results/metrics/auto_metrics.csv
-  make_rating_sheet.py   blinded human-rating sheets + separate answer key
-notebooks/
-  colab_runner.ipynb     thin wrapper that calls the scripts on a Colab GPU
-  02_results_analysis.ipynb
-results/                 generations, metrics, rating sheets
-adapters/                trained LoRA adapters (gitignored)
-deploy/                  how to get a fine-tune into the browser (MLC)
-docs/                    literature notes, plan, rating guide, prompt log
-archive/                 my older scripts and data, kept for reference only
-```
+## What the current foundation establishes
 
-## Quick start
+The application now uses session memory by default and explicit consent for bounded local saving. In this repository, prompt development uses reserved training conversations. Previously exposed validation groups are quarantined, and all six partitions are checked at conversation level. The recorded rebuild found zero overlap across all 15 partition pairs while preserving the existing test-file hashes.
+
+The experiment harness records the model revision, prompt and dataset versions, decoding settings, source hashes and failures. Quality and safety fields remain unrated until an assessment is performed. This separates a working evaluation pipeline from evidence that a model performs well.
+
+## The comparison I want to make
+
+The first proposed comparison uses the same base model with a minimal safe prompt (A) and a developed prompt (B). Prompt development uses only development data. A later adapted condition (C) must use the same inference prompt as B so that an observed difference is not automatically attributable to changing both the weights and the prompt.
+
+The current harness supports A and B only. It rejects C because adaptation has not been integrated into this controlled runner. Existing training and generation scripts remain available for inspection, but their presence is not evidence of completed experiments or permission to begin the next milestone.
+
+## Run the foundation checks
+
+From this repository:
 
 ```bash
-pip install -r requirements.txt
+pip install -r requirements-foundation.txt
+python -m unittest discover -s tests -v
 ```
+
+With the required source dataset already available locally:
 
 ```bash
 python data/build_dataset.py
+python scripts/check_leakage.py
 ```
 
-```bash
-python src/generate.py --model configs/models/llama-3.2-3b.yaml --condition zero_shot --testset val --limit 16
-```
+The dataset builder writes ignored local files. Review the dataset licence and provenance before acquiring or redistributing data. The tracked historical dataset under `archive/` is excluded from the active pipeline and still needs a provenance, licence and privacy review.
 
-On Colab, open `notebooks/colab_runner.ipynb`. The full order of runs is in [docs/plan.md](docs/plan.md).
+For the first experiment, follow [Experiment 01](docs/experiment_01_protocol.md). Its template deliberately leaves the model revision unset. Preparation requires a verified immutable revision and creates a manifest without fabricated responses; actual generation requires the additional documented gates.
 
-## Conditions
+## Repository structure
 
-| Condition | Model | Prompt |
-|---|---|---|
-| `zero_shot` | base | plain |
-| `tuned_prompt` | base | tuned + 4 few-shot examples |
-| `finetuned` | base + LoRA | plain |
-| `finetuned_tuned` | base + LoRA | tuned + few-shot (optional) |
+| Location | Role |
+|---|---|
+| `data/build_dataset.py`, `src/splits.py` | Build conversation-separated train, dev, few-shot, validation and test partitions |
+| `scripts/check_leakage.py` | Check group overlap and frozen test hashes |
+| `scripts/run_experiment.py`, `configs/experiment_01.template.json` | Prepare and record controlled A/B runs |
+| `data/synthetic_dev.jsonl` | Four synthetic development fixtures for instrumentation, not a complete benchmark |
+| `tests/`, `requirements-foundation.txt` | Lightweight foundation checks without training dependencies |
+| `results/milestone_2/` | Recorded verification, leakage and redacted security evidence |
+| `notebooks/`, `src/train.py`, `src/generate.py` | Existing investigation tooling; model executions are not established by the notebooks |
+| `docs/`, `research/notes/` | Decisions, protocols, audits and literature-review status |
+| `deploy/`, `archive/` | Deferred deployment guidance and historical reference material |
 
-## Rules that keep the results honest
+## Evidence and remaining work
 
-1. Prompt tuning only ever looks at **val**. Every version gets logged in `docs/prompt_log.md`.
-2. Held-out emotions never appear in train, val or the few-shot examples (`build_dataset.py` asserts this).
-3. Safety sets are never used for training.
-4. Every condition gets the same test rows, in the same order, with the same decoding settings.
-5. 3 seeds per fine-tuned model.
-6. Rating sheets are blinded. Keep the `KEY` files away from raters (they're gitignored).
+The recorded run passed eight Python tests and the application’s 18 JavaScript tests. The application build and changed-file lint passed; legacy lint failures remain documented. No matching credential was found in the scoped history and bundle scan, which does not prove that external or unreachable historical artifacts are free of secrets.
+
+Browser verification and the historical dataset review remain open. Milestone 2 is therefore not signed off, and Milestone 3 has not begun. Passing these foundation checks will still leave the central research question unanswered: it requires controlled model runs, reviewed safety scenarios, blinded ratings and deployment measurements.
+
+Start with the [milestone report](docs/milestone_2_report.md), [privacy decisions](docs/privacy_design_decisions.md), [test evidence](docs/storage_test_results.md), [leakage report](docs/dataset_leakage_report.md) and [experiment protocol](docs/experiment_01_protocol.md). The [writing guide](docs/WRITING_VOICE_GUIDE.md) records how future work should preserve reasoning, limitations and authorship accurately.
