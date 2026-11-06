@@ -106,3 +106,8 @@ On 5 November 2026, Bushra explicitly accepted the missing browser verification 
 Before release, complete a disposable-profile browser check using synthetic messages: default reload, opt-in/reopen, two-session isolation, expiry with a controlled test clock, and clear during generation. Record screenshots/storage observations without real conversations. Then decide how to quarantine or document the historical dataset before any new public push.
 
 For an interview, explain why storage isolation is not authentication; why deletion requires invalidating in-flight work; why physical expiry differs from filtering reads; why four removed example rows did not eliminate conversation leakage; and why passing infrastructure tests is not model-performance evidence.
+
+
+## Milestone 3 entry decision — 5 November 2026
+
+Bushra authorised Milestone 3 and instructed quarantine if provenance could not be established. The archived dataset is now quarantined and excluded from the controlled pilot; its historical provenance remains unresolved. The repeated verification passed 18 JavaScript tests, eight existing Python tests, changed-file lint, the production build and leakage checks. Full legacy lint still has 41 errors and nine warnings. The safety probes still show four misses and three false alarms. With the previously accepted browser exception, the foundation permits local research with the reviewed synthetic pilot. This is local-research acceptance, not public-release sign-off or permission for LoRA. See `dataset_provenance_report.md` and `results/milestone_3/verification.json`.

@@ -1,0 +1,10 @@
+{
+  "app": {
+    "branch": "research/privacy-foundation",
+    "commit": "57cb4cae65ec18eaee84f5aa7df665b9f2f8c543"
+  },
+  "research": {
+    "branch": "research/privacy-foundation",
+    "commit": "3c5656ab0982d7795bea3010b1d810bf2824ff67"
+  }
+}

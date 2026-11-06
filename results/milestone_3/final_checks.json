@@ -1,0 +1,31 @@
+{
+  "01_dataset_audit.ipynb": {
+    "code_cells": 4,
+    "executed": 4,
+    "error_outputs": 0,
+    "execution_method": "Actual sequential Python execution via scripts/execute_report_notebook.py; no IPython magics or Jupyter kernel"
+  },
+  "03_baseline_evaluation.ipynb": {
+    "code_cells": 8,
+    "executed": 8,
+    "error_outputs": 0,
+    "execution_method": "Actual sequential Python execution via scripts/execute_report_notebook.py; no IPython magics or Jupyter kernel"
+  },
+  "python_tests": {
+    "command": "python -m unittest discover -s tests -v",
+    "observed_tests": 15,
+    "passed": 15,
+    "failed": 0
+  },
+  "local_document_links": {
+    "missing": []
+  },
+  "blinded_sheet": {
+    "rows": 16,
+    "ratings_blank": true,
+    "key_ignored": true
+  },
+  "application_worktree": "clean",
+  "frozen_experiment_inputs": "verified by check_experiment_01.py after run",
+  "figures": "visually inspected: dataset_partition_counts, paired_quality, observed_latency"
+}

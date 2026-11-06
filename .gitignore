@@ -5,6 +5,7 @@ adapters/
 deploy/merged/
 deploy/mlc/
 archive/old_adapter/
+archive/quarantine/*.quarantined
 *.safetensors
 *.bin
 *.pt
@@ -19,3 +20,9 @@ __pycache__/
 .venv/
 venv/
 .env
+
+# Local baseline model cache and private rating keys
+.cache/
+results/experiment_01/*key*.json
+
+results/experiment_01/**/KEY*.json

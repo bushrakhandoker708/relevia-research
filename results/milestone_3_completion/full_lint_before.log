@@ -1,0 +1,91 @@
+
+> relevia@0.0.0 lint
+> eslint .
+
+
+D:\others\coding space\Relevia\relevia--final\relevia\src\components\CopingTechniques\Activity.jsx
+  2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+D:\others\coding space\Relevia\relevia--final\relevia\src\components\CopingTechniques\Affirmations.jsx
+  112:10  error    'direction' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                                                   no-unused-vars
+  116:10  error    'autoPlay' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                                                    no-unused-vars
+  116:20  error    'setAutoPlay' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                                                 no-unused-vars
+  128:9   error    'autoPlayIntervalRef' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                                         no-unused-vars
+  179:6   warning  React Hook useEffect has a missing dependency: 'handleNext'. Either include it or remove the dependency array                               react-hooks/exhaustive-deps
+  299:6   warning  React Hook useEffect has missing dependencies: 'speakAffirmation' and 'toggleFavorite'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+  302:9   error    'slideVariants' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                                               no-unused-vars
+
+D:\others\coding space\Relevia\relevia--final\relevia\src\components\CopingTechniques\Breathing.jsx
+    1:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u         no-unused-vars
+  275:9   error  'isXL' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+  302:25  error  'e' is defined but never used                                                         no-unused-vars
+  314:26  error  'e' is defined but never used                                                         no-unused-vars
+
+D:\others\coding space\Relevia\relevia--final\relevia\src\components\CopingTechniques\Journaling.jsx
+   118:33  error    'previousEntries' is assigned a value but never used                                                                         no-unused-vars
+   304:16  error    'error' is defined but never used                                                                                            no-unused-vars
+   339:14  error    'error' is defined but never used                                                                                            no-unused-vars
+   419:10  error    'showSettings' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                                 no-unused-vars
+   419:24  error    'setShowSettings' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                              no-unused-vars
+   444:21  error    'setTextColor' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                                 no-unused-vars
+   445:27  error    'setBackgroundColor' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                           no-unused-vars
+   453:10  error    'breaks' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                                       no-unused-vars
+   453:18  error    'setBreaks' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                                    no-unused-vars
+   462:10  error    'therapeuticGoals' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                             no-unused-vars
+   462:28  error    'setTherapeuticGoals' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                          no-unused-vars
+   559:6   warning  React Hook useEffect has a missing dependency: 'triggerSmartIntervention'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  1998:32  error    'error' is defined but never used                                                                                            no-unused-vars
+
+D:\others\coding space\Relevia\relevia--final\relevia\src\components\CopingTechniques\Mindfulness.jsx
+   15:10  error    'isMobile' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                                       no-unused-vars
+  196:6   warning  React Hook useEffect has a missing dependency: 'inspirationalQuotes.length'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+D:\others\coding space\Relevia\relevia--final\relevia\src\components\CopingTechniques\Relaxation.jsx
+    1:46  error    'useCallback' is defined but never used. Allowed unused vars must match /^[A-Z_]/u                                                           no-unused-vars
+  328:6   warning  React Hook useEffect has a missing dependency: 'handleNextStep'. Either include it or remove the dependency array                            react-hooks/exhaustive-deps
+  346:6   warning  React Hook useEffect has missing dependencies: 'currentStepData' and 'speakInstruction'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+
+D:\others\coding space\Relevia\relevia--final\relevia\src\components\CopingTechniques\Visualization.jsx
+  489:6  warning  React Hook useEffect has a missing dependency: 'handleNextStep'. Either include it or remove the dependency array                            react-hooks/exhaustive-deps
+  509:6  warning  React Hook useEffect has missing dependencies: 'currentStepData' and 'speakInstruction'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+  579:6  warning  React Hook useCallback has a missing dependency: 'completeSession'. Either include it or remove the dependency array                         react-hooks/exhaustive-deps
+
+D:\others\coding space\Relevia\relevia--final\relevia\src\components\Fluid.jsx
+  1:21  error  'animated' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+  3:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u    no-unused-vars
+
+D:\others\coding space\Relevia\relevia--final\relevia\src\components\Navbar.jsx
+  1:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+D:\others\coding space\Relevia\relevia--final\relevia\src\components\QuickHelpButton.jsx
+  2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+D:\others\coding space\Relevia\relevia--final\relevia\src\components\animation.jsx
+  1:21  error  'animated' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+  3:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u    no-unused-vars
+
+D:\others\coding space\Relevia\relevia--final\relevia\src\pages\About.jsx
+    2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u                     no-unused-vars
+    2:60  error  'useInView' is defined but never used. Allowed unused vars must match /^[A-Z_]/u                  no-unused-vars
+  219:10  error  'activeSection' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u     no-unused-vars
+  219:25  error  'setActiveSection' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+D:\others\coding space\Relevia\relevia--final\relevia\src\pages\Contact.jsx
+  2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+D:\others\coding space\Relevia\relevia--final\relevia\src\pages\Coping.jsx
+  237:10  error  'activeTechnique' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u     no-unused-vars
+  237:27  error  'setActiveTechnique' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+D:\others\coding space\Relevia\relevia--final\relevia\src\pages\Home.jsx
+   3:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u                  no-unused-vars
+  60:10  error  'mousePosition' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+D:\others\coding space\Relevia\relevia--final\relevia\src\pages\Medication.jsx
+  2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+D:\others\coding space\Relevia\relevia--final\relevia\src\pages\Resources.jsx
+  1:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+✖ 50 problems (41 errors, 9 warnings)
+

@@ -11,3 +11,6 @@ The tracked `v1_original/empathy_42k.jsonl` still needs a provenance, licence an
 | `v1_original/relevia files/Chatbot.jsx` | Older copy of the chat widget | The real one is `relevia/src/components/Chatbot.jsx` |
 | `v2_llama8b_scripts/` | Earlier dataset revision and Llama-3.1-8B scripts | Replaced by `data/build_dataset.py` and `src/train.py` (official splits, held-out emotions, configs, small models) |
 | `old_adapter/` | The 168 MB Llama-8B LoRA that used to sit in the app's `public/weights/` | Trained on the broken v1 data, and the app could never load it. Gitignored |
+
+
+Milestone 3: the unresolved v1 dataset was moved without byte changes to `quarantine/empathy_42k.jsonl.quarantined`. It is forbidden for experimental use. See the [provenance report](../docs/dataset_provenance_report.md). Existing history remains unchanged.

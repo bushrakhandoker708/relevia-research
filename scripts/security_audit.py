@@ -1,3 +1,4 @@
+import argparse
 """Redacted reachable-history and build scan. Never prints credential values."""
 import json
 import re
@@ -54,7 +55,10 @@ def run():
     report['env_ignored'] = subprocess.run(['git', '-C', str(APP), 'check-ignore', '-q', '.env']).returncode == 0
     report['env_tracked'] = bool(git(APP, 'ls-files', '.env').strip())
     report['provider_validity_or_rotation'] = 'not tested; no service changes authorized'
-    out = ROOT / 'results/milestone_2/security.json'; out.parent.mkdir(parents=True, exist_ok=True)
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--out', type=Path, default=ROOT / 'results/milestone_2/security.json')
+    out = parser.parse_args().out
+    out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps(report, indent=2) + '\n', encoding='utf-8')
     print(json.dumps(report, indent=2))
 

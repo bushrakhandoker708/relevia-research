@@ -4,7 +4,7 @@ I am investigating whether adapting a small language model improves supportive d
 
 The investigation begins with an engineering problem. Local inference alone did not prevent shared history, inconsistent expiry or misleading privacy claims. The research pipeline also reused validation conversations as prompting examples. Those issues needed correction before a comparison between models could be interpreted credibly. Milestone 2 therefore concentrates on privacy boundaries, data separation and reproducible experiment records.
 
-This is ongoing research, with agent-assisted implementation and documentation for my review. No model-quality results, successful fine-tuning run or measured clinical benefit are claimed.
+This is ongoing research, with agent-assisted implementation and documentation for my review. A small Milestone 3 prompting pilot has now run; its preliminary agent ratings do not establish a quality improvement. No successful fine-tuning run or measured clinical benefit is claimed.
 
 ## What the current foundation establishes
 
@@ -56,6 +56,13 @@ For the first experiment, follow [Experiment 01](docs/experiment_01_protocol.md)
 
 The recorded run passed eight Python tests and the application’s 18 JavaScript tests. The application build and changed-file lint passed; legacy lint failures remain documented. No matching credential was found in the scoped history and bundle scan, which does not prove that external or unreachable historical artifacts are free of secrets.
 
-Browser verification and the historical dataset review remain open. Milestone 2 is therefore not signed off, and Milestone 3 has not begun. Passing these foundation checks will still leave the central research question unanswered: it requires controlled model runs, reviewed safety scenarios, blinded ratings and deployment measurements.
+The browser exception has been accepted for local research, and the unresolved historical dataset is quarantined. Milestone 3 is authorised for the controlled local pilot; public-release verification remains open. Passing these foundation checks will still leave the central research question unanswered: it requires controlled model runs, reviewed safety scenarios, blinded ratings and deployment measurements.
 
 Start with the [milestone report](docs/milestone_2_report.md), [privacy decisions](docs/privacy_design_decisions.md), [test evidence](docs/storage_test_results.md), [leakage report](docs/dataset_leakage_report.md) and [experiment protocol](docs/experiment_01_protocol.md). The [writing guide](docs/WRITING_VOICE_GUIDE.md) records how future work should preserve reasoning, limitations and authorship accurately.
+
+
+## Milestone 3: first controlled prompting pilot
+
+The historical dataset is now quarantined and excluded from experiments. A pinned Qwen2.5-1.5B-Instruct checkpoint produced 16 responses on eight held-out synthetic scenarios after two development rounds. The primary relevance difference was +0.125 with a 95% paired bootstrap interval of −0.875 to +1.125, based on explicitly unblinded agent ratings. This does not establish that the developed prompt is better. Both conditions retained an urgent-risk failure.
+
+Read the [Milestone 3 report](docs/milestone_3_report.md), [dataset provenance](docs/dataset_provenance_report.md), [dataset card](data/experiment_01/DATASET_CARD.md), [executed dataset audit](notebooks/01_dataset_audit.ipynb) and [baseline notebook](notebooks/03_baseline_evaluation.ipynb). Independent blinded review is the next priority. Browser verification remains a public-release blocker; LoRA requires explicit approval.

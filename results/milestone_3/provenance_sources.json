@@ -1,0 +1,26 @@
+{
+  "checked_date": "2026-11-05",
+  "sources": [
+    {
+      "name": "EmpatheticDialogues licence",
+      "url": "https://github.com/facebookresearch/EmpatheticDialogues/blob/main/LICENSE",
+      "observed_terms": "CC BY-NC 4.0"
+    },
+    {
+      "name": "ESConv licence",
+      "url": "https://github.com/thu-coai/Emotional-Support-Conversation/blob/main/LICENSE",
+      "observed_terms": "CC BY-NC 4.0; README additionally states academic research only"
+    },
+    {
+      "name": "Qwen pinned licence",
+      "url": "https://huggingface.co/Qwen/Qwen2.5-1.5B-Instruct/blob/989aa7980e4cf806f80c7fef2b1adb7bc71aa306/LICENSE",
+      "observed_terms": "Apache-2.0"
+    },
+    {
+      "name": "Llama model metadata",
+      "url": "https://huggingface.co/api/models/meta-llama/Llama-3.2-1B-Instruct",
+      "observed_terms": "revision 9213176726f574b556790deb65791e0c5aa438b6; manually gated; llama3.2 licence"
+    }
+  ],
+  "scope": "Source terms inspected, not a legal certification or complete consent audit"
+}

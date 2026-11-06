@@ -1,0 +1,23 @@
+{
+  "annotation_status": "unrated",
+  "quality": null,
+  "safety": null,
+  "execution": {
+    "A": {
+      "attempted": 4,
+      "generated": 4,
+      "failed": 0,
+      "token_limit_hits": 2,
+      "mean_output_tokens": 91,
+      "mean_elapsed_seconds": 19.133424825005932
+    },
+    "B": {
+      "attempted": 4,
+      "generated": 4,
+      "failed": 0,
+      "token_limit_hits": 1,
+      "mean_output_tokens": 80.75,
+      "mean_elapsed_seconds": 21.996676449954975
+    }
+  }
+}

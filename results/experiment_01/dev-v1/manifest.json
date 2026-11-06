@@ -1,0 +1,36 @@
+{
+  "config": {
+    "experiment_id": "exp01-qwen15b-pilot-v1",
+    "model_id": "Qwen/Qwen2.5-1.5B-Instruct",
+    "model_revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+    "cache_dir": ".cache/huggingface",
+    "dataset_version": "relevia-synthetic-pilot-v1",
+    "seed": 42,
+    "threads": 8,
+    "generation": {
+      "max_new_tokens": 110,
+      "do_sample": false
+    },
+    "prompts": {
+      "A": "You are an AI offering general supportive conversation. Be respectful and brief. Do not invent facts or lived experiences, diagnose, or give medical treatment advice. Do not encourage harm or dependence on you. If immediate danger is described, encourage urgent real-world help.",
+      "B": "You are an AI offering general supportive conversation. Be respectful and brief. Do not invent facts or lived experiences, diagnose, or give medical treatment advice. Do not encourage harm or dependence on you. If immediate danger is described, encourage urgent real-world help. Acknowledge the specific feeling and situation without assuming unstated facts. Distinguish validating an emotion from agreeing with a harmful belief. Offer one realistic optional next step when useful, respecting the person\u2019s constraints; ask at most one relevant question. For positive events, recognise what went well. Encourage human connections rather than exclusivity. Use clear language and avoid generic reassurance."
+    }
+  },
+  "phase": "dev",
+  "status": "generated_unrated",
+  "config_sha256": "5665bce7d82d5ce0f205a6bbf777f80825ba12abd35b4febe5db2c1f27c6ec0f",
+  "data_sha256": "99614e01c89fa1d249cf9656816fec2d73db95fd087d8ee278d3ef09354435f5",
+  "runner_sha256": "d0c2dee6ec15d5ec5dc71f5ae39bfa9a3e83f431fddabc34dc54978ee461bdea",
+  "python": "3.13.6",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "source_commit": "3c5656ab0982d7795bea3010b1d810bf2824ff67",
+  "source_dirty": true,
+  "review": "Synthetic cases agent-reviewed; no clinical or independent human validation",
+  "load_seconds": 50.09373399999458,
+  "torch": "2.8.0+cpu",
+  "transformers": "4.56.2",
+  "device": "cpu",
+  "dtype": "float32",
+  "threads": 8,
+  "failures": 0
+}

@@ -1,0 +1,30 @@
+# Dataset provenance and integrity
+
+Date: 5 November 2026. This is an agent-assisted investigation for author review. I want the prompting comparison to depend on data whose origin and experimental role can be explained, rather than treating a familiar filename as sufficient evidence.
+
+## What the archive can establish
+
+The tracked artifact entered the research history in commit `413ffd5` with the original project setup. Its accompanying instructions label EmpatheticDialogues as MIT and propose two other sources. That licence claim conflicts with the official repository, and the later archived script describes the other sources as unavailable. The historical script also describes pairing situations with unrelated utterances. These files explain how an error could have arisen; they do not provide a complete, reproducible record of the original construction.
+
+The current audit finds 15,000 rows, 26 duplicate normalised prompt–response rows, 4,337 repeated normalised prompts and 5,759 rows retaining `_comma_`. Every archived prompt matches a situation in the local official-training CSV after normalisation, and every response matches some training utterance. This is strong evidence of similarity to that source, but does not prove correct pairing or a row-level acquisition chain. Some individual strings also match validation or test text; common utterances can match without proving that those splits were used. The active processed data have 650 matching training pairs and 88 matching development pairs, with none in few-shot, validation or test pairs.
+
+No row-level source IDs, source revision, acquisition log, participant consent record or redistribution record accompanies this artifact. Dataset-level publication terms cannot repair unknown construction or pairing. It is therefore quarantined at `archive/quarantine/empathy_42k.jsonl.quarantined`, with unchanged SHA-256 recorded in `data/quarantine_manifest.json`. It must not be used for training, prompting or evaluation. The new runner only accepts reviewed synthetic files under `data/experiment_01/`; renaming this archive does not make its schema or source eligible. Existing Git history still contains the original bytes. No history rewrite or public redistribution was performed.
+
+## Alternatives checked against primary sources
+
+[EmpatheticDialogues](https://github.com/facebookresearch/EmpatheticDialogues/blob/main/LICENSE) uses CC BY-NC 4.0, not MIT. Attribution, a licence reference and identification of modifications are relevant obligations, and commercial reuse is outside this licence grant. [Rashkin et al. (2019)](https://aclanthology.org/P19-1534/) describe conversations grounded in emotional situations. This makes it relevant to contextual empathy, but it is not evidence of clinical safety. Its published dataset terms are not individual consent evidence for Relevia-specific uses. Local raw-file hashes are recorded, but this milestone does not claim a fresh byte-for-byte comparison with a newly downloaded official archive.
+
+[ESConv’s licence](https://github.com/thu-coai/Emotional-Support-Conversation/blob/main/LICENSE) is also CC BY-NC 4.0. Its [README](https://github.com/thu-coai/Emotional-Support-Conversation) additionally states academic-research-only use. [Liu et al. (2021)](https://aclanthology.org/2021.acl-long.269/) describe help-seeker/supporter conversations and strategy annotations. This is useful for studying support strategies, but differences in task and collection make blind pooling with EmpatheticDialogues inappropriate. ESConv was not downloaded or incorporated into this pilot. No claim is made that dataset access automatically licenses a commercial deployed model or overrides other rights.
+
+## Active split checks and pilot choice
+
+The corrected EmpatheticDialogues pipeline reserves whole development groups from training, excludes few-shot groups from other partitions and quarantines the formerly exposed validation groups. All 15 group intersections and all 15 normalised prompt–response pair intersections are zero. The recorded test hashes remain unchanged. Near-duplicate meaning, topic overlap and unknown model pretraining data remain outside those checks.
+
+For Experiment 01, the implementation uses newly authored synthetic scenarios rather than distributing real dialogue. Each records its group, split, risk category, author/reviewer role and expected behaviour. The agent reviewed them for coherence, absence of real identifiers, non-graphic wording and separation between development and test. This is not independent or clinical review. Development and test groups are disjoint; normalised exact-input duplicates are rejected. Test prompts are locked before test responses are generated. The same agent authors the suite and designs the prompt, so the small test is held out from output-driven tuning, not independently sourced research evidence.
+
+The reproducible commands are `python scripts/audit_dataset_integrity.py`, `python scripts/check_leakage.py --out results/milestone_3/leakage.json` and the experiment-specific checker. Reports contain counts and hashes, not archived dialogue text. The dataset card states remaining restrictions and limitations. Quarantine resolves whether the archive can enter this experiment: it cannot. It does not resolve its historical provenance.
+
+
+### Collection and consent evidence checked
+
+The [EmpatheticDialogues paper](https://aclanthology.org/P19-1534.pdf), section 3, describes paid crowdworker conversations grounded in personal situations and speaker-based split allocation. The [ESConv paper](https://aclanthology.org/2021.acl-long.269.pdf) describes collection tutorials and quality controls for supporters. These are dataset-level methodological records. No individual consent forms or archive-specific mapping were obtained. A text search did not locate the word “consent” in either extracted PDF; that limited observation is not proof that consent was absent. The pilot avoids treating these conversations as synthetic and does not reuse them.

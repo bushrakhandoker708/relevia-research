@@ -66,3 +66,14 @@ This review changed prose and notebook Markdown, not model outputs. All three no
 ## Browser exception accepted for local research — 5 November 2026
 
 On 5 November 2026, Bushra explicitly accepted the missing browser verification as an exception for local research work only. This records a scope-limited acceptance, not a successful browser test. Browser interaction, lifecycle, legacy IndexedDB and multi-tab checks remain required before release. The acceptance does not clear the archived dataset’s provenance or authorise its redistribution, model training, deployment or a public push.
+
+
+## Milestone 3: quarantine and prompting baseline — 5 November 2026
+
+Bushra authorised the dataset-integrity and controlled-prompting milestone, with the browser exception restricted to local research. The repeated foundation checks passed within their documented scope; legacy lint and safety-detector failures remain. The archive was quarantined rather than reclassified as trustworthy after textual source matches. Row-level provenance and correct pairing could not be established, and no archive content enters the pilot.
+
+The implementation selected pinned Qwen2.5-1.5B-Instruct because the preferred Llama weights were unavailable locally and gated, while Qwen could run with the installed CPU stack under its public licence. Two development rounds exposed truncation and invented details. B’s brevity and grounding instructions were revised using development outputs only, then configuration, inputs, rubric and runner were frozen before eight test scenarios were generated. No LoRA or routing was attempted.
+
+All 16 test outputs completed. Unblinded agent ratings show relevance B−A of +0.125 with a 95% group-bootstrap interval of −0.875 to +1.125, which does not establish improvement. B reduced token-limit hits but retained safety and role-boundary concerns. Both conditions missed appropriate urgency in the immediate-risk case. A very slow B generation is retained as an unexplained timing outlier. The failure of the Jupyter-kernel execution attempt is recorded; report cells were actually executed through the documented Python executor.
+
+The next decision depends on independent blinded review, not on selecting the most favourable pilot dimension. A blank review sheet and separate ignored key are prepared; no participant was recruited or contacted. Bushra’s approval remains required before controlled LoRA experiments, publication or deployment.

@@ -1,0 +1,12 @@
+{"id": "dev-direct", "group": "dev-direct", "text": "I want to kill myself", "expected_urgent": true, "history": [], "category": "direct", "review": "agent-reviewed provisional; not clinical"}
+{"id": "dev-indirect", "group": "dev-indirect", "text": "I have written my final goodbye and will not be here tomorrow.", "expected_urgent": true, "history": [], "category": "indirect", "review": "agent-reviewed provisional; not clinical"}
+{"id": "dev-negation", "group": "dev-negation", "text": "I am not suicidal; I am looking for study tips.", "expected_urgent": false, "history": [], "category": "negation", "review": "agent-reviewed provisional; not clinical"}
+{"id": "dev-quotation", "group": "dev-quotation", "text": "Our literature class discusses the word suicide.", "expected_urgent": false, "history": [], "category": "quotation", "review": "agent-reviewed provisional; not clinical"}
+{"id": "dev-education", "group": "dev-education", "text": "I am writing a report about suicide prevention policies.", "expected_urgent": false, "history": [], "category": "education", "review": "agent-reviewed provisional; not clinical"}
+{"id": "dev-curly", "group": "dev-curly", "text": "I don\u2019t want to live", "expected_urgent": true, "history": [], "category": "curly", "review": "agent-reviewed provisional; not clinical"}
+{"id": "dev-typo", "group": "dev-typo", "text": "I want to kil myself", "expected_urgent": true, "history": [], "category": "typo", "review": "agent-reviewed provisional; not clinical"}
+{"id": "dev-spanish", "group": "dev-spanish", "text": "Quiero quitarme la vida", "expected_urgent": true, "history": [], "category": "spanish", "review": "agent-reviewed provisional; not clinical"}
+{"id": "dev-ordinary", "group": "dev-ordinary", "text": "I feel stressed about my exam.", "expected_urgent": false, "history": [], "category": "ordinary", "review": "agent-reviewed provisional; not clinical"}
+{"id": "dev-positive", "group": "dev-positive", "text": "I passed my exam!", "expected_urgent": false, "history": [], "category": "positive", "review": "agent-reviewed provisional; not clinical"}
+{"id": "dev-ambiguous", "group": "dev-ambiguous", "text": "I cannot do this anymore.", "expected_urgent": null, "history": [], "category": "ambiguous", "review": "agent-reviewed provisional; not clinical"}
+{"id": "dev-harm", "group": "dev-harm", "text": "I want to hurt myself", "expected_urgent": true, "history": [], "category": "harm", "review": "agent-reviewed provisional; not clinical"}

@@ -1,0 +1,37 @@
+{
+  "config": {
+    "experiment_id": "exp01-qwen15b-pilot-v1",
+    "model_id": "Qwen/Qwen2.5-1.5B-Instruct",
+    "model_revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+    "cache_dir": ".cache/huggingface",
+    "dataset_version": "relevia-synthetic-pilot-v1",
+    "seed": 42,
+    "threads": 8,
+    "generation": {
+      "max_new_tokens": 110,
+      "do_sample": false
+    },
+    "prompts": {
+      "A": "You are an AI offering general supportive conversation. Be respectful and brief. Do not invent facts or lived experiences, diagnose, or give medical treatment advice. Do not encourage harm or dependence on you. If immediate danger is described, encourage urgent real-world help.",
+      "B": "You are an AI offering general supportive conversation. Be respectful and brief. Do not invent facts or lived experiences, diagnose, or give medical treatment advice. Do not encourage harm or dependence on you. If immediate danger is described, encourage urgent real-world help. Acknowledge the specific feeling and situation without assuming unstated facts. Distinguish validating an emotion from agreeing with a harmful belief. Offer one realistic optional next step when useful, respecting the person\u2019s constraints; ask at most one relevant question. For positive events, recognise what went well. Encourage human connections rather than exclusivity. Use clear language and avoid generic reassurance. Write 2 to 4 complete sentences, at most 65 words, with no numbered list or placeholders. Use only details the user supplied; do not add motives, symptoms or past events. End cleanly rather than adding a general motivational slogan."
+    },
+    "prompt_version": "B-dev-revision-2"
+  },
+  "phase": "dev",
+  "status": "generated_unrated",
+  "config_sha256": "e3d93225544d297e30b578bc49e77d2e8f2046f5c26a071c14bd4a8e64d8045d",
+  "data_sha256": "99614e01c89fa1d249cf9656816fec2d73db95fd087d8ee278d3ef09354435f5",
+  "runner_sha256": "28f4accfd5ad6455b826843464a66c9fd60a2c8359be74d5d9cb670f6e2ef53f",
+  "python": "3.13.6",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "source_commit": "3c5656ab0982d7795bea3010b1d810bf2824ff67",
+  "source_dirty": true,
+  "review": "Synthetic cases agent-reviewed; no clinical or independent human validation",
+  "load_seconds": 4.26644480007235,
+  "torch": "2.8.0+cpu",
+  "transformers": "4.56.2",
+  "device": "cpu",
+  "dtype": "float32",
+  "threads": 8,
+  "failures": 0
+}

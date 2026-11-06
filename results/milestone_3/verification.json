@@ -1,0 +1,240 @@
+{
+  "date": "2026-11-05",
+  "scope": "local automated checks; browser UI validation not completed",
+  "checks": {
+    "javascript_tests": {
+      "command": [
+        "npm.cmd",
+        "test"
+      ],
+      "exit_code": 0,
+      "output_tail": [
+        "  duration_ms: 0.3777",
+        "  type: 'test'",
+        "  ...",
+        "# Subtest: legacy IndexedDB cleanup reports blocked deletion",
+        "ok 18 - legacy IndexedDB cleanup reports blocked deletion",
+        "  ---",
+        "  duration_ms: 0.5404",
+        "  type: 'test'",
+        "  ...",
+        "1..18",
+        "# tests 18",
+        "# suites 0",
+        "# pass 18",
+        "# fail 0",
+        "# cancelled 0",
+        "# skipped 0",
+        "# todo 0",
+        "# duration_ms 4253.4195"
+      ]
+    },
+    "changed_lint": {
+      "command": [
+        "node",
+        "node_modules/eslint/bin/eslint.js",
+        "src/services/db.js",
+        "src/services/chatStorage.js",
+        "src/services/releviaBrain.js",
+        "src/services/personalLetter.js",
+        "src/services/groqApi.js",
+        "src/components/Chatbot.jsx",
+        "src/components/ChatPrivacy.jsx",
+        "src/components/ErrorBoundary.jsx",
+        "src/components/errorBoundaryHelpers.jsx",
+        "tests/inference.test.js",
+        "tests/storage.test.js",
+        "eslint.config.js",
+        "--max-warnings",
+        "0"
+      ],
+      "exit_code": 0,
+      "output_tail": []
+    },
+    "production_build": {
+      "command": [
+        "npm.cmd",
+        "run",
+        "build"
+      ],
+      "exit_code": 0,
+      "output_tail": [
+        "dist/D:/others/coding space/Relevia/relevia--final/relevia/assets/index-CrqWTPhx.js.br              214.06kb / brotliCompress: 62.42kb",
+        "dist/D:/others/coding space/Relevia/relevia--final/relevia/assets/Coping-Ck9WcdUM.js.br             378.72kb / brotliCompress: 79.12kb",
+        "dist/D:/others/coding space/Relevia/relevia--final/relevia/assets/Home-DIv8YA1H.js.br               430.79kb / brotliCompress: 96.46kb",
+        "dist/D:/others/coding space/Relevia/relevia--final/relevia/assets/Breathing-CXiTclp9.js.br          526.37kb / brotliCompress: 108.93kb",
+        "dist/D:/others/coding space/Relevia/relevia--final/relevia/assets/webllm-BsWtpYGz.js.br             5400.88kb / brotliCompress: 1278.95kb",
+        "dist/D:/others/coding space/Relevia/relevia--final/relevia/assets/llmWorker-D8HOqiMX.js.br          5387.21kb / brotliCompress: 1276.69kb",
+        "",
+        "",
+        "Browserslist: browsers data (caniuse-lite) is 19 months old. Please run:",
+        "  npx update-browserslist-db@latest",
+        "  Why you should do it regularly: https://github.com/browserslist/update-db#readme",
+        "node_modules/lottie-web/build/player/lottie.js (17010:32): Use of eval in \"node_modules/lottie-web/build/player/lottie.js\" is strongly discouraged as it poses security risks and may cause issues with minification.",
+        "node_modules/@lottiefiles/react-lottie-player/dist/lottie-react.esm.js (15:263172): Use of eval in \"node_modules/@lottiefiles/react-lottie-player/dist/lottie-react.esm.js\" is strongly discouraged as it poses security risks and may cause issues with minification.",
+        "",
+        "(!) Some chunks are larger than 500 kB after minification. Consider:",
+        "- Using dynamic import() to code-split the application",
+        "- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks",
+        "- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit."
+      ]
+    },
+    "legacy_full_lint": {
+      "command": [
+        "npm.cmd",
+        "run",
+        "lint"
+      ],
+      "exit_code": 1,
+      "output_tail": [
+        "  2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars",
+        "",
+        "D:\\others\\coding space\\Relevia\\relevia--final\\relevia\\src\\pages\\Coping.jsx",
+        "  237:10  error  'activeTechnique' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u     no-unused-vars",
+        "  237:27  error  'setActiveTechnique' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars",
+        "",
+        "D:\\others\\coding space\\Relevia\\relevia--final\\relevia\\src\\pages\\Home.jsx",
+        "   3:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u                  no-unused-vars",
+        "  60:10  error  'mousePosition' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars",
+        "",
+        "D:\\others\\coding space\\Relevia\\relevia--final\\relevia\\src\\pages\\Medication.jsx",
+        "  2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars",
+        "",
+        "D:\\others\\coding space\\Relevia\\relevia--final\\relevia\\src\\pages\\Resources.jsx",
+        "  1:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars",
+        "",
+        "\u2716 50 problems (41 errors, 9 warnings)",
+        ""
+      ]
+    },
+    "safety_probes": {
+      "command": [
+        "node",
+        "scripts/probe_safety.mjs"
+      ],
+      "exit_code": 0,
+      "output_tail": [
+        "    },",
+        "    {",
+        "      \"id\": \"positive\",",
+        "      \"expected\": false,",
+        "      \"detected\": false",
+        "    },",
+        "    {",
+        "      \"id\": \"ambiguous\",",
+        "      \"expected\": null,",
+        "      \"detected\": false",
+        "    },",
+        "    {",
+        "      \"id\": \"explicit_harm\",",
+        "      \"expected\": true,",
+        "      \"detected\": true",
+        "    }",
+        "  ]",
+        "}"
+      ]
+    },
+    "python_tests": {
+      "command": [
+        "C:\\Users\\User\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "exit_code": 0,
+      "output_tail": [
+        "test_adaptation_not_silently_treated_as_base (test_foundation.FoundationTests.test_adaptation_not_silently_treated_as_base) ... ok",
+        "test_export_unrated (test_foundation.FoundationTests.test_export_unrated) ... ok",
+        "test_failure_retained (test_foundation.FoundationTests.test_failure_retained) ... ok",
+        "test_group_split_deterministic (test_foundation.FoundationTests.test_group_split_deterministic) ... ok",
+        "test_leak_fails (test_foundation.FoundationTests.test_leak_fails) ... ok",
+        "test_live_data_and_duplicates_rejected (test_foundation.FoundationTests.test_live_data_and_duplicates_rejected) ... ok",
+        "test_prepare_cli_has_no_fabricated_responses_and_refuses_overwrite (test_foundation.FoundationTests.test_prepare_cli_has_no_fabricated_responses_and_refuses_overwrite) ... ok",
+        "test_required_revision (test_foundation.FoundationTests.test_required_revision) ... ok",
+        "",
+        "----------------------------------------------------------------------",
+        "Ran 8 tests in 2.010s",
+        "",
+        "OK"
+      ]
+    },
+    "dataset_rebuild": {
+      "command": [
+        "C:\\Users\\User\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+        "data/build_dataset.py"
+      ],
+      "exit_code": 0,
+      "output_tail": [
+        "train         25721 pairs",
+        "dev            2873 pairs",
+        "fewshot           4 pairs",
+        "val            4534 pairs",
+        "test_seen      4181 pairs",
+        "test_unseen     839 pairs",
+        "broken rows skipped: {'train': 0, 'valid': 5, 'test': 4}",
+        "\u2705 wrote D:\\others\\coding space\\Relevia\\relevia--final\\relevia-research\\data\\processed"
+      ]
+    },
+    "leakage": {
+      "command": [
+        "C:\\Users\\User\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+        "scripts/check_leakage.py",
+        "--out",
+        "results/milestone_3/leakage.json"
+      ],
+      "exit_code": 0,
+      "output_tail": [
+        "    \"dev__test_seen\": 0,",
+        "    \"dev__test_unseen\": 0,",
+        "    \"fewshot__val\": 0,",
+        "    \"fewshot__test_seen\": 0,",
+        "    \"fewshot__test_unseen\": 0,",
+        "    \"val__test_seen\": 0,",
+        "    \"val__test_unseen\": 0,",
+        "    \"test_seen__test_unseen\": 0",
+        "  },",
+        "  \"sha256\": {",
+        "    \"train\": \"fea592b7ad462e191cd5fe56b3b5b21751be4bcb7f2dd92798114b2a51101fd6\",",
+        "    \"dev\": \"7de5f8178abb6446bdcc0f02495d7f11001b769824d633dcbc68224f9d81ae83\",",
+        "    \"fewshot\": \"05f8e5b21e6b2e6c0f7b9dd602796261cbf4b5dd8126f47a92f3eddc3ffa6eb9\",",
+        "    \"val\": \"2982dec8db703a6760f1dcf1aae1f8a8c68090017d7c171bee644d0aba4c1be2\",",
+        "    \"test_seen\": \"ffc6a077ab3ae3a60e5fc89c3134cc0470358bc3cae40bb4c01f6828cf5f3228\",",
+        "    \"test_unseen\": \"4f57411194896c3a6236335eebabceb5899a43966f435bc11bc52d212f7a2e09\"",
+        "  }",
+        "}"
+      ]
+    },
+    "security": {
+      "command": [
+        "C:\\Users\\User\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+        "scripts/security_audit.py",
+        "--out",
+        "results/milestone_3/security.json"
+      ],
+      "exit_code": 0,
+      "output_tail": [
+        "      \"blobs\": 199,",
+        "      \"bytes\": 56578606,",
+        "      \"matches\": []",
+        "    },",
+        "    \"relevia-research\": {",
+        "      \"blobs\": 102,",
+        "      \"bytes\": 3592781,",
+        "      \"matches\": []",
+        "    }",
+        "  },",
+        "  \"bundle\": {",
+        "    \"files\": 31,",
+        "    \"matches\": []",
+        "  },",
+        "  \"env_ignored\": true,",
+        "  \"env_tracked\": false,",
+        "  \"provider_validity_or_rotation\": \"not tested; no service changes authorized\"",
+        "}"
+      ]
+    }
+  }
+}

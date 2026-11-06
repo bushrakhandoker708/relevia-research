@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "blocked": [
+    {
+      "path": "archive/quarantine/empathy_42k.jsonl.quarantined",
+      "sha256": "a78dac24c48e4b14282de4f7293f54f5984a06dc56f717dd4b317dda7cab6891",
+      "reason": "Missing row provenance and consent documentation; unreliable pairing; no experimental use"
+    }
+  ]
+}

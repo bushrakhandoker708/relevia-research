@@ -1,4 +1,5 @@
 """Deterministic metadata-only leakage report. Fails on cross-partition groups."""
+import argparse
 import hashlib
 import itertools
 import json
@@ -19,7 +20,10 @@ def main():
               'overlap': {a + '__' + b: len({r['conv_id'] for r in splits[a]} & {r['conv_id'] for r in splits[b]})
                           for a, b in itertools.combinations(splits, 2)},
               'sha256': {k: hashlib.sha256(blobs[k]).hexdigest() for k in splits}}
-    out = ROOT / 'results/milestone_2/leakage.json'; out.parent.mkdir(parents=True, exist_ok=True)
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--out', type=Path, default=ROOT / 'results/milestone_2/leakage.json')
+    out = parser.parse_args().out
+    out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps(report, indent=2) + '\n', encoding='utf-8')
     assert_disjoint(splits)
     before = ROOT / 'results/milestone_2/leakage-before.json'

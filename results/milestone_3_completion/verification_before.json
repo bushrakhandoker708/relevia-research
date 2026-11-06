@@ -1,0 +1,29 @@
+{
+  "javascript_tests": {
+    "command": [
+      "npm.cmd",
+      "test"
+    ],
+    "exit_code": 0
+  },
+  "python_tests": {
+    "command": [
+      "python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-v"
+    ],
+    "exit_code": 0
+  },
+  "full_lint": {
+    "command": [
+      "npm.cmd",
+      "run",
+      "lint"
+    ],
+    "exit_code": 1
+  }
+}

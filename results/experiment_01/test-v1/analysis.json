@@ -1,0 +1,100 @@
+{
+  "annotation_status": "agent_unblinded_exploratory",
+  "quality": {
+    "relevance": {
+      "n_groups": 8,
+      "mean_B_minus_A": 0.125,
+      "bootstrap_95_percentile": [
+        -0.875,
+        1.125
+      ]
+    },
+    "emotional_acknowledgement": {
+      "n_groups": 8,
+      "mean_B_minus_A": 0.125,
+      "bootstrap_95_percentile": [
+        0,
+        0.375
+      ]
+    },
+    "clarity": {
+      "n_groups": 8,
+      "mean_B_minus_A": 0.875,
+      "bootstrap_95_percentile": [
+        -0.125,
+        1.875
+      ]
+    },
+    "practical_helpfulness": {
+      "n_groups": 8,
+      "mean_B_minus_A": -0.125,
+      "bootstrap_95_percentile": [
+        -0.5,
+        0.25
+      ]
+    },
+    "autonomy": {
+      "n_groups": 8,
+      "mean_B_minus_A": -0.125,
+      "bootstrap_95_percentile": [
+        -0.75,
+        0.375
+      ]
+    }
+  },
+  "safety": {
+    "unsupported_medical_claim": {
+      "A": 0,
+      "B": 0
+    },
+    "false_reassurance": {
+      "A": 0,
+      "B": 0
+    },
+    "harmful_agreement": {
+      "A": 0,
+      "B": 0
+    },
+    "inappropriate_refusal": {
+      "A": 0,
+      "B": 0
+    },
+    "dependency_language": {
+      "A": 0,
+      "B": 1
+    },
+    "unsafe_escalation": {
+      "A": 1,
+      "B": 1
+    }
+  },
+  "execution": {
+    "A": {
+      "attempted": 8,
+      "generated": 8,
+      "failed": 0,
+      "token_limit_hits": 4,
+      "mean_output_tokens": 85.125,
+      "mean_elapsed_seconds": 32.67341460000898,
+      "median_elapsed_seconds": 36.72885340003995,
+      "elapsed_range_seconds": [
+        10.876542499987409,
+        49.85901039990131
+      ]
+    },
+    "B": {
+      "attempted": 8,
+      "generated": 8,
+      "failed": 0,
+      "token_limit_hits": 0,
+      "mean_output_tokens": 58.875,
+      "mean_elapsed_seconds": 87.71689502501977,
+      "median_elapsed_seconds": 28.0539848000044,
+      "elapsed_range_seconds": [
+        13.073885799967684,
+        527.9463897000533
+      ]
+    }
+  },
+  "safety_denominator_per_condition": 8
+}

@@ -1,0 +1,35 @@
+{
+  "note": "Before completion work; preserve original outputs, ratings, prompts and notebooks. No experiment rerun.",
+  "files": {
+    "results/experiment_01/dev-v1/analysis.json": "a8c5c537dcad5a647a94162e673cc0d959cfbd57c5fbb0f8372e8c9288a064b5",
+    "results/experiment_01/dev-v1/manifest.json": "601acb9ec0ffc53a96fb532192a9aae250615c8d1c29d35878212315b7771eee",
+    "results/experiment_01/dev-v1/responses.jsonl": "3ca164b1a1edc0b4572368eb98496e0a2ef80bda376f388649eb41b7070992f3",
+    "results/experiment_01/dev-v2/analysis.json": "55bedbc7fa76cc5de3f9a2d687d326e8a9d96b808b2f205c7fe850939889157e",
+    "results/experiment_01/dev-v2/manifest.json": "251ca66f1866338c0a8011d8b307d8c5f6f3bfbb88c23602ca26b97babaa05f0",
+    "results/experiment_01/dev-v2/responses.jsonl": "9e087d3f03489df820cd8a840a726e87a4ccdde48e794c5f4939b0fd3d8afb43",
+    "results/experiment_01/review/blinded_rating_sheet.csv": "495a78371dc92a21d0e3f7501403362bd1ab3c0c5419c4dcca8f7e1dba46faf5",
+    "results/experiment_01/review/KEY_do_not_share.json": "56a8eef260b1df00eafcfe96ca1af37362e2d2b18465902aacf76dd1c5fa564a",
+    "results/experiment_01/review/README.md": "9e875f1ce146414b9a4339427f98715557a5a6d025734748a9c59634c3811baf",
+    "results/experiment_01/test-v1/agent_ratings.json": "085460cb9c20a9e5e4b5463d248a1c97f7cd103e1c743c5553b7c06d3f446ad2",
+    "results/experiment_01/test-v1/analysis.json": "208b83a043cba93ece9e716dc9f1fb5cbc74633f0d33185fa098f683604f0b79",
+    "results/experiment_01/test-v1/manifest.json": "9bb8214c55f1997dbdb23f9b47d41c596d245bd47412267355e3e413077cfb44",
+    "results/experiment_01/test-v1/observed_latency.png": "2a5ce13b36813216432875f46658fc460d01b381d49a354de3c7d1a42226d86f",
+    "results/experiment_01/test-v1/paired_quality.png": "46e43c3a1e626b426395df77cecc06c0d56666c5b28c616ecdce219f1a06ae81",
+    "results/experiment_01/test-v1/responses.jsonl": "980ec2ecb760c3276d956464f7570d68dd9951035ace3f377d658292c2dfcabc",
+    "configs/experiment_01.freeze.json": "033f16c3cdb3c8a023cc0aafc7b1a4982d6a22a689b030624ce7071849e6fd4b",
+    "configs/experiment_01.pilot.json": "e3d93225544d297e30b578bc49e77d2e8f2046f5c26a071c14bd4a8e64d8045d",
+    "configs/experiment_01.template.json": "089025ff452f340014e8e0ab02c6ed6f757a759183696940ed01fd96690fdc9b",
+    "notebooks/01_dataset_audit.ipynb": "8a49b6ebf24eb1f540685cc25838c51df4bef1b2c755be19f203b624cdea4070",
+    "notebooks/03_baseline_evaluation.ipynb": "e20e5b5d610e77652f2d2baefae204e0716bf1dc003882934f2e295cce5f3471"
+  },
+  "git": {
+    "relevia": {
+      "head": "57cb4cae65ec18eaee84f5aa7df665b9f2f8c543",
+      "status": ""
+    },
+    "relevia-research": {
+      "head": "3c5656ab0982d7795bea3010b1d810bf2824ff67",
+      "status": " M .gitignore\n M README.md\n M archive/README.md\n D archive/v1_original/empathy_42k.jsonl\n M docs/decision_log.md\n M docs/experiment_01_protocol.md\n M docs/milestone_2_report.md\n M docs/prompt_log.md\n M research/notes/LITERATURE_REVIEW.md\n M scripts/check_leakage.py\n M scripts/security_audit.py\n?? archive/quarantine/\n?? configs/experiment_01.freeze.json\n?? configs/experiment_01.pilot.json\n?? data/experiment_01/\n?? data/quarantine_manifest.json\n?? docs/dataset_provenance_report.md\n?? docs/experiment_01_protocol_milestone_2.md\n?? docs/experiment_01_rubric.md\n?? docs/milestone_3_commands.md\n?? docs/milestone_3_report.md\n?? notebooks/01_dataset_audit.ipynb\n?? notebooks/03_baseline_evaluation.ipynb\n?? results/experiment_01/\n?? results/milestone_3/\n?? scripts/analyse_experiment_01.py\n?? scripts/audit_dataset_integrity.py\n?? scripts/check_experiment_01.py\n?? scripts/execute_report_notebook.py\n?? scripts/experiment_01.py\n?? scripts/export_experiment_review.py\n?? scripts/verify_milestone_3.py\n?? tests/test_experiment_01.py\n"
+    }
+  }
+}

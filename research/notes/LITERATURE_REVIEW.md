@@ -55,3 +55,10 @@ MUST: complete full-text extraction for LoRA, QLoRA, ED, ESConv, XSTest and the 
 TARGET: RouteLLM, FrugalGPT, HELM and judge evaluation in depth; trace their baselines and contamination controls. STRETCH: StreamingLLM implementation only if profiling reveals a relevant context bottleneck. Avoid an unbounded reading programme before coursework.
 
 Maintain three separate labels in notes: **paper evidence**, **Relevia hypothesis**, and **engineering preference**. Presently, browser switching overhead as a decisive factor is a hypothesis; preserving existing workers is an engineering preference supported by architecture, not a measured performance finding.
+
+
+## Milestone 3 source verification
+
+The official EmpatheticDialogues and ESConv licence files were checked on 5 November 2026: both are CC BY-NC 4.0, and ESConv’s README additionally states academic-research-only use. The earlier archive’s MIT label is incorrect. Rashkin et al. motivate emotional context; Liu et al. motivate support strategies. Neither dataset establishes clinical safety. The initial pilot therefore uses new synthetic text with explicit agent-review limits rather than pooling these corpora.
+
+The [Qwen model card](https://huggingface.co/Qwen/Qwen2.5-1.5B-Instruct) and [pinned licence](https://huggingface.co/Qwen/Qwen2.5-1.5B-Instruct/blob/989aa7980e4cf806f80c7fef2b1adb7bc71aa306/LICENSE) support the model identity and Apache-2.0 terms. Its selection reflects access and CPU feasibility, not clinical suitability. [LoRA](https://arxiv.org/abs/2106.09685v2) reduces trainable parameters, but a controlled prompting baseline is needed before attributing any benefit to adaptation. The [Pursuit of Empathy abstract](https://aclanthology.org/2025.emnlp-main.1573/) reports variable fine-tuning gains; the older blanket conclusion that fine-tuning was not better remains unsuitable as a settled literature claim. No new full-paper replication is claimed.

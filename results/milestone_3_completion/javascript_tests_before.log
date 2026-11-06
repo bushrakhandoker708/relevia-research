@@ -1,0 +1,124 @@
+
+> relevia@0.0.0 test
+> node --test tests/*.test.js
+
+TAP version 13
+# Subtest: deterministic crisis rules preserved including known false alarms and misses
+ok 1 - deterministic crisis rules preserved including known false alarms and misses
+  ---
+  duration_ms: 1.975
+  type: 'test'
+  ...
+# [Relevia] Failed to initialize engine
+# [Relevia] Using curated fallback reply
+# Subtest: failed WebGPU initialization returns curated reply without network or persistent storage
+ok 2 - failed WebGPU initialization returns curated reply without network or persistent storage
+  ---
+  duration_ms: 24.604
+  type: 'test'
+  ...
+# Subtest: crisis handling precedes GPU access and never persists by default
+ok 3 - crisis handling precedes GPU access and never persists by default
+  ---
+  duration_ms: 9.5307
+  type: 'test'
+  ...
+# Subtest: default chat and names stay in memory; new page cannot read them
+ok 4 - default chat and names stay in memory; new page cannot read them
+  ---
+  duration_ms: 3.7876
+  type: 'test'
+  ...
+# Subtest: opt-in saves messages without separate name; restoration requires an explicit action
+ok 5 - opt-in saves messages without separate name; restoration requires an explicit action
+  ---
+  duration_ms: 0.689
+  type: 'test'
+  ...
+# Subtest: independent session histories and clearing one never reads another
+ok 6 - independent session histories and clearing one never reads another
+  ---
+  duration_ms: 0.3006
+  type: 'test'
+  ...
+# Subtest: expiry enforced on memory reads and persisted reads without another message
+ok 7 - expiry enforced on memory reads and persisted reads without another message
+  ---
+  duration_ms: 0.4239
+  type: 'test'
+  ...
+# Subtest: expiry on writes preserves only recent turns
+ok 8 - expiry on writes preserves only recent turns
+  ---
+  duration_ms: 0.2077
+  type: 'test'
+  ...
+# Subtest: names expire and consent withdrawal prevents stale writes
+ok 9 - names expire and consent withdrawal prevents stale writes
+  ---
+  duration_ms: 0.2531
+  type: 'test'
+  ...
+# Subtest: failed persistence keeps the reply in memory and disables saving
+ok 10 - failed persistence keeps the reply in memory and disables saving
+  ---
+  duration_ms: 1.0939
+  type: 'test'
+  ...
+# Subtest: page end invalidation removes all in-memory session context
+ok 11 - page end invalidation removes all in-memory session context
+  ---
+  duration_ms: 0.2507
+  type: 'test'
+  ...
+# Subtest: deletion clears names, saved copies and invalidates pending handles
+ok 12 - deletion clears names, saved copies and invalidates pending handles
+  ---
+  duration_ms: 1.2902
+  type: 'test'
+  ...
+# Subtest: crisis text is memory-only and disables saving of future contextual replies
+ok 13 - crisis text is memory-only and disables saving of future contextual replies
+  ---
+  duration_ms: 0.63
+  type: 'test'
+  ...
+# Subtest: blocked storage does not prevent default chat or crisis context
+ok 14 - blocked storage does not prevent default chat or crisis context
+  ---
+  duration_ms: 0.3802
+  type: 'test'
+  ...
+# Subtest: clear all removes legacy chat personalization but preserves separate journals
+ok 15 - clear all removes legacy chat personalization but preserves separate journals
+  ---
+  duration_ms: 0.3549
+  type: 'test'
+  ...
+# Subtest: malformed and expired saved records never restore
+ok 16 - malformed and expired saved records never restore
+  ---
+  duration_ms: 0.4868
+  type: 'test'
+  ...
+# Subtest: local-only storage operations never call fetch
+ok 17 - local-only storage operations never call fetch
+  ---
+  duration_ms: 0.2712
+  type: 'test'
+  ...
+# Subtest: legacy IndexedDB cleanup reports blocked deletion
+ok 18 - legacy IndexedDB cleanup reports blocked deletion
+  ---
+  duration_ms: 0.4018
+  type: 'test'
+  ...
+1..18
+# tests 18
+# suites 0
+# pass 18
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 4260.7

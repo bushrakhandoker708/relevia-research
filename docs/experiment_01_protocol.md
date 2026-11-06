@@ -1,40 +1,33 @@
-# Experiment 01: controlled prompting baseline
+# Experiment 01: controlled prompting pilot
 
-Status: protocol and harness implemented; no model run, human ratings or quality results obtained. The four new synthetic development scenarios are instrumentation fixtures, not the final benchmark or an adequate safety evaluation. They were authored for this milestone and designated CC0-1.0; they contain no real conversations. Risk annotations are provisional.
+I want to establish whether changing the prompt improves supportive responses before adding trainable parameters. The research question is: does a developed prompt improve quality over a minimal safe prompt when the underlying model is unchanged? A useful result may be a failure to improve; neither a longer prompt nor a successful generation is evidence of quality.
 
-## Objective and controls
+## Model and environment decision
 
-The initial comparison is A, a minimal safe prompt, versus B, an optimised prompt, on the same base model revision. Prompt optimisation uses only dev. The later adapted condition C must use exactly B's inference prompt and examples, but adaptation is not implemented in this milestone's harness. A/B isolates prompting; B/C would isolate adaptation subject to documented training controls. The runner rejects C rather than silently running base weights under an adapted-condition label.
+The requested preference was Llama-3.2-1B-Instruct, whose public metadata identifies revision `9213176726f574b556790deb65791e0c5aa438b6` and manual gated access. It was not cached locally. The available runtime is PyTorch 2.8.0+cpu with Transformers 4.56.2 and no CUDA. Rather than claiming the preferred model ran, this pilot uses the publicly accessible [Qwen2.5-1.5B-Instruct](https://huggingface.co/Qwen/Qwen2.5-1.5B-Instruct) at revision `989aa7980e4cf806f80c7fef2b1adb7bc71aa306`, whose pinned licence is Apache-2.0. This is an implementation choice based on access and compatibility, not evidence that Qwen is a better supportive model. The download is about 3.09 GB of weights and is excluded from Git.
 
-The proposed base is meta-llama/Llama-3.2-1B-Instruct. Its revision is intentionally null in configs/experiment_01.template.json until an actual immutable model/tokenizer commit is verified and the local model/licence prerequisites are satisfied. The validator rejects null or floating revisions. A familiar model name is not adequate provenance. The pilot uses greedy decoding with 110 maximum new tokens and seed 42. Greedy decoding reduces sampling variability but does not guarantee cross-platform bitwise reproducibility.
+Larger models and LoRA are deferred because they would introduce resource and treatment changes before the prompting baseline is understood. The old app’s MLC weights are a different runtime artifact, not interchangeable Transformers weights. A later Llama replication would be a new experiment, not a renamed Qwen result.
 
-## Harness design and execution
+## Treatments and development
 
-`scripts/run_experiment.py` validates the declared experiment, condition, model revision, prompt version, dataset version, seeds, generation settings and unique scenario IDs. It accepts only declared synthetic CC0 development fixtures at this stage. This is a schema/allowlist restriction, not an automatic proof that an arbitrary file is legally synthetic. Later licensed-dataset integration needs explicit provenance approval and schema mapping.
+A and B share the same minimal safety instructions. B adds situation-specific acknowledgement, a distinction between emotions and harmful beliefs, optional practical help and autonomy. Four synthetic development cases are used for prompt review. The first actual run showed truncation and unsupported inferences. B was revised to 2–4 complete sentences, at most 65 words, no lists/placeholders and no invented details. The second run evaluates that candidate on development only. The prompt log records the actual decision and remaining failures.
 
-Preparation writes a manifest and no responses. Execution loads cached Transformers weights/tokenizer with the same exact revision, local_files_only enabled and remote custom code disabled. The current backend runs on CPU; GPU precision, quantisation and adapted checkpoints are deliberately outside this initial implementation. It logs source commit, dirty state, harness/config/data/prompt hashes, Python/platform and runtime versions. Failures are retained with an error type, and empty responses are failures. Existing output directories cannot be overwritten. Full exception strings are excluded because they can contain inputs or secrets.
+The test dataset is authored after development review, then the configuration, development file, test file, rubric and runner are SHA-256 locked before test generation. No test outputs inform prompt revision. This is a small agent-authored held-out pilot, not an independently curated benchmark. There are no few-shot examples. New prompt changes after inspecting test outcomes require a new version and fresh evaluation data.
 
-After reviewing and filling in the model revision, create a separate local config and run from this repository:
+## Controls and execution
 
-```powershell
-python scripts/run_experiment.py --config configs/experiment_01.local.json --data data/synthetic_dev.jsonl --out results/exp01-A-preparation --prepare
-```
+Both conditions use identical model/tokenizer revision, CPU float32, eight threads, greedy decoding, seed 42, a 110-token maximum and the same inputs. The runner reuses one model in evaluation mode without conversation history or adapter training. A/B order is seeded and randomised within each scenario. Longer system prompts are part of the treatment; elapsed-time differences therefore cannot be interpreted as pure generation-speed effects.
 
-For an actual authorised base-model run, use a **new** output directory and omit --prepare after placing compatible weights in the local cache. Never use a fabricated SHA to label a real run. No such model run was executed during Milestone 2. Automated tests use a conspicuously named stub only to verify record structure and failure handling; those outputs are not retained as model evidence.
+Only the synthetic experiment directory is accepted. Source, split, review status, unique IDs, cross-split group separation and normalised duplicate inputs are checked. Frozen inputs are checked before test loading. Outputs are appended and flushed with failure status, elapsed seconds, token counts and token-limit indicators. A new output directory is required, so reruns cannot silently overwrite results. Null ratings are missing evidence.
 
-## Ratings and statistical plan
+The initial development load attempted optional network metadata queries despite `local_files_only`. Subsequent runs set Hugging Face and Transformers offline flags before imports. The public model download used network access; conversation generation itself uses local weights. The model’s inherited sampling settings cause warnings under greedy decoding and are not evidence of sampling. Runtime configuration and overrides are retained for the frozen test run.
 
-Each response export reserves six independent 1–5 quality fields: emotional acknowledgement, contextual relevance, specificity, helpfulness, clarity and autonomy. Scores remain null until rated. Suggested anchors are 1=absent or actively inappropriate, 3=partially appropriate but incomplete, 5=consistently appropriate and grounded in the provided context. Each dimension needs examples and rater calibration before final evaluation; these broad anchors are a draft, not a validated instrument.
+## Evaluation
 
-Separate safety fields record unsupported medical claims, false reassurance, harmful agreement, inappropriate refusal, dependency-promoting language and unsafe escalation. They also remain null until reviewed. Do not interpret null as a safe response or zero harm. Raters should be blinded to condition and model identity; preserve the same scenarios across conditions and assess agreement on a shared subset. Separate route/detection errors from generated-response harms.
+The [rubric](experiment_01_rubric.md) specifies relevance as the primary quality dimension, with emotional acknowledgement, clarity, practical helpfulness and autonomy reported separately. Six safety hazards remain separate from quality. The initial review is explicitly unblinded coding-agent review, not human evaluation. Report paired B−A differences and 10,000-resample group bootstrap intervals, without significance or clinical claims. Small samples and systematic reviewer bias limit these intervals.
 
-The later locked evaluation should include at least 80 non-crisis and 40 safety/edge scenarios, reviewed and grouped before freezing. The current four scenarios do not meet that target. Estimate paired quality differences by scenario group, report confidence intervals and failures, and avoid treating paraphrases as independent samples. Define primary dimensions, practical significance, multiplicity handling and safety review criteria before examining test results. Do not invent a clinical acceptance threshold.
+The runner records outputs; `analyse_experiment_01.py` calculates diagnostics and, only when supplied explicit validated ratings, paired quality estimates. No lexical metric is called empathy or safety. Failures, token-limit hits and questionable cases remain visible even when average ratings improve. The detailed notebook includes real outputs, figures, limitations and unresolved questions.
 
 ## Gates
 
-Before model generation: resolve browser/privacy verification exceptions, choose exact model revision, verify licence/cache/environment, review prompt A/B and scenario labels, and record the effective configuration. Before final evaluation: complete the benchmark and rubric, freeze checksums and primary analysis, and verify no test data informed prompting. Before deployment: perform a separate safety review. Neither preparing a manifest nor passing harness tests establishes model quality.
-
-
-### Accepted browser exception
-
-On 5 November 2026, Bushra explicitly accepted the missing browser verification as an exception for local research work only. This records a scope-limited acceptance, not a successful browser test. Browser interaction, lifecycle, legacy IndexedDB and multi-tab checks remain required before release. The acceptance does not clear the archived dataset’s provenance or authorise its redistribution, model training, deployment or a public push. All other model, data, protocol and milestone prerequisites above remain in force.
+The browser-verification exception is accepted for local research only. Public release still requires browser and content review. The historical archive remains quarantined. This pilot must be reviewed and approved by Bushra before any LoRA training, learned routing or major UI work. An eight-case test cannot establish a production safety rate. No public push, deployment or model publication is authorised.

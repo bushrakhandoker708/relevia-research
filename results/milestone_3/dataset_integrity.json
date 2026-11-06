@@ -1,0 +1,66 @@
+{
+  "quarantine": {
+    "path": "archive/quarantine/empathy_42k.jsonl.quarantined",
+    "sha256": "a78dac24c48e4b14282de4f7293f54f5984a06dc56f717dd4b317dda7cab6891",
+    "rows": 15000,
+    "duplicate_pair_rows": 26,
+    "duplicate_prompt_rows": 4337,
+    "rows_with_escaped_comma": 5759
+  },
+  "limits": "Normalised exact matches only; no proof of consent, complete provenance, semantic independence or absence of pretraining contamination.",
+  "source_similarity_not_provenance": {
+    "data/raw/empatheticdialogues/test.csv": {
+      "archive_prompt_rows_matching_situation": 2,
+      "archive_response_rows_matching_utterance": 135,
+      "sha256": "a014199d689a11bfd58c19a406ccf18c4fdffd1eb45c5eb31a3a1c880dc15958"
+    },
+    "data/raw/empatheticdialogues/train.csv": {
+      "archive_prompt_rows_matching_situation": 15000,
+      "archive_response_rows_matching_utterance": 15000,
+      "sha256": "35053a4e1ef39f6766e7706c9a3c97b8fa090cfb28d32087a8316a606ab1a7dd"
+    },
+    "data/raw/empatheticdialogues/valid.csv": {
+      "archive_prompt_rows_matching_situation": 6,
+      "archive_response_rows_matching_utterance": 126,
+      "sha256": "d8a1f0b1281cf60a803b88d5c500f10112461a8fbc87be13dfb5eb5277e664b3"
+    }
+  },
+  "active_normalised_pair_intersections": {
+    "train__dev": 0,
+    "train__fewshot": 0,
+    "train__val": 0,
+    "train__test_seen": 0,
+    "train__test_unseen": 0,
+    "dev__fewshot": 0,
+    "dev__val": 0,
+    "dev__test_seen": 0,
+    "dev__test_unseen": 0,
+    "fewshot__val": 0,
+    "fewshot__test_seen": 0,
+    "fewshot__test_unseen": 0,
+    "val__test_seen": 0,
+    "val__test_unseen": 0,
+    "test_seen__test_unseen": 0
+  },
+  "archive_pair_matches_active": {
+    "train": 650,
+    "dev": 88,
+    "fewshot": 0,
+    "val": 0,
+    "test_seen": 0,
+    "test_unseen": 0
+  },
+  "fewshot_input_intersections": {
+    "val": 0,
+    "test_seen": 0,
+    "test_unseen": 0
+  },
+  "active_counts": {
+    "train": 25721,
+    "dev": 2873,
+    "fewshot": 4,
+    "val": 4534,
+    "test_seen": 4181,
+    "test_unseen": 839
+  }
+}
