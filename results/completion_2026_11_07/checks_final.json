@@ -1,0 +1,30 @@
+{
+  "javascript_final": {
+    "command": [
+      "cmd",
+      "/c",
+      "npm test"
+    ],
+    "exit_code": 0
+  },
+  "python_final": {
+    "command": [
+      "python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-v"
+    ],
+    "exit_code": 0
+  },
+  "build_final": {
+    "command": [
+      "cmd",
+      "/c",
+      "npm run build"
+    ],
+    "exit_code": 0
+  }
+}

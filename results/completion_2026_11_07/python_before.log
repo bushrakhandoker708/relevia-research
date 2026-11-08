@@ -1,0 +1,20 @@
+test_disjoint_passes (test_experiment_01.ExperimentIntegrityTests.test_disjoint_passes) ... ok
+test_group_leak_fails_even_with_different_text (test_experiment_01.ExperimentIntegrityTests.test_group_leak_fails_even_with_different_text) ... ok
+test_incomplete_pairs_rejected (test_experiment_01.ExperimentIntegrityTests.test_incomplete_pairs_rejected) ... ok
+test_missing_ratings_are_not_invented (test_experiment_01.ExperimentIntegrityTests.test_missing_ratings_are_not_invented) ... ok
+test_normalised_duplicate_fails_with_different_ids (test_experiment_01.ExperimentIntegrityTests.test_normalised_duplicate_fails_with_different_ids) ... ok
+test_paired_constant_difference_interval (test_experiment_01.ExperimentIntegrityTests.test_paired_constant_difference_interval) ... ok
+test_quarantine_path_rejected_before_read (test_experiment_01.ExperimentIntegrityTests.test_quarantine_path_rejected_before_read) ... ok
+test_adaptation_not_silently_treated_as_base (test_foundation.FoundationTests.test_adaptation_not_silently_treated_as_base) ... ok
+test_export_unrated (test_foundation.FoundationTests.test_export_unrated) ... ok
+test_failure_retained (test_foundation.FoundationTests.test_failure_retained) ... ok
+test_group_split_deterministic (test_foundation.FoundationTests.test_group_split_deterministic) ... ok
+test_leak_fails (test_foundation.FoundationTests.test_leak_fails) ... ok
+test_live_data_and_duplicates_rejected (test_foundation.FoundationTests.test_live_data_and_duplicates_rejected) ... ok
+test_prepare_cli_has_no_fabricated_responses_and_refuses_overwrite (test_foundation.FoundationTests.test_prepare_cli_has_no_fabricated_responses_and_refuses_overwrite) ... ok
+test_required_revision (test_foundation.FoundationTests.test_required_revision) ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 1.755s
+
+OK

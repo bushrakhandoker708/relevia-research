@@ -19,3 +19,11 @@ python scripts/prepare_independent_review.py
 ```
 
 The exporter refuses to overwrite an existing packet. Its source hash records the exact original response file. Reproducible ordering does not make blinding cryptographically secure: the coordinator knows the conditions, and differences in response style or length can give reviewers clues. Report these limits when presenting the findings.
+
+## Expanded evaluation continuation — 7 November 2026
+
+The new 60-scenario run has a separate frozen protocol in `expanded_baseline_protocol.md`. After generation completes, `summarise_controlled.py` prepares separate reviewer folders with blank six-dimension scores and independent order randomisation. These are new packets, not additions to the three-scenario historical pilot. Send only each reviewer's folder. The complete repository exposes prompts, identities and previous ratings, so it is unsuitable as a blinded packet.
+
+`analyse_independent_ratings.py` accepts two returned CSVs, the private mapping key and the scenario JSONL. It validates score ranges and item identities, rejects entirely blank annotations, reports paired summaries separately for each reviewer and category, and computes quadratic-weighted kappa only for jointly rated items. Missing scores are not zero. Constant marginals can make kappa undefined; the output remains null in that case. Independence and adult participation require coordinator confirmation; the script cannot establish either from a filename.
+
+No returned sheets exist at this stage. Do not run the analysis on fabricated scores or describe exporter-generated blank fields as human evidence.

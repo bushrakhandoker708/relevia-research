@@ -1,0 +1,34 @@
+{
+  "javascript_before": {
+    "command": [
+      "node",
+      "--test",
+      "tests/inference.test.js",
+      "tests/storage.test.js",
+      "tests/safety.test.js"
+    ],
+    "exit_code": 0
+  },
+  "python_before": {
+    "command": [
+      "python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-v"
+    ],
+    "exit_code": 0
+  },
+  "lint_before": {
+    "command": [
+      "node",
+      "node_modules/eslint/bin/eslint.js",
+      ".",
+      "--format",
+      "json"
+    ],
+    "exit_code": 1
+  }
+}

@@ -1,8 +1,8 @@
 # make_rating_sheet.py - blinded sheet for human raters + a separate answer key.
 #
 # Run:
-#   python src/make_rating_sheet.py --model llama-3.2-3b --testset test_unseen --n 50
-#   python src/make_rating_sheet.py --model llama-3.2-3b --testset safety/sycophancy --n 999
+#   python src/make_rating_sheet.py --model llama-3.2-3b --testset test_unseen --n 50 --conditions tuned_prompt finetuned_tuned
+#   python src/make_rating_sheet.py --model llama-3.2-3b --testset safety/sycophancy --n 999 --conditions tuned_prompt finetuned_tuned
 #
 # Paired design: I pick N user messages that EVERY condition answered, and put all
 # conditions' replies for those messages on the sheet, shuffled. Raters never see which
@@ -27,7 +27,14 @@ def main():
     ap.add_argument("--model", required=True, help="model name, e.g. llama-3.2-3b")
     ap.add_argument("--testset", required=True)
     ap.add_argument("--n", type=int, default=50, help="user messages per sheet")
-    ap.add_argument("--seed", type=int, default=0)
+    ap.add_argument("--seed", type=int, default=0, help="shuffle seed for the sheet order")
+    # FIX (R06): I used to work out the conditions from whichever files happened to be
+    # in results/generations. If one condition's run was missing, the sheet quietly
+    # compared fewer conditions. Now I say what MUST be on the sheet and it fails if not.
+    ap.add_argument("--conditions", nargs="+", required=True,
+                    help="conditions that must all be on the sheet, e.g. tuned_prompt finetuned_tuned")
+    ap.add_argument("--rating-seed", type=int, default=1,
+                    help="generation seed that gets rated (one seed per condition keeps the sheet small)")
     args = ap.parse_args()
 
     tag = args.testset.replace("/", "-")
@@ -35,28 +42,39 @@ def main():
     if not files:
         sys.exit(f"no generations for {args.model} on {args.testset}")
 
-    # message id -> list of replies from every condition/seed
-    by_id, sources = defaultdict(list), set()
+    required = set(args.conditions)
+    # message id -> {condition: reply} for the rated seed only
+    by_id = defaultdict(dict)
     for f in files:
         for r in read_jsonl(f):
-            by_id[r["id"]].append(r)
-            sources.add((r["condition"], r["seed"]))
-    # I only rate ONE seed per condition on the sheet (seed 1), otherwise the sheet gets
-    # huge. Seed variance comes from the automatic metrics.
-    keep = lambda r: r["seed"] == 1
-    complete = [i for i, rs in by_id.items()
-                if {r["condition"] for r in rs if keep(r)} == {c for c, s in sources if s == 1}]
+            if r["seed"] != args.rating_seed or r["condition"] not in required:
+                continue
+            if r["condition"] in by_id[r["id"]]:
+                sys.exit(f"duplicate reply for message {r['id']} / {r['condition']} - check the generation files")
+            by_id[r["id"]][r["condition"]] = r
+    # FIX: with no seed-1 files at all, the old check compared two empty sets, every
+    # message counted as "complete" and I got an empty sheet with no error.
+    present = {c for rs in by_id.values() for c in rs}
+    if present != required:
+        sys.exit(f"missing conditions for seed {args.rating_seed}: {sorted(required - present)}")
+    complete = sorted(i for i, rs in by_id.items() if set(rs) == required)
+    if not complete:
+        sys.exit("no message was answered by every required condition")
     rng = random.Random(args.seed)
     rng.shuffle(complete)
     chosen = complete[: args.n]
 
-    items = [r for i in chosen for r in by_id[i] if keep(r)]
+    items = [by_id[i][c] for i in chosen for c in sorted(required)]
     rng.shuffle(items)
 
     out_dir = ROOT / "results" / "rating_sheets"
     out_dir.mkdir(parents=True, exist_ok=True)
     sheet = out_dir / f"{args.model}__{tag}__SHEET.csv"
     key = out_dir / f"{args.model}__{tag}__KEY_do_not_share.csv"
+    # never overwrite a sheet that may already be with a rater - its key would stop matching
+    for path in (sheet, key):
+        if path.exists():
+            sys.exit(f"{path.name} already exists; move it before making a new sheet")
 
     with open(sheet, "w", newline="", encoding="utf-8-sig") as fs, \
          open(key, "w", newline="", encoding="utf-8") as fk:

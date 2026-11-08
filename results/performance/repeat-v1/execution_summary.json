@@ -1,0 +1,228 @@
+{
+  "quality": null,
+  "human_ratings": 0,
+  "agreement": null,
+  "status": "execution_only_unrated",
+  "warmup": [
+    {
+      "scenario_id": "warmup",
+      "input_text": "Please say hello briefly.",
+      "conversation_group_id": "warmup",
+      "condition": "A",
+      "warmup": true,
+      "status": "generated",
+      "started_utc": "2026-11-07T13:35:25.791242+00:00",
+      "rss_before_bytes": 6616236032,
+      "response": "Hello! How can I assist you today?",
+      "input_tokens": 69,
+      "output_tokens": 10,
+      "hit_token_limit": false,
+      "tokenisation_seconds": 0.02186570002231747,
+      "ttft_seconds": 0.9395574999507517,
+      "decode_tokens_per_second": 4.693497899225978,
+      "elapsed_seconds": 2.879604500019923,
+      "process_cpu_seconds": 14.453125,
+      "rss_after_bytes": 6637875200,
+      "ended_utc": "2026-11-07T13:35:28.670937+00:00"
+    }
+  ],
+  "conditions": {
+    "A": {
+      "attempted": 5,
+      "generated": 5,
+      "elapsed_seconds": {
+        "n": 5,
+        "mean": 27.199058119999243,
+        "p50": 28.328525600023568,
+        "p95": 32.29776521997992,
+        "min": 21.737539800000377,
+        "max": 32.45567459997255
+      },
+      "ttft_seconds": {
+        "n": 5,
+        "mean": 1.0141890200320631,
+        "p50": 0.8615524000488222,
+        "p95": 1.3428348200162872,
+        "min": 0.7499234999995679,
+        "max": 1.3697100999997929
+      },
+      "decode_tokens_per_second": {
+        "n": 5,
+        "mean": 4.294362875578168,
+        "p50": 3.9533826404007977,
+        "p95": 5.218139821568268,
+        "min": 3.5082702917807227,
+        "max": 5.221358186973917
+      },
+      "input_tokens": {
+        "n": 5,
+        "mean": 78,
+        "p50": 78.0,
+        "p95": 78.0,
+        "min": 78,
+        "max": 78
+      },
+      "output_tokens": {
+        "n": 5,
+        "mean": 110,
+        "p50": 110.0,
+        "p95": 110.0,
+        "min": 110,
+        "max": 110
+      },
+      "token_limit_hits": 5,
+      "responses_over_65_whitespace_words": 5
+    },
+    "B": {
+      "attempted": 5,
+      "generated": 5,
+      "elapsed_seconds": {
+        "n": 5,
+        "mean": 21.21374561996199,
+        "p50": 22.89911229989957,
+        "p95": 25.1668699600501,
+        "min": 16.282428299891762,
+        "max": 25.4672313000774
+      },
+      "ttft_seconds": {
+        "n": 5,
+        "mean": 2.2191001599887388,
+        "p50": 2.4000195999396965,
+        "p95": 2.5775837399996817,
+        "min": 1.6992413999978453,
+        "max": 2.6033514000009745
+      },
+      "decode_tokens_per_second": {
+        "n": 5,
+        "mean": 4.082032152461857,
+        "p50": 3.673577393927833,
+        "p95": 5.082411455594976,
+        "min": 3.281951709986866,
+        "max": 5.145641587737881
+      },
+      "input_tokens": {
+        "n": 5,
+        "mean": 202,
+        "p50": 202.0,
+        "p95": 202.0,
+        "min": 202,
+        "max": 202
+      },
+      "output_tokens": {
+        "n": 5,
+        "mean": 76,
+        "p50": 76.0,
+        "p95": 76.0,
+        "min": 76,
+        "max": 76
+      },
+      "token_limit_hits": 0,
+      "responses_over_65_whitespace_words": 0
+    }
+  },
+  "categories": {
+    "ordinary": {
+      "A": {
+        "attempted": 5,
+        "generated": 5,
+        "elapsed_seconds": {
+          "n": 5,
+          "mean": 27.199058119999243,
+          "p50": 28.328525600023568,
+          "p95": 32.29776521997992,
+          "min": 21.737539800000377,
+          "max": 32.45567459997255
+        },
+        "ttft_seconds": {
+          "n": 5,
+          "mean": 1.0141890200320631,
+          "p50": 0.8615524000488222,
+          "p95": 1.3428348200162872,
+          "min": 0.7499234999995679,
+          "max": 1.3697100999997929
+        },
+        "decode_tokens_per_second": {
+          "n": 5,
+          "mean": 4.294362875578168,
+          "p50": 3.9533826404007977,
+          "p95": 5.218139821568268,
+          "min": 3.5082702917807227,
+          "max": 5.221358186973917
+        },
+        "input_tokens": {
+          "n": 5,
+          "mean": 78,
+          "p50": 78.0,
+          "p95": 78.0,
+          "min": 78,
+          "max": 78
+        },
+        "output_tokens": {
+          "n": 5,
+          "mean": 110,
+          "p50": 110.0,
+          "p95": 110.0,
+          "min": 110,
+          "max": 110
+        },
+        "token_limit_hits": 5,
+        "responses_over_65_whitespace_words": 5
+      },
+      "B": {
+        "attempted": 5,
+        "generated": 5,
+        "elapsed_seconds": {
+          "n": 5,
+          "mean": 21.21374561996199,
+          "p50": 22.89911229989957,
+          "p95": 25.1668699600501,
+          "min": 16.282428299891762,
+          "max": 25.4672313000774
+        },
+        "ttft_seconds": {
+          "n": 5,
+          "mean": 2.2191001599887388,
+          "p50": 2.4000195999396965,
+          "p95": 2.5775837399996817,
+          "min": 1.6992413999978453,
+          "max": 2.6033514000009745
+        },
+        "decode_tokens_per_second": {
+          "n": 5,
+          "mean": 4.082032152461857,
+          "p50": 3.673577393927833,
+          "p95": 5.082411455594976,
+          "min": 3.281951709986866,
+          "max": 5.145641587737881
+        },
+        "input_tokens": {
+          "n": 5,
+          "mean": 202,
+          "p50": 202.0,
+          "p95": 202.0,
+          "min": 202,
+          "max": 202
+        },
+        "output_tokens": {
+          "n": 5,
+          "mean": 76,
+          "p50": 76.0,
+          "p95": 76.0,
+          "min": 76,
+          "max": 76
+        },
+        "token_limit_hits": 0,
+        "responses_over_65_whitespace_words": 0
+      }
+    }
+  },
+  "paired_latency_B_minus_A": {
+    "n": 5,
+    "mean": -5.985312500037253,
+    "bootstrap95": [
+      -7.271054960065522,
+      -4.942536360002123
+    ],
+    "interpretation": "Runtime only; sequential order and background scheduling remain potential confounders."
+  }
+}

@@ -1,0 +1,9 @@
+test_agreement_and_degenerate_case (test_independent_ratings.IndependentRatingsTests.test_agreement_and_degenerate_case) ... ok
+test_invalid_quality_score_rejected (test_independent_ratings.IndependentRatingsTests.test_invalid_quality_score_rejected) ... ok
+test_missing_is_not_zero (test_independent_ratings.IndependentRatingsTests.test_missing_is_not_zero) ... ok
+test_paired_sign_and_interval (test_independent_ratings.IndependentRatingsTests.test_paired_sign_and_interval) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.093s
+
+OK

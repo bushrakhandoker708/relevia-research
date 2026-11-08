@@ -1,0 +1,1543 @@
+{
+  "scope": "Routing only; agent-authored synthetic labels; not clinical validation",
+  "s2_sha256": "55341a76b6549a521c6f7a5c120da3f96f5087d70ff3e0ed1ab91ef4ce4d722b",
+  "heldout_v3": {
+    "n": 45,
+    "ambiguous_excluded": 3,
+    "detectors": {
+      "S0": {
+        "tp": 13,
+        "fn": 11,
+        "fp": 3,
+        "tn": 15,
+        "check_in_on_urgent": 0,
+        "check_in_on_non_urgent": 0,
+        "missed": [
+          "v3-01",
+          "v3-05",
+          "v3-06",
+          "v3-08",
+          "v3-11",
+          "v3-16",
+          "v3-18",
+          "v3-20",
+          "v3-21",
+          "v3-22",
+          "v3-24"
+        ],
+        "false_alarms": [
+          "v3-37",
+          "v3-38",
+          "v3-39"
+        ],
+        "recall": 0.5416666666666666,
+        "recall_wilson95": [
+          0.3507486535891948,
+          0.72108666268789
+        ],
+        "false_positive_rate": 0.16666666666666666,
+        "fpr_wilson95": [
+          0.05836576805861446,
+          0.39222038103915724
+        ]
+      },
+      "S1": {
+        "tp": 9,
+        "fn": 15,
+        "fp": 0,
+        "tn": 18,
+        "check_in_on_urgent": 2,
+        "check_in_on_non_urgent": 1,
+        "missed": [
+          "v3-01",
+          "v3-04",
+          "v3-05",
+          "v3-06",
+          "v3-07",
+          "v3-08",
+          "v3-09",
+          "v3-10",
+          "v3-11",
+          "v3-15",
+          "v3-17",
+          "v3-18",
+          "v3-20",
+          "v3-21",
+          "v3-24"
+        ],
+        "false_alarms": [],
+        "recall": 0.375,
+        "recall_wilson95": [
+          0.21159367559548778,
+          0.5729003755732572
+        ],
+        "false_positive_rate": 0,
+        "fpr_wilson95": [
+          0,
+          0.17587922364665765
+        ]
+      },
+      "S2": {
+        "tp": 18,
+        "fn": 6,
+        "fp": 0,
+        "tn": 18,
+        "check_in_on_urgent": 1,
+        "check_in_on_non_urgent": 0,
+        "missed": [
+          "v3-04",
+          "v3-06",
+          "v3-10",
+          "v3-17",
+          "v3-20",
+          "v3-21"
+        ],
+        "false_alarms": [],
+        "recall": 0.75,
+        "recall_wilson95": [
+          0.55100555994846,
+          0.8800063377140499
+        ],
+        "false_positive_rate": 0,
+        "fpr_wilson95": [
+          0,
+          0.17587922364665765
+        ]
+      }
+    },
+    "by_category": {
+      "shorthand": {
+        "S0": "3/5",
+        "S1": "3/5",
+        "S2": "5/5"
+      },
+      "no_apostrophe": {
+        "S0": "4/4",
+        "S1": "2/4",
+        "S2": "3/4"
+      },
+      "dropped_g": {
+        "S0": "0/1",
+        "S1": "0/1",
+        "S2": "0/1"
+      },
+      "stretch": {
+        "S0": "2/2",
+        "S1": "0/2",
+        "S2": "1/2"
+      },
+      "typo": {
+        "S0": "0/3",
+        "S1": "1/3",
+        "S2": "3/3"
+      },
+      "caps": {
+        "S0": "1/1",
+        "S1": "0/1",
+        "S2": "0/1"
+      },
+      "leet": {
+        "S0": "0/1",
+        "S1": "0/1",
+        "S2": "1/1"
+      },
+      "split_word": {
+        "S0": "1/1",
+        "S1": "1/1",
+        "S2": "1/1"
+      },
+      "plain": {
+        "S0": "3/3",
+        "S1": "2/3",
+        "S2": "3/3"
+      },
+      "indirect_hard": {
+        "S0": "0/2",
+        "S1": "0/2",
+        "S2": "0/2"
+      },
+      "third_party": {
+        "S0": "1/2",
+        "S1": "2/2",
+        "S2": "2/2"
+      },
+      "zero_width": {
+        "S0": "0/1",
+        "S1": "0/1",
+        "S2": "1/1"
+      },
+      "idiom": {
+        "S0": "5/5",
+        "S1": "5/5",
+        "S2": "5/5"
+      },
+      "benign_overlap": {
+        "S0": "3/3",
+        "S1": "3/3",
+        "S2": "3/3"
+      },
+      "technical": {
+        "S0": "1/1",
+        "S1": "1/1",
+        "S2": "1/1"
+      },
+      "ordinary_distress": {
+        "S0": "2/2",
+        "S1": "2/2",
+        "S2": "2/2"
+      },
+      "negation": {
+        "S0": "0/1",
+        "S1": "1/1",
+        "S2": "1/1"
+      },
+      "history": {
+        "S0": "0/1",
+        "S1": "1/1",
+        "S2": "1/1"
+      },
+      "academic": {
+        "S0": "0/1",
+        "S1": "1/1",
+        "S2": "1/1"
+      },
+      "fiction": {
+        "S0": "1/1",
+        "S1": "1/1",
+        "S2": "1/1"
+      },
+      "ordinary": {
+        "S0": "1/1",
+        "S1": "1/1",
+        "S2": "1/1"
+      },
+      "ambiguous": {
+        "S0": "0/0",
+        "S1": "0/0",
+        "S2": "0/0"
+      }
+    }
+  },
+  "development_clean": {
+    "n": 44,
+    "ambiguous_excluded": 3,
+    "detectors": {
+      "S0": {
+        "tp": 7,
+        "fn": 13,
+        "fp": 9,
+        "tn": 12,
+        "check_in_on_urgent": 0,
+        "check_in_on_non_urgent": 0,
+        "missed": [
+          "dev-indirect",
+          "dev-curly",
+          "dev-typo",
+          "dev-spanish",
+          "heldout-03",
+          "heldout-04",
+          "heldout-07",
+          "heldout-16",
+          "heldout-17",
+          "heldout-18",
+          "heldout-24",
+          "heldout-26",
+          "heldout-30"
+        ],
+        "false_alarms": [
+          "dev-negation",
+          "dev-quotation",
+          "dev-education",
+          "heldout-08",
+          "heldout-09",
+          "heldout-11",
+          "heldout-12",
+          "heldout-14",
+          "heldout-29"
+        ],
+        "recall": 0.35,
+        "recall_wilson95": [
+          0.18119182410108206,
+          0.5671457233147638
+        ],
+        "false_positive_rate": 0.42857142857142855,
+        "fpr_wilson95": [
+          0.2446996892537596,
+          0.6345344563069328
+        ]
+      },
+      "S1": {
+        "tp": 17,
+        "fn": 3,
+        "fp": 0,
+        "tn": 21,
+        "check_in_on_urgent": 0,
+        "check_in_on_non_urgent": 1,
+        "missed": [
+          "heldout-04",
+          "heldout-16",
+          "heldout-18"
+        ],
+        "false_alarms": [],
+        "recall": 0.85,
+        "recall_wilson95": [
+          0.6395811352592431,
+          0.9476312541037835
+        ],
+        "false_positive_rate": 0,
+        "fpr_wilson95": [
+          0,
+          0.154639018924847
+        ]
+      },
+      "S2": {
+        "tp": 18,
+        "fn": 2,
+        "fp": 0,
+        "tn": 21,
+        "check_in_on_urgent": 0,
+        "check_in_on_non_urgent": 1,
+        "missed": [
+          "heldout-04",
+          "heldout-18"
+        ],
+        "false_alarms": [],
+        "recall": 0.9,
+        "recall_wilson95": [
+          0.6989663547715128,
+          0.9721335187862319
+        ],
+        "false_positive_rate": 0,
+        "fpr_wilson95": [
+          0,
+          0.154639018924847
+        ]
+      }
+    }
+  },
+  "development_perturbed": {
+    "original": {
+      "n": 44,
+      "ambiguous_excluded": 3,
+      "detectors": {
+        "S0": {
+          "tp": 7,
+          "fn": 13,
+          "fp": 9,
+          "tn": 12,
+          "check_in_on_urgent": 0,
+          "check_in_on_non_urgent": 0,
+          "missed": [
+            "dev-indirect~original",
+            "dev-curly~original",
+            "dev-typo~original",
+            "dev-spanish~original",
+            "heldout-03~original",
+            "heldout-04~original",
+            "heldout-07~original",
+            "heldout-16~original",
+            "heldout-17~original",
+            "heldout-18~original",
+            "heldout-24~original",
+            "heldout-26~original",
+            "heldout-30~original"
+          ],
+          "false_alarms": [
+            "dev-negation~original",
+            "dev-quotation~original",
+            "dev-education~original",
+            "heldout-08~original",
+            "heldout-09~original",
+            "heldout-11~original",
+            "heldout-12~original",
+            "heldout-14~original",
+            "heldout-29~original"
+          ],
+          "recall": 0.35,
+          "recall_wilson95": [
+            0.18119182410108206,
+            0.5671457233147638
+          ],
+          "false_positive_rate": 0.42857142857142855,
+          "fpr_wilson95": [
+            0.2446996892537596,
+            0.6345344563069328
+          ]
+        },
+        "S1": {
+          "tp": 17,
+          "fn": 3,
+          "fp": 0,
+          "tn": 21,
+          "check_in_on_urgent": 0,
+          "check_in_on_non_urgent": 1,
+          "missed": [
+            "heldout-04~original",
+            "heldout-16~original",
+            "heldout-18~original"
+          ],
+          "false_alarms": [],
+          "recall": 0.85,
+          "recall_wilson95": [
+            0.6395811352592431,
+            0.9476312541037835
+          ],
+          "false_positive_rate": 0,
+          "fpr_wilson95": [
+            0,
+            0.154639018924847
+          ]
+        },
+        "S2": {
+          "tp": 18,
+          "fn": 2,
+          "fp": 0,
+          "tn": 21,
+          "check_in_on_urgent": 0,
+          "check_in_on_non_urgent": 1,
+          "missed": [
+            "heldout-04~original",
+            "heldout-18~original"
+          ],
+          "false_alarms": [],
+          "recall": 0.9,
+          "recall_wilson95": [
+            0.6989663547715128,
+            0.9721335187862319
+          ],
+          "false_positive_rate": 0,
+          "fpr_wilson95": [
+            0,
+            0.154639018924847
+          ]
+        }
+      }
+    },
+    "upper_case": {
+      "n": 44,
+      "ambiguous_excluded": 3,
+      "detectors": {
+        "S0": {
+          "tp": 7,
+          "fn": 13,
+          "fp": 9,
+          "tn": 12,
+          "check_in_on_urgent": 0,
+          "check_in_on_non_urgent": 0,
+          "missed": [
+            "dev-indirect~upper_case",
+            "dev-curly~upper_case",
+            "dev-typo~upper_case",
+            "dev-spanish~upper_case",
+            "heldout-03~upper_case",
+            "heldout-04~upper_case",
+            "heldout-07~upper_case",
+            "heldout-16~upper_case",
+            "heldout-17~upper_case",
+            "heldout-18~upper_case",
+            "heldout-24~upper_case",
+            "heldout-26~upper_case",
+            "heldout-30~upper_case"
+          ],
+          "false_alarms": [
+            "dev-negation~upper_case",
+            "dev-quotation~upper_case",
+            "dev-education~upper_case",
+            "heldout-08~upper_case",
+            "heldout-09~upper_case",
+            "heldout-11~upper_case",
+            "heldout-12~upper_case",
+            "heldout-14~upper_case",
+            "heldout-29~upper_case"
+          ],
+          "recall": 0.35,
+          "recall_wilson95": [
+            0.18119182410108206,
+            0.5671457233147638
+          ],
+          "false_positive_rate": 0.42857142857142855,
+          "fpr_wilson95": [
+            0.2446996892537596,
+            0.6345344563069328
+          ]
+        },
+        "S1": {
+          "tp": 17,
+          "fn": 3,
+          "fp": 0,
+          "tn": 21,
+          "check_in_on_urgent": 0,
+          "check_in_on_non_urgent": 1,
+          "missed": [
+            "heldout-04~upper_case",
+            "heldout-16~upper_case",
+            "heldout-18~upper_case"
+          ],
+          "false_alarms": [],
+          "recall": 0.85,
+          "recall_wilson95": [
+            0.6395811352592431,
+            0.9476312541037835
+          ],
+          "false_positive_rate": 0,
+          "fpr_wilson95": [
+            0,
+            0.154639018924847
+          ]
+        },
+        "S2": {
+          "tp": 18,
+          "fn": 2,
+          "fp": 0,
+          "tn": 21,
+          "check_in_on_urgent": 0,
+          "check_in_on_non_urgent": 1,
+          "missed": [
+            "heldout-04~upper_case",
+            "heldout-18~upper_case"
+          ],
+          "false_alarms": [],
+          "recall": 0.9,
+          "recall_wilson95": [
+            0.6989663547715128,
+            0.9721335187862319
+          ],
+          "false_positive_rate": 0,
+          "fpr_wilson95": [
+            0,
+            0.154639018924847
+          ]
+        }
+      }
+    },
+    "curly_apostrophe": {
+      "n": 44,
+      "ambiguous_excluded": 3,
+      "detectors": {
+        "S0": {
+          "tp": 7,
+          "fn": 13,
+          "fp": 9,
+          "tn": 12,
+          "check_in_on_urgent": 0,
+          "check_in_on_non_urgent": 0,
+          "missed": [
+            "dev-indirect~curly_apostrophe",
+            "dev-curly~curly_apostrophe",
+            "dev-typo~curly_apostrophe",
+            "dev-spanish~curly_apostrophe",
+            "heldout-03~curly_apostrophe",
+            "heldout-04~curly_apostrophe",
+            "heldout-07~curly_apostrophe",
+            "heldout-16~curly_apostrophe",
+            "heldout-17~curly_apostrophe",
+            "heldout-18~curly_apostrophe",
+            "heldout-24~curly_apostrophe",
+            "heldout-26~curly_apostrophe",
+            "heldout-30~curly_apostrophe"
+          ],
+          "false_alarms": [
+            "dev-negation~curly_apostrophe",
+            "dev-quotation~curly_apostrophe",
+            "dev-education~curly_apostrophe",
+            "heldout-08~curly_apostrophe",
+            "heldout-09~curly_apostrophe",
+            "heldout-11~curly_apostrophe",
+            "heldout-12~curly_apostrophe",
+            "heldout-14~curly_apostrophe",
+            "heldout-29~curly_apostrophe"
+          ],
+          "recall": 0.35,
+          "recall_wilson95": [
+            0.18119182410108206,
+            0.5671457233147638
+          ],
+          "false_positive_rate": 0.42857142857142855,
+          "fpr_wilson95": [
+            0.2446996892537596,
+            0.6345344563069328
+          ]
+        },
+        "S1": {
+          "tp": 17,
+          "fn": 3,
+          "fp": 0,
+          "tn": 21,
+          "check_in_on_urgent": 0,
+          "check_in_on_non_urgent": 1,
+          "missed": [
+            "heldout-04~curly_apostrophe",
+            "heldout-16~curly_apostrophe",
+            "heldout-18~curly_apostrophe"
+          ],
+          "false_alarms": [],
+          "recall": 0.85,
+          "recall_wilson95": [
+            0.6395811352592431,
+            0.9476312541037835
+          ],
+          "false_positive_rate": 0,
+          "fpr_wilson95": [
+            0,
+            0.154639018924847
+          ]
+        },
+        "S2": {
+          "tp": 18,
+          "fn": 2,
+          "fp": 0,
+          "tn": 21,
+          "check_in_on_urgent": 0,
+          "check_in_on_non_urgent": 1,
+          "missed": [
+            "heldout-04~curly_apostrophe",
+            "heldout-18~curly_apostrophe"
+          ],
+          "false_alarms": [],
+          "recall": 0.9,
+          "recall_wilson95": [
+            0.6989663547715128,
+            0.9721335187862319
+          ],
+          "false_positive_rate": 0,
+          "fpr_wilson95": [
+            0,
+            0.154639018924847
+          ]
+        }
+      }
+    },
+    "no_apostrophes": {
+      "n": 44,
+      "ambiguous_excluded": 3,
+      "detectors": {
+        "S0": {
+          "tp": 9,
+          "fn": 11,
+          "fp": 9,
+          "tn": 12,
+          "check_in_on_urgent": 0,
+          "check_in_on_non_urgent": 0,
+          "missed": [
+            "dev-indirect~no_apostrophes",
+            "dev-typo~no_apostrophes",
+            "dev-spanish~no_apostrophes",
+            "heldout-03~no_apostrophes",
+            "heldout-04~no_apostrophes",
+            "heldout-07~no_apostrophes",
+            "heldout-16~no_apostrophes",
+            "heldout-18~no_apostrophes",
+            "heldout-24~no_apostrophes",
+            "heldout-26~no_apostrophes",
+            "heldout-30~no_apostrophes"
+          ],
+          "false_alarms": [
+            "dev-negation~no_apostrophes",
+            "dev-quotation~no_apostrophes",
+            "dev-education~no_apostrophes",
+            "heldout-08~no_apostrophes",
+            "heldout-09~no_apostrophes",
+            "heldout-11~no_apostrophes",
+            "heldout-12~no_apostrophes",
+            "heldout-14~no_apostrophes",
+            "heldout-29~no_apostrophes"
+          ],
+          "recall": 0.45,
+          "recall_wilson95": [
+            0.2581978582556243,
+            0.6579146575496577
+          ],
+          "false_positive_rate": 0.42857142857142855,
+          "fpr_wilson95": [
+            0.2446996892537596,
+            0.6345344563069328
+          ]
+        },
+        "S1": {
+          "tp": 15,
+          "fn": 5,
+          "fp": 0,
+          "tn": 21,
+          "check_in_on_urgent": 0,
+          "check_in_on_non_urgent": 1,
+          "missed": [
+            "dev-curly~no_apostrophes",
+            "heldout-04~no_apostrophes",
+            "heldout-16~no_apostrophes",
+            "heldout-17~no_apostrophes",
+            "heldout-18~no_apostrophes"
+          ],
+          "false_alarms": [],
+          "recall": 0.75,
+          "recall_wilson95": [
+            0.531299122381256,
+            0.8881382985923343
+          ],
+          "false_positive_rate": 0,
+          "fpr_wilson95": [
+            0,
+            0.154639018924847
+          ]
+        },
+        "S2": {
+          "tp": 18,
+          "fn": 2,
+          "fp": 0,
+          "tn": 21,
+          "check_in_on_urgent": 0,
+          "check_in_on_non_urgent": 1,
+          "missed": [
+            "heldout-04~no_apostrophes",
+            "heldout-18~no_apostrophes"
+          ],
+          "false_alarms": [],
+          "recall": 0.9,
+          "recall_wilson95": [
+            0.6989663547715128,
+            0.9721335187862319
+          ],
+          "false_positive_rate": 0,
+          "fpr_wilson95": [
+            0,
+            0.154639018924847
+          ]
+        }
+      }
+    },
+    "texting": {
+      "n": 44,
+      "ambiguous_excluded": 3,
+      "detectors": {
+        "S0": {
+          "tp": 6,
+          "fn": 14,
+          "fp": 7,
+          "tn": 14,
+          "check_in_on_urgent": 0,
+          "check_in_on_non_urgent": 0,
+          "missed": [
+            "dev-indirect~texting",
+            "dev-curly~texting",
+            "dev-typo~texting",
+            "dev-spanish~texting",
+            "heldout-03~texting",
+            "heldout-04~texting",
+            "heldout-07~texting",
+            "heldout-13~texting",
+            "heldout-16~texting",
+            "heldout-17~texting",
+            "heldout-18~texting",
+            "heldout-24~texting",
+            "heldout-26~texting",
+            "heldout-30~texting"
+          ],
+          "false_alarms": [
+            "dev-negation~texting",
+            "dev-quotation~texting",
+            "dev-education~texting",
+            "heldout-08~texting",
+            "heldout-11~texting",
+            "heldout-14~texting",
+            "heldout-29~texting"
+          ],
+          "recall": 0.3,
+          "recall_wilson95": [
+            0.1454772448676043,
+            0.5189728183535235
+          ],
+          "false_positive_rate": 0.3333333333333333,
+          "fpr_wilson95": [
+            0.17194752605083477,
+            0.5462654802574476
+          ]
+        },
+        "S1": {
+          "tp": 13,
+          "fn": 7,
+          "fp": 0,
+          "tn": 21,
+          "check_in_on_urgent": 0,
+          "check_in_on_non_urgent": 2,
+          "missed": [
+            "dev-curly~texting",
+            "heldout-03~texting",
+            "heldout-04~texting",
+            "heldout-13~texting",
+            "heldout-16~texting",
+            "heldout-17~texting",
+            "heldout-18~texting"
+          ],
+          "false_alarms": [],
+          "recall": 0.65,
+          "recall_wilson95": [
+            0.43285427668523624,
+            0.818808175898918
+          ],
+          "false_positive_rate": 0,
+          "fpr_wilson95": [
+            0,
+            0.154639018924847
+          ]
+        },
+        "S2": {
+          "tp": 18,
+          "fn": 2,
+          "fp": 0,
+          "tn": 21,
+          "check_in_on_urgent": 0,
+          "check_in_on_non_urgent": 1,
+          "missed": [
+            "heldout-04~texting",
+            "heldout-18~texting"
+          ],
+          "false_alarms": [],
+          "recall": 0.9,
+          "recall_wilson95": [
+            0.6989663547715128,
+            0.9721335187862319
+          ],
+          "false_positive_rate": 0,
+          "fpr_wilson95": [
+            0,
+            0.154639018924847
+          ]
+        }
+      }
+    },
+    "no_punctuation_lower": {
+      "n": 44,
+      "ambiguous_excluded": 3,
+      "detectors": {
+        "S0": {
+          "tp": 7,
+          "fn": 13,
+          "fp": 9,
+          "tn": 12,
+          "check_in_on_urgent": 0,
+          "check_in_on_non_urgent": 0,
+          "missed": [
+            "dev-indirect~no_punctuation_lower",
+            "dev-curly~no_punctuation_lower",
+            "dev-typo~no_punctuation_lower",
+            "dev-spanish~no_punctuation_lower",
+            "heldout-03~no_punctuation_lower",
+            "heldout-04~no_punctuation_lower",
+            "heldout-07~no_punctuation_lower",
+            "heldout-16~no_punctuation_lower",
+            "heldout-17~no_punctuation_lower",
+            "heldout-18~no_punctuation_lower",
+            "heldout-24~no_punctuation_lower",
+            "heldout-26~no_punctuation_lower",
+            "heldout-30~no_punctuation_lower"
+          ],
+          "false_alarms": [
+            "dev-negation~no_punctuation_lower",
+            "dev-quotation~no_punctuation_lower",
+            "dev-education~no_punctuation_lower",
+            "heldout-08~no_punctuation_lower",
+            "heldout-09~no_punctuation_lower",
+            "heldout-11~no_punctuation_lower",
+            "heldout-12~no_punctuation_lower",
+            "heldout-14~no_punctuation_lower",
+            "heldout-29~no_punctuation_lower"
+          ],
+          "recall": 0.35,
+          "recall_wilson95": [
+            0.18119182410108206,
+            0.5671457233147638
+          ],
+          "false_positive_rate": 0.42857142857142855,
+          "fpr_wilson95": [
+            0.2446996892537596,
+            0.6345344563069328
+          ]
+        },
+        "S1": {
+          "tp": 17,
+          "fn": 3,
+          "fp": 0,
+          "tn": 21,
+          "check_in_on_urgent": 0,
+          "check_in_on_non_urgent": 1,
+          "missed": [
+            "heldout-04~no_punctuation_lower",
+            "heldout-16~no_punctuation_lower",
+            "heldout-18~no_punctuation_lower"
+          ],
+          "false_alarms": [],
+          "recall": 0.85,
+          "recall_wilson95": [
+            0.6395811352592431,
+            0.9476312541037835
+          ],
+          "false_positive_rate": 0,
+          "fpr_wilson95": [
+            0,
+            0.154639018924847
+          ]
+        },
+        "S2": {
+          "tp": 18,
+          "fn": 2,
+          "fp": 0,
+          "tn": 21,
+          "check_in_on_urgent": 0,
+          "check_in_on_non_urgent": 1,
+          "missed": [
+            "heldout-04~no_punctuation_lower",
+            "heldout-18~no_punctuation_lower"
+          ],
+          "false_alarms": [],
+          "recall": 0.9,
+          "recall_wilson95": [
+            0.6989663547715128,
+            0.9721335187862319
+          ],
+          "false_positive_rate": 0,
+          "fpr_wilson95": [
+            0,
+            0.154639018924847
+          ]
+        }
+      }
+    },
+    "filler_prefix": {
+      "n": 44,
+      "ambiguous_excluded": 3,
+      "detectors": {
+        "S0": {
+          "tp": 7,
+          "fn": 13,
+          "fp": 9,
+          "tn": 12,
+          "check_in_on_urgent": 0,
+          "check_in_on_non_urgent": 0,
+          "missed": [
+            "dev-indirect~filler_prefix",
+            "dev-curly~filler_prefix",
+            "dev-typo~filler_prefix",
+            "dev-spanish~filler_prefix",
+            "heldout-03~filler_prefix",
+            "heldout-04~filler_prefix",
+            "heldout-07~filler_prefix",
+            "heldout-16~filler_prefix",
+            "heldout-17~filler_prefix",
+            "heldout-18~filler_prefix",
+            "heldout-24~filler_prefix",
+            "heldout-26~filler_prefix",
+            "heldout-30~filler_prefix"
+          ],
+          "false_alarms": [
+            "dev-negation~filler_prefix",
+            "dev-quotation~filler_prefix",
+            "dev-education~filler_prefix",
+            "heldout-08~filler_prefix",
+            "heldout-09~filler_prefix",
+            "heldout-11~filler_prefix",
+            "heldout-12~filler_prefix",
+            "heldout-14~filler_prefix",
+            "heldout-29~filler_prefix"
+          ],
+          "recall": 0.35,
+          "recall_wilson95": [
+            0.18119182410108206,
+            0.5671457233147638
+          ],
+          "false_positive_rate": 0.42857142857142855,
+          "fpr_wilson95": [
+            0.2446996892537596,
+            0.6345344563069328
+          ]
+        },
+        "S1": {
+          "tp": 17,
+          "fn": 3,
+          "fp": 0,
+          "tn": 21,
+          "check_in_on_urgent": 0,
+          "check_in_on_non_urgent": 1,
+          "missed": [
+            "heldout-04~filler_prefix",
+            "heldout-16~filler_prefix",
+            "heldout-18~filler_prefix"
+          ],
+          "false_alarms": [],
+          "recall": 0.85,
+          "recall_wilson95": [
+            0.6395811352592431,
+            0.9476312541037835
+          ],
+          "false_positive_rate": 0,
+          "fpr_wilson95": [
+            0,
+            0.154639018924847
+          ]
+        },
+        "S2": {
+          "tp": 18,
+          "fn": 2,
+          "fp": 0,
+          "tn": 21,
+          "check_in_on_urgent": 0,
+          "check_in_on_non_urgent": 1,
+          "missed": [
+            "heldout-04~filler_prefix",
+            "heldout-18~filler_prefix"
+          ],
+          "false_alarms": [],
+          "recall": 0.9,
+          "recall_wilson95": [
+            0.6989663547715128,
+            0.9721335187862319
+          ],
+          "false_positive_rate": 0,
+          "fpr_wilson95": [
+            0,
+            0.154639018924847
+          ]
+        }
+      }
+    },
+    "extra_spaces": {
+      "n": 44,
+      "ambiguous_excluded": 3,
+      "detectors": {
+        "S0": {
+          "tp": 2,
+          "fn": 18,
+          "fp": 7,
+          "tn": 14,
+          "check_in_on_urgent": 0,
+          "check_in_on_non_urgent": 0,
+          "missed": [
+            "dev-direct~extra_spaces",
+            "dev-indirect~extra_spaces",
+            "dev-curly~extra_spaces",
+            "dev-typo~extra_spaces",
+            "dev-spanish~extra_spaces",
+            "dev-harm~extra_spaces",
+            "heldout-01~extra_spaces",
+            "heldout-02~extra_spaces",
+            "heldout-03~extra_spaces",
+            "heldout-04~extra_spaces",
+            "heldout-07~extra_spaces",
+            "heldout-13~extra_spaces",
+            "heldout-16~extra_spaces",
+            "heldout-17~extra_spaces",
+            "heldout-18~extra_spaces",
+            "heldout-24~extra_spaces",
+            "heldout-26~extra_spaces",
+            "heldout-30~extra_spaces"
+          ],
+          "false_alarms": [
+            "dev-negation~extra_spaces",
+            "dev-quotation~extra_spaces",
+            "dev-education~extra_spaces",
+            "heldout-08~extra_spaces",
+            "heldout-11~extra_spaces",
+            "heldout-14~extra_spaces",
+            "heldout-29~extra_spaces"
+          ],
+          "recall": 0.1,
+          "recall_wilson95": [
+            0.027866481213768224,
+            0.3010336452284873
+          ],
+          "false_positive_rate": 0.3333333333333333,
+          "fpr_wilson95": [
+            0.17194752605083477,
+            0.5462654802574476
+          ]
+        },
+        "S1": {
+          "tp": 17,
+          "fn": 3,
+          "fp": 0,
+          "tn": 21,
+          "check_in_on_urgent": 0,
+          "check_in_on_non_urgent": 1,
+          "missed": [
+            "heldout-04~extra_spaces",
+            "heldout-16~extra_spaces",
+            "heldout-18~extra_spaces"
+          ],
+          "false_alarms": [],
+          "recall": 0.85,
+          "recall_wilson95": [
+            0.6395811352592431,
+            0.9476312541037835
+          ],
+          "false_positive_rate": 0,
+          "fpr_wilson95": [
+            0,
+            0.154639018924847
+          ]
+        },
+        "S2": {
+          "tp": 18,
+          "fn": 2,
+          "fp": 0,
+          "tn": 21,
+          "check_in_on_urgent": 0,
+          "check_in_on_non_urgent": 1,
+          "missed": [
+            "heldout-04~extra_spaces",
+            "heldout-18~extra_spaces"
+          ],
+          "false_alarms": [],
+          "recall": 0.9,
+          "recall_wilson95": [
+            0.6989663547715128,
+            0.9721335187862319
+          ],
+          "false_positive_rate": 0,
+          "fpr_wilson95": [
+            0,
+            0.154639018924847
+          ]
+        }
+      }
+    },
+    "adjacent_typo": {
+      "n": 44,
+      "ambiguous_excluded": 3,
+      "detectors": {
+        "S0": {
+          "tp": 5,
+          "fn": 15,
+          "fp": 6,
+          "tn": 15,
+          "check_in_on_urgent": 0,
+          "check_in_on_non_urgent": 0,
+          "missed": [
+            "dev-direct~adjacent_typo",
+            "dev-indirect~adjacent_typo",
+            "dev-curly~adjacent_typo",
+            "dev-typo~adjacent_typo",
+            "dev-spanish~adjacent_typo",
+            "dev-harm~adjacent_typo",
+            "heldout-03~adjacent_typo",
+            "heldout-04~adjacent_typo",
+            "heldout-07~adjacent_typo",
+            "heldout-16~adjacent_typo",
+            "heldout-17~adjacent_typo",
+            "heldout-18~adjacent_typo",
+            "heldout-24~adjacent_typo",
+            "heldout-26~adjacent_typo",
+            "heldout-30~adjacent_typo"
+          ],
+          "false_alarms": [
+            "dev-quotation~adjacent_typo",
+            "dev-education~adjacent_typo",
+            "heldout-08~adjacent_typo",
+            "heldout-09~adjacent_typo",
+            "heldout-12~adjacent_typo",
+            "heldout-29~adjacent_typo"
+          ],
+          "recall": 0.25,
+          "recall_wilson95": [
+            0.11186170140766569,
+            0.468700877618744
+          ],
+          "false_positive_rate": 0.2857142857142857,
+          "fpr_wilson95": [
+            0.1381386295212213,
+            0.49956380716085597
+          ]
+        },
+        "S1": {
+          "tp": 6,
+          "fn": 14,
+          "fp": 0,
+          "tn": 21,
+          "check_in_on_urgent": 1,
+          "check_in_on_non_urgent": 1,
+          "missed": [
+            "dev-direct~adjacent_typo",
+            "dev-curly~adjacent_typo",
+            "dev-typo~adjacent_typo",
+            "dev-spanish~adjacent_typo",
+            "dev-harm~adjacent_typo",
+            "heldout-04~adjacent_typo",
+            "heldout-07~adjacent_typo",
+            "heldout-16~adjacent_typo",
+            "heldout-17~adjacent_typo",
+            "heldout-18~adjacent_typo",
+            "heldout-24~adjacent_typo",
+            "heldout-26~adjacent_typo",
+            "heldout-28~adjacent_typo",
+            "heldout-30~adjacent_typo"
+          ],
+          "false_alarms": [],
+          "recall": 0.3,
+          "recall_wilson95": [
+            0.1454772448676043,
+            0.5189728183535235
+          ],
+          "false_positive_rate": 0,
+          "fpr_wilson95": [
+            0,
+            0.154639018924847
+          ]
+        },
+        "S2": {
+          "tp": 11,
+          "fn": 9,
+          "fp": 0,
+          "tn": 21,
+          "check_in_on_urgent": 1,
+          "check_in_on_non_urgent": 1,
+          "missed": [
+            "dev-curly~adjacent_typo",
+            "dev-spanish~adjacent_typo",
+            "heldout-04~adjacent_typo",
+            "heldout-07~adjacent_typo",
+            "heldout-17~adjacent_typo",
+            "heldout-18~adjacent_typo",
+            "heldout-26~adjacent_typo",
+            "heldout-28~adjacent_typo",
+            "heldout-30~adjacent_typo"
+          ],
+          "false_alarms": [],
+          "recall": 0.55,
+          "recall_wilson95": [
+            0.34208534245034233,
+            0.7418021417443759
+          ],
+          "false_positive_rate": 0,
+          "fpr_wilson95": [
+            0,
+            0.154639018924847
+          ]
+        }
+      }
+    },
+    "letter_stretch": {
+      "n": 44,
+      "ambiguous_excluded": 3,
+      "detectors": {
+        "S0": {
+          "tp": 1,
+          "fn": 19,
+          "fp": 0,
+          "tn": 21,
+          "check_in_on_urgent": 0,
+          "check_in_on_non_urgent": 0,
+          "missed": [
+            "dev-direct~letter_stretch",
+            "dev-indirect~letter_stretch",
+            "dev-curly~letter_stretch",
+            "dev-typo~letter_stretch",
+            "dev-spanish~letter_stretch",
+            "dev-harm~letter_stretch",
+            "heldout-01~letter_stretch",
+            "heldout-02~letter_stretch",
+            "heldout-03~letter_stretch",
+            "heldout-04~letter_stretch",
+            "heldout-07~letter_stretch",
+            "heldout-10~letter_stretch",
+            "heldout-13~letter_stretch",
+            "heldout-16~letter_stretch",
+            "heldout-17~letter_stretch",
+            "heldout-18~letter_stretch",
+            "heldout-24~letter_stretch",
+            "heldout-26~letter_stretch",
+            "heldout-30~letter_stretch"
+          ],
+          "false_alarms": [],
+          "recall": 0.05,
+          "recall_wilson95": [
+            0.008881448800795402,
+            0.23613119344674205
+          ],
+          "false_positive_rate": 0,
+          "fpr_wilson95": [
+            0,
+            0.154639018924847
+          ]
+        },
+        "S1": {
+          "tp": 0,
+          "fn": 20,
+          "fp": 0,
+          "tn": 21,
+          "check_in_on_urgent": 0,
+          "check_in_on_non_urgent": 0,
+          "missed": [
+            "dev-direct~letter_stretch",
+            "dev-indirect~letter_stretch",
+            "dev-curly~letter_stretch",
+            "dev-typo~letter_stretch",
+            "dev-spanish~letter_stretch",
+            "dev-harm~letter_stretch",
+            "heldout-01~letter_stretch",
+            "heldout-02~letter_stretch",
+            "heldout-03~letter_stretch",
+            "heldout-04~letter_stretch",
+            "heldout-07~letter_stretch",
+            "heldout-10~letter_stretch",
+            "heldout-13~letter_stretch",
+            "heldout-16~letter_stretch",
+            "heldout-17~letter_stretch",
+            "heldout-18~letter_stretch",
+            "heldout-24~letter_stretch",
+            "heldout-26~letter_stretch",
+            "heldout-28~letter_stretch",
+            "heldout-30~letter_stretch"
+          ],
+          "false_alarms": [],
+          "recall": 0,
+          "recall_wilson95": [
+            0,
+            0.16112515805281938
+          ],
+          "false_positive_rate": 0,
+          "fpr_wilson95": [
+            0,
+            0.154639018924847
+          ]
+        },
+        "S2": {
+          "tp": 16,
+          "fn": 4,
+          "fp": 0,
+          "tn": 21,
+          "check_in_on_urgent": 0,
+          "check_in_on_non_urgent": 1,
+          "missed": [
+            "dev-indirect~letter_stretch",
+            "heldout-03~letter_stretch",
+            "heldout-04~letter_stretch",
+            "heldout-18~letter_stretch"
+          ],
+          "false_alarms": [],
+          "recall": 0.8,
+          "recall_wilson95": [
+            0.5839825677481064,
+            0.919342337420202
+          ],
+          "false_positive_rate": 0,
+          "fpr_wilson95": [
+            0,
+            0.154639018924847
+          ]
+        }
+      }
+    },
+    "leetspeak": {
+      "n": 44,
+      "ambiguous_excluded": 3,
+      "detectors": {
+        "S0": {
+          "tp": 0,
+          "fn": 20,
+          "fp": 0,
+          "tn": 21,
+          "check_in_on_urgent": 0,
+          "check_in_on_non_urgent": 0,
+          "missed": [
+            "dev-direct~leetspeak",
+            "dev-indirect~leetspeak",
+            "dev-curly~leetspeak",
+            "dev-typo~leetspeak",
+            "dev-spanish~leetspeak",
+            "dev-harm~leetspeak",
+            "heldout-01~leetspeak",
+            "heldout-02~leetspeak",
+            "heldout-03~leetspeak",
+            "heldout-04~leetspeak",
+            "heldout-07~leetspeak",
+            "heldout-10~leetspeak",
+            "heldout-13~leetspeak",
+            "heldout-16~leetspeak",
+            "heldout-17~leetspeak",
+            "heldout-18~leetspeak",
+            "heldout-24~leetspeak",
+            "heldout-26~leetspeak",
+            "heldout-28~leetspeak",
+            "heldout-30~leetspeak"
+          ],
+          "false_alarms": [],
+          "recall": 0,
+          "recall_wilson95": [
+            0,
+            0.16112515805281938
+          ],
+          "false_positive_rate": 0,
+          "fpr_wilson95": [
+            0,
+            0.154639018924847
+          ]
+        },
+        "S1": {
+          "tp": 1,
+          "fn": 19,
+          "fp": 0,
+          "tn": 21,
+          "check_in_on_urgent": 0,
+          "check_in_on_non_urgent": 0,
+          "missed": [
+            "dev-direct~leetspeak",
+            "dev-indirect~leetspeak",
+            "dev-curly~leetspeak",
+            "dev-typo~leetspeak",
+            "dev-spanish~leetspeak",
+            "dev-harm~leetspeak",
+            "heldout-01~leetspeak",
+            "heldout-02~leetspeak",
+            "heldout-03~leetspeak",
+            "heldout-04~leetspeak",
+            "heldout-07~leetspeak",
+            "heldout-10~leetspeak",
+            "heldout-13~leetspeak",
+            "heldout-16~leetspeak",
+            "heldout-18~leetspeak",
+            "heldout-24~leetspeak",
+            "heldout-26~leetspeak",
+            "heldout-28~leetspeak",
+            "heldout-30~leetspeak"
+          ],
+          "false_alarms": [],
+          "recall": 0.05,
+          "recall_wilson95": [
+            0.008881448800795402,
+            0.23613119344674205
+          ],
+          "false_positive_rate": 0,
+          "fpr_wilson95": [
+            0,
+            0.154639018924847
+          ]
+        },
+        "S2": {
+          "tp": 18,
+          "fn": 2,
+          "fp": 0,
+          "tn": 21,
+          "check_in_on_urgent": 0,
+          "check_in_on_non_urgent": 1,
+          "missed": [
+            "heldout-04~leetspeak",
+            "heldout-18~leetspeak"
+          ],
+          "false_alarms": [],
+          "recall": 0.9,
+          "recall_wilson95": [
+            0.6989663547715128,
+            0.9721335187862319
+          ],
+          "false_positive_rate": 0,
+          "fpr_wilson95": [
+            0,
+            0.154639018924847
+          ]
+        }
+      }
+    },
+    "zero_width": {
+      "n": 44,
+      "ambiguous_excluded": 3,
+      "detectors": {
+        "S0": {
+          "tp": 7,
+          "fn": 13,
+          "fp": 9,
+          "tn": 12,
+          "check_in_on_urgent": 0,
+          "check_in_on_non_urgent": 0,
+          "missed": [
+            "dev-indirect~zero_width",
+            "dev-curly~zero_width",
+            "dev-typo~zero_width",
+            "dev-spanish~zero_width",
+            "heldout-03~zero_width",
+            "heldout-04~zero_width",
+            "heldout-07~zero_width",
+            "heldout-16~zero_width",
+            "heldout-17~zero_width",
+            "heldout-18~zero_width",
+            "heldout-24~zero_width",
+            "heldout-26~zero_width",
+            "heldout-30~zero_width"
+          ],
+          "false_alarms": [
+            "dev-negation~zero_width",
+            "dev-quotation~zero_width",
+            "dev-education~zero_width",
+            "heldout-08~zero_width",
+            "heldout-09~zero_width",
+            "heldout-11~zero_width",
+            "heldout-12~zero_width",
+            "heldout-14~zero_width",
+            "heldout-29~zero_width"
+          ],
+          "recall": 0.35,
+          "recall_wilson95": [
+            0.18119182410108206,
+            0.5671457233147638
+          ],
+          "false_positive_rate": 0.42857142857142855,
+          "fpr_wilson95": [
+            0.2446996892537596,
+            0.6345344563069328
+          ]
+        },
+        "S1": {
+          "tp": 9,
+          "fn": 11,
+          "fp": 0,
+          "tn": 21,
+          "check_in_on_urgent": 1,
+          "check_in_on_non_urgent": 3,
+          "missed": [
+            "dev-curly~zero_width",
+            "dev-spanish~zero_width",
+            "heldout-04~zero_width",
+            "heldout-07~zero_width",
+            "heldout-16~zero_width",
+            "heldout-17~zero_width",
+            "heldout-18~zero_width",
+            "heldout-24~zero_width",
+            "heldout-26~zero_width",
+            "heldout-28~zero_width",
+            "heldout-30~zero_width"
+          ],
+          "false_alarms": [],
+          "recall": 0.45,
+          "recall_wilson95": [
+            0.2581978582556243,
+            0.6579146575496577
+          ],
+          "false_positive_rate": 0,
+          "fpr_wilson95": [
+            0,
+            0.154639018924847
+          ]
+        },
+        "S2": {
+          "tp": 18,
+          "fn": 2,
+          "fp": 0,
+          "tn": 21,
+          "check_in_on_urgent": 0,
+          "check_in_on_non_urgent": 1,
+          "missed": [
+            "heldout-04~zero_width",
+            "heldout-18~zero_width"
+          ],
+          "false_alarms": [],
+          "recall": 0.9,
+          "recall_wilson95": [
+            0.6989663547715128,
+            0.9721335187862319
+          ],
+          "false_positive_rate": 0,
+          "fpr_wilson95": [
+            0,
+            0.154639018924847
+          ]
+        }
+      }
+    }
+  }
+}

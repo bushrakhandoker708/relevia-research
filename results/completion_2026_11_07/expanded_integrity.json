@@ -1,0 +1,11 @@
+{
+  "scenarios": 60,
+  "unique_groups": 60,
+  "exact_overlap": 0,
+  "near_duplicate_threshold": 0.65,
+  "near_duplicate_candidates": [],
+  "fewshot_count": 4,
+  "human_review": "unavailable",
+  "limitations": "Token Jaccard cannot exclude semantic overlap or pretraining contamination.",
+  "data_sha256": "71c20342ee8386a01888de1c8af141c52c8c0dde456f4c22ee0443e5da7c77ff"
+}

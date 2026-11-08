@@ -1,0 +1,30 @@
+{
+  "rating_analysis_tests": {
+    "command": [
+      "python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-p",
+      "test_independent_ratings.py",
+      "-v"
+    ],
+    "exit_code": 0
+  },
+  "execution_summary_tests": {
+    "command": [
+      "python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-p",
+      "test_execution_summary.py",
+      "-v"
+    ],
+    "exit_code": 0
+  }
+}

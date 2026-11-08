@@ -1,0 +1,244 @@
+
+> relevia@0.0.0 test
+> node --test tests/*.test.js
+
+TAP version 13
+# Subtest: benchmark records streamed usage and unloads its isolated test engine
+ok 1 - benchmark records streamed usage and unloads its isolated test engine
+  ---
+  duration_ms: 6.1689
+  type: 'test'
+  ...
+# Subtest: benchmark preserves a model-load failure instead of inventing measurements
+ok 2 - benchmark preserves a model-load failure instead of inventing measurements
+  ---
+  duration_ms: 0.331
+  type: 'test'
+  ...
+# Subtest: public information does not diagnose chest symptoms or encourage symptom provocation
+ok 3 - public information does not diagnose chest symptoms or encourage symptom provocation
+  ---
+  duration_ms: 3.272
+  type: 'test'
+  ...
+# Subtest: technical failure does not guarantee data preservation or assume a country
+ok 4 - technical failure does not guarantee data preservation or assume a country
+  ---
+  duration_ms: 0.75
+  type: 'test'
+  ...
+# Subtest: relaxation never invents a measured improvement
+ok 5 - relaxation never invents a measured improvement
+  ---
+  duration_ms: 0.9507
+  type: 'test'
+  ...
+# Subtest: journal does not offer unenforced encryption or retention controls
+ok 6 - journal does not offer unenforced encryption or retention controls
+  ---
+  duration_ms: 1.1424
+  type: 'test'
+  ...
+# Subtest: deterministic crisis rules preserved including known false alarms and misses
+ok 7 - deterministic crisis rules preserved including known false alarms and misses
+  ---
+  duration_ms: 1.8707
+  type: 'test'
+  ...
+# Subtest: failed WebGPU initialization returns curated reply without network or persistent storage
+ok 8 - failed WebGPU initialization returns curated reply without network or persistent storage
+  ---
+  duration_ms: 25.6961
+  type: 'test'
+  ...
+# Subtest: crisis handling precedes GPU access and never persists by default
+ok 9 - crisis handling precedes GPU access and never persists by default
+  ---
+  duration_ms: 7.9598
+  type: 'test'
+  ...
+# Subtest: new risk forms and user-history continuation bypass inference
+ok 10 - new risk forms and user-history continuation bypass inference
+  ---
+  duration_ms: 7.3263
+  type: 'test'
+  ...
+# [Relevia] Failed to initialize engine
+# [Relevia] Using curated fallback reply
+# Subtest: original miss now routes to deterministic support: I don’t want to live
+ok 11 - original miss now routes to deterministic support: I don’t want to live
+  ---
+  duration_ms: 4.3408
+  type: 'test'
+  ...
+# Subtest: original miss now routes to deterministic support: I want to kil myself
+ok 12 - original miss now routes to deterministic support: I want to kil myself
+  ---
+  duration_ms: 0.2378
+  type: 'test'
+  ...
+# Subtest: original miss now routes to deterministic support: Quiero quitarme la vida
+ok 13 - original miss now routes to deterministic support: Quiero quitarme la vida
+  ---
+  duration_ms: 0.5174
+  type: 'test'
+  ...
+# Subtest: original miss now routes to deterministic support: I have written my final goodbye and will not be here tomorrow.
+ok 14 - original miss now routes to deterministic support: I have written my final goodbye and will not be here tomorrow.
+  ---
+  duration_ms: 0.1548
+  type: 'test'
+  ...
+# Subtest: explicit non-crisis reference does not escalate: I am not suicidal; I am looking for study tips.
+ok 15 - explicit non-crisis reference does not escalate: I am not suicidal; I am looking for study tips.
+  ---
+  duration_ms: 2.255
+  type: 'test'
+  ...
+# Subtest: explicit non-crisis reference does not escalate: Our literature class discusses the word suicide.
+ok 16 - explicit non-crisis reference does not escalate: Our literature class discusses the word suicide.
+  ---
+  duration_ms: 0.6614
+  type: 'test'
+  ...
+# Subtest: explicit non-crisis reference does not escalate: I am writing a report about suicide prevention policies.
+ok 17 - explicit non-crisis reference does not escalate: I am writing a report about suicide prevention policies.
+  ---
+  duration_ms: 0.2288
+  type: 'test'
+  ...
+# Subtest: negation does not mask a later affirmative risk clause
+ok 18 - negation does not mask a later affirmative risk clause
+  ---
+  duration_ms: 0.1669
+  type: 'test'
+  ...
+# Subtest: recent user context routes an imminent continuation; assistant text cannot
+ok 19 - recent user context routes an imminent continuation; assistant text cannot
+  ---
+  duration_ms: 0.5862
+  type: 'test'
+  ...
+# Subtest: ambiguous language gets clarification rather than a diagnosis
+ok 20 - ambiguous language gets clarification rather than a diagnosis
+  ---
+  duration_ms: 0.6159
+  type: 'test'
+  ...
+# Subtest: new sensitive forms erase opt-in storage and prevent later saving
+ok 21 - new sensitive forms erase opt-in storage and prevent later saving
+  ---
+  duration_ms: 1.3804
+  type: 'test'
+  ...
+# Subtest: curated support has bounded claims and urgent help is not delayed by exercises
+ok 22 - curated support has bounded claims and urgent help is not delayed by exercises
+  ---
+  duration_ms: 0.3436
+  type: 'test'
+  ...
+# Subtest: Home letter never reintroduces saved identity or medical reassurance
+ok 23 - Home letter never reintroduces saved identity or medical reassurance
+  ---
+  duration_ms: 2.1152
+  type: 'test'
+  ...
+# Subtest: default chat and names stay in memory; new page cannot read them
+ok 24 - default chat and names stay in memory; new page cannot read them
+  ---
+  duration_ms: 6.526
+  type: 'test'
+  ...
+# Subtest: opt-in saves messages without separate name; restoration requires an explicit action
+ok 25 - opt-in saves messages without separate name; restoration requires an explicit action
+  ---
+  duration_ms: 0.7417
+  type: 'test'
+  ...
+# Subtest: independent session histories and clearing one never reads another
+ok 26 - independent session histories and clearing one never reads another
+  ---
+  duration_ms: 0.4357
+  type: 'test'
+  ...
+# Subtest: expiry enforced on memory reads and persisted reads without another message
+ok 27 - expiry enforced on memory reads and persisted reads without another message
+  ---
+  duration_ms: 0.4373
+  type: 'test'
+  ...
+# Subtest: expiry on writes preserves only recent turns
+ok 28 - expiry on writes preserves only recent turns
+  ---
+  duration_ms: 1.2406
+  type: 'test'
+  ...
+# Subtest: names expire and consent withdrawal prevents stale writes
+ok 29 - names expire and consent withdrawal prevents stale writes
+  ---
+  duration_ms: 0.4091
+  type: 'test'
+  ...
+# Subtest: failed persistence keeps the reply in memory and disables saving
+ok 30 - failed persistence keeps the reply in memory and disables saving
+  ---
+  duration_ms: 0.72
+  type: 'test'
+  ...
+# Subtest: page end invalidation removes all in-memory session context
+ok 31 - page end invalidation removes all in-memory session context
+  ---
+  duration_ms: 0.2957
+  type: 'test'
+  ...
+# Subtest: deletion clears names, saved copies and invalidates pending handles
+ok 32 - deletion clears names, saved copies and invalidates pending handles
+  ---
+  duration_ms: 0.518
+  type: 'test'
+  ...
+# Subtest: crisis text is memory-only and disables saving of future contextual replies
+ok 33 - crisis text is memory-only and disables saving of future contextual replies
+  ---
+  duration_ms: 0.683
+  type: 'test'
+  ...
+# Subtest: blocked storage does not prevent default chat or crisis context
+ok 34 - blocked storage does not prevent default chat or crisis context
+  ---
+  duration_ms: 0.3598
+  type: 'test'
+  ...
+# Subtest: clear all removes legacy chat personalization but preserves separate journals
+ok 35 - clear all removes legacy chat personalization but preserves separate journals
+  ---
+  duration_ms: 0.3182
+  type: 'test'
+  ...
+# Subtest: malformed and expired saved records never restore
+ok 36 - malformed and expired saved records never restore
+  ---
+  duration_ms: 0.2264
+  type: 'test'
+  ...
+# Subtest: local-only storage operations never call fetch
+ok 37 - local-only storage operations never call fetch
+  ---
+  duration_ms: 0.2641
+  type: 'test'
+  ...
+# Subtest: legacy IndexedDB cleanup reports blocked deletion
+ok 38 - legacy IndexedDB cleanup reports blocked deletion
+  ---
+  duration_ms: 0.4216
+  type: 'test'
+  ...
+1..38
+# tests 38
+# suites 0
+# pass 38
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 4387.9501

@@ -1,0 +1,10 @@
+{
+  "heldout.jsonl": "e701298b8aff72ce8021b232dcc61b8bda8cd6b24a6c46f469e5e6a0cf4d4fdb",
+  "frozen_utc": "2026-11-08T10:41:12.446293+00:00",
+  "note": "Frozen before any S2 rule was written. Labels are provisional and agent-authored.",
+  "counts": {
+    "urgent": 24,
+    "non_urgent": 18,
+    "ambiguous": 3
+  }
+}

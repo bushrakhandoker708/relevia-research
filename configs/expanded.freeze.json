@@ -1,0 +1,10 @@
+{
+  "status": "frozen_before_generation",
+  "sha256": {
+    "data/experiment_01_expanded/test.jsonl": "71c20342ee8386a01888de1c8af141c52c8c0dde456f4c22ee0443e5da7c77ff",
+    "configs/experiment_01.pilot.json": "e3d93225544d297e30b578bc49e77d2e8f2046f5c26a071c14bd4a8e64d8045d",
+    "scripts/controlled_inference.py": "59f87cf0512f7cb3c3fa967ed1f9b5cdd0560ee0695ef46c3af00d501308d9e7",
+    "docs/expanded_baseline_protocol.md": "e360c4684ff607beadfadf67348d48a254646b3a5f3a09af86f716b24ee5adaa",
+    "docs/independent_review_instructions.md": "b1914024f5e72f75f64ea184291a298f0959db311e9e223e9e4301e61445d2a2"
+  }
+}

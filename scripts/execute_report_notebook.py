@@ -15,7 +15,9 @@ import nbformat
 
 
 def main():
-    ap=argparse.ArgumentParser();ap.add_argument('notebook',type=Path);args=ap.parse_args()
+    ap=argparse.ArgumentParser();ap.add_argument('notebook',type=Path)
+    ap.add_argument('--start-cell',type=int,default=0,help='Zero-based cell index; preserve earlier recorded outputs')
+    args=ap.parse_args()
     path=args.notebook.resolve();root=Path(__file__).resolve().parents[1]
     if path.parent != root/'notebooks':raise ValueError('Only project notebooks are supported')
     nb=nbformat.read(path,as_version=4);scope={'__name__':'__main__'};count=0;failed=False
@@ -23,9 +25,11 @@ def main():
     matplotlib.use('Agg')
     import matplotlib.pyplot as plt
     os.chdir(root)
-    for cell in nb.cells:
+    if not 0 <= args.start_cell < len(nb.cells):raise ValueError('Invalid start cell')
+    count=sum(c.cell_type=='code' for c in nb.cells[:args.start_cell]);executed=0
+    for cell in nb.cells[args.start_cell:]:
         if cell.cell_type!='code':continue
-        count+=1;cell.execution_count=count;cell.outputs=[];out=io.StringIO()
+        count+=1;executed+=1;cell.execution_count=count;cell.outputs=[];out=io.StringIO()
         def show():
             for num in plt.get_fignums():
                 fig=plt.figure(num);buf=io.BytesIO();fig.savefig(buf,format='png',dpi=120)
@@ -42,8 +46,9 @@ def main():
         except Exception as exc:
             cell.outputs.append(nbformat.v4.new_output('error',ename=type(exc).__name__,evalue=str(exc),traceback=traceback.format_exc().splitlines()));failed=True;break
     nb.metadata['execution_method']='Actual sequential Python execution via scripts/execute_report_notebook.py; no IPython magics or Jupyter kernel'
+    nb.metadata['last_execution_start_cell']=args.start_cell
     nbformat.write(nb,path)
-    print(path.name, 'failed' if failed else f'executed {count} code cells')
+    print(path.name, 'failed' if failed else f'executed {executed} code cells from cell {args.start_cell}; earlier outputs preserved')
     if failed:raise SystemExit(1)
 
 

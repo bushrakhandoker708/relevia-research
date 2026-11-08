@@ -1,0 +1,16 @@
+{
+  "errors": 41,
+  "warnings": 9,
+  "rules": {
+    "no-unused-vars": 41,
+    "react-hooks/exhaustive-deps": 9
+  },
+  "categories": {
+    "unused_symbols": "no-unused-vars errors; includes JSX namespace imports misidentified by current lint configuration",
+    "hook_dependencies": "react-hooks/exhaustive-deps warnings; inspect stale state and callback identity before changing",
+    "accessibility": "Not comprehensively checked: no JSX accessibility plugin configured",
+    "unsafe_patterns": "No additional ESLint findings; absence does not establish safety",
+    "style_only": "No separate findings from configured rules",
+    "historical": "Legacy components contain most findings"
+  }
+}

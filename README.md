@@ -66,3 +66,11 @@ Start with the [milestone report](docs/milestone_2_report.md), [privacy decision
 The historical dataset is now quarantined and excluded from experiments. A pinned Qwen2.5-1.5B-Instruct checkpoint produced 16 responses on eight held-out synthetic scenarios after two development rounds. The primary relevance difference was +0.125 with a 95% paired bootstrap interval of −0.875 to +1.125, based on explicitly unblinded agent ratings. This does not establish that the developed prompt is better. Both conditions retained an urgent-risk failure.
 
 Read the [Milestone 3 report](docs/milestone_3_report.md), [dataset provenance](docs/dataset_provenance_report.md), [dataset card](data/experiment_01/DATASET_CARD.md), [executed dataset audit](notebooks/01_dataset_audit.ipynb) and [baseline notebook](notebooks/03_baseline_evaluation.ipynb). Independent blinded review is the next priority. Browser verification remains a public-release blocker; LoRA requires explicit approval.
+
+## Robustness checks on the existing evidence
+
+[Notebook 07](notebooks/07_robustness_checks.ipynb) re-analyses saved results without running a model. After the two pairs that overlap Modern Standby are removed, the expanded-v1 latency difference shrinks from −18.9 s to a median of about −3.4 s, and the median's interval includes zero. B's replies are shorter, but B costs about 2.4 s more before the first token and more time per token. The host's decode rate also halved part-way through the run. A perturbation probe found that S1 misses "I wanna die" and loses most of its recall under ordinary typos. Figures are in `results/analysis/robustness-v1/figures/` and `results/safety/perturbation-v1/`.
+
+## S2 safety routing
+
+The application now runs S2, which applies the S1 rules after normalising shorthand, typos, stretched letters, leetspeak and invisible characters. On a new held-out set frozen before S2 was written, S2 detects 18 of 24 urgent cases compared with 9 for S1, with no false positives on 18 ordinary messages. The remaining misses are gaps in the underlying rules, such as "killing myself" and indirect statements. See [notebook 08](notebooks/08_s2_routing.ipynb) and `results/safety/s2-v1/`.

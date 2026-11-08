@@ -12,7 +12,7 @@ import argparse, sys, time
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from common import ROOT, load_config, read_jsonl, write_jsonl, set_seed, build_messages, adapter_dir, load_tokenizer  # noqa: E402
+from common import ROOT, load_config, read_jsonl, write_jsonl, set_seed, build_messages, adapter_dir, load_tokenizer, pick_dtype  # noqa: E402
 
 import torch
 from transformers import AutoModelForCausalLM, BitsAndBytesConfig
@@ -56,10 +56,11 @@ def main():
 
     tok = load_tokenizer(mcfg["base_model"])
     tok.padding_side = "left"  # left padding for batched generation with decoder-only models
+    dtype = pick_dtype()  # same precision rule as train.py
     quant = BitsAndBytesConfig(load_in_4bit=True, bnb_4bit_quant_type="nf4",
-                               bnb_4bit_compute_dtype=torch.bfloat16) if gcfg["load_in_4bit"] else None
+                               bnb_4bit_compute_dtype=dtype) if gcfg["load_in_4bit"] else None
     model = AutoModelForCausalLM.from_pretrained(
-        mcfg["base_model"], quantization_config=quant, device_map="auto", dtype=torch.bfloat16)
+        mcfg["base_model"], quantization_config=quant, device_map="auto", dtype=dtype)
     if args.condition.startswith("finetuned"):
         from peft import PeftModel
         ad = adapter_dir(cfg, args.seed)

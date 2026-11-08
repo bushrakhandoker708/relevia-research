@@ -1,0 +1,477 @@
+{
+  "scope": "Execution and surface-form re-analysis of frozen expanded-v1; no quality ratings",
+  "standby_window_utc": [
+    "2026-11-07T08:56:49.036945+00:00",
+    "2026-11-07T09:12:57.464939+00:00"
+  ],
+  "standby_affected_pairs": [
+    "expanded-054",
+    "expanded-055"
+  ],
+  "E1_latency_sensitivity": {
+    "all_pairs": {
+      "n_pairs": 60,
+      "mean": -18.87042228000161,
+      "mean_bootstrap95": [
+        -51.70553636666349,
+        -1.2781501483385607
+      ],
+      "median": -3.6518393000005744,
+      "median_bootstrap95": [
+        -5.5700196999823675,
+        -0.3835074999369681
+      ],
+      "hodges_lehmann": -3.500325474975398,
+      "B_slower_pairs": 22,
+      "B_faster_pairs": 38,
+      "sign_test_p": 0.051893895928921435
+    },
+    "excluding_standby": {
+      "n_pairs": 58,
+      "mean": -3.2432834155183157,
+      "mean_bootstrap95": [
+        -5.943909653442398,
+        -0.46388724829463673
+      ],
+      "median": -3.346608450054191,
+      "median_bootstrap95": [
+        -5.556351100036409,
+        0.5337845500325784
+      ],
+      "hodges_lehmann": -3.1685345000005327,
+      "B_slower_pairs": 22,
+      "B_faster_pairs": 36,
+      "sign_test_p": 0.08694889972991099
+    },
+    "note": "B - A in seconds. Negative means B finished sooner."
+  },
+  "E2_length_control": {
+    "seconds_per_output_token_B_minus_A": {
+      "n_pairs": 58,
+      "mean": 0.05044777160288295,
+      "mean_bootstrap95": [
+        0.032220940829433754,
+        0.06911733389625804
+      ],
+      "median": 0.05043818934276639,
+      "median_bootstrap95": [
+        0.037815594918673284,
+        0.05876233386330898
+      ],
+      "hodges_lehmann": 0.04883075261150749,
+      "B_slower_pairs": 54,
+      "B_faster_pairs": 4,
+      "sign_test_p": 3.1699504132731704e-12
+    },
+    "ttft_B_minus_A": {
+      "n_pairs": 58,
+      "mean": 2.047484189645259,
+      "mean_bootstrap95": [
+        1.8089609568966714,
+        2.2788739741221873
+      ],
+      "median": 2.415391649934463,
+      "median_bootstrap95": [
+        2.3285622500116006,
+        2.4643483499530703
+      ],
+      "hodges_lehmann": 1.959673700039275,
+      "B_slower_pairs": 57,
+      "B_faster_pairs": 1,
+      "sign_test_p": 4.0939474033052647e-16
+    },
+    "output_tokens_B_minus_A": {
+      "n_pairs": 58,
+      "mean": -18.517241379310345,
+      "mean_bootstrap95": [
+        -25.396551724137932,
+        -11.258620689655173
+      ],
+      "median": -19.0,
+      "median_bootstrap95": [
+        -25.0,
+        -9.0
+      ],
+      "hodges_lehmann": -19.0,
+      "B_slower_pairs": 13,
+      "B_faster_pairs": 43,
+      "sign_test_p": 7.333218396948782e-05
+    },
+    "fit_elapsed_on_output_tokens": {
+      "A": {
+        "intercept_seconds": -0.207955477083825,
+        "seconds_per_output_token": 0.33178941600523754,
+        "r_squared": 0.5902041222805292,
+        "n": 58
+      },
+      "B": {
+        "intercept_seconds": -1.8592424834874457,
+        "seconds_per_output_token": 0.36893825438415007,
+        "r_squared": 0.6235609208585442,
+        "n": 58
+      }
+    },
+    "note": "Fit uses elapsed minus TTFT, so the slope is time per generated token after the first."
+  },
+  "E3_compliance": {
+    "overall": {
+      "A": {
+        "n": 60,
+        "token_limit_hits": 30,
+        "token_limit_rate": 0.5,
+        "token_limit_wilson95": [
+          0.3773502424155577,
+          0.6226497575844423
+        ],
+        "over_word_limit": 39,
+        "over_word_limit_rate": 0.65,
+        "over_word_limit_wilson95": [
+          0.5236261884175486,
+          0.7583222559398244
+        ],
+        "median_words": 81.0
+      },
+      "B": {
+        "n": 60,
+        "token_limit_hits": 1,
+        "token_limit_rate": 0.016666666666666666,
+        "token_limit_wilson95": [
+          0.0029481597947862495,
+          0.08855129727590061
+        ],
+        "over_word_limit": 24,
+        "over_word_limit_rate": 0.4,
+        "over_word_limit_wilson95": [
+          0.2856949053488255,
+          0.5263394650795924
+        ],
+        "median_words": 57.5
+      }
+    },
+    "by_category": {
+      "everyday_constraints": {
+        "A": {
+          "n": 10,
+          "token_limit_hits": 8,
+          "token_limit_rate": 0.8,
+          "token_limit_wilson95": [
+            0.49016247153664183,
+            0.9433178485456247
+          ],
+          "over_word_limit": 9,
+          "over_word_limit_rate": 0.9,
+          "over_word_limit_wilson95": [
+            0.5958499732047615,
+            0.9821237869049271
+          ],
+          "median_words": 83.0
+        },
+        "B": {
+          "n": 10,
+          "token_limit_hits": 1,
+          "token_limit_rate": 0.1,
+          "token_limit_wilson95": [
+            0.017876213095072896,
+            0.4041500267952385
+          ],
+          "over_word_limit": 4,
+          "over_word_limit_rate": 0.4,
+          "over_word_limit_wilson95": [
+            0.16818032970623614,
+            0.6873262302663417
+          ],
+          "median_words": 58.5
+        }
+      },
+      "learning": {
+        "A": {
+          "n": 10,
+          "token_limit_hits": 6,
+          "token_limit_rate": 0.6,
+          "token_limit_wilson95": [
+            0.31267376973365824,
+            0.8318196702937638
+          ],
+          "over_word_limit": 8,
+          "over_word_limit_rate": 0.8,
+          "over_word_limit_wilson95": [
+            0.49016247153664183,
+            0.9433178485456247
+          ],
+          "median_words": 80.5
+        },
+        "B": {
+          "n": 10,
+          "token_limit_hits": 0,
+          "token_limit_rate": 0.0,
+          "token_limit_wilson95": [
+            0.0,
+            0.2775327998628892
+          ],
+          "over_word_limit": 4,
+          "over_word_limit_rate": 0.4,
+          "over_word_limit_wilson95": [
+            0.16818032970623614,
+            0.6873262302663417
+          ],
+          "median_words": 57.0
+        }
+      },
+      "positive_and_preferences": {
+        "A": {
+          "n": 10,
+          "token_limit_hits": 0,
+          "token_limit_rate": 0.0,
+          "token_limit_wilson95": [
+            0.0,
+            0.2775327998628892
+          ],
+          "over_word_limit": 0,
+          "over_word_limit_rate": 0.0,
+          "over_word_limit_wilson95": [
+            0.0,
+            0.2775327998628892
+          ],
+          "median_words": 36.0
+        },
+        "B": {
+          "n": 10,
+          "token_limit_hits": 0,
+          "token_limit_rate": 0.0,
+          "token_limit_wilson95": [
+            0.0,
+            0.2775327998628892
+          ],
+          "over_word_limit": 1,
+          "over_word_limit_rate": 0.1,
+          "over_word_limit_wilson95": [
+            0.017876213095072896,
+            0.4041500267952385
+          ],
+          "median_words": 33.5
+        }
+      },
+      "relationships": {
+        "A": {
+          "n": 10,
+          "token_limit_hits": 6,
+          "token_limit_rate": 0.6,
+          "token_limit_wilson95": [
+            0.31267376973365824,
+            0.8318196702937638
+          ],
+          "over_word_limit": 8,
+          "over_word_limit_rate": 0.8,
+          "over_word_limit_wilson95": [
+            0.49016247153664183,
+            0.9433178485456247
+          ],
+          "median_words": 85.0
+        },
+        "B": {
+          "n": 10,
+          "token_limit_hits": 0,
+          "token_limit_rate": 0.0,
+          "token_limit_wilson95": [
+            0.0,
+            0.2775327998628892
+          ],
+          "over_word_limit": 4,
+          "over_word_limit_rate": 0.4,
+          "over_word_limit_wilson95": [
+            0.16818032970623614,
+            0.6873262302663417
+          ],
+          "median_words": 59.5
+        }
+      },
+      "uncertainty": {
+        "A": {
+          "n": 10,
+          "token_limit_hits": 5,
+          "token_limit_rate": 0.5,
+          "token_limit_wilson95": [
+            0.236593090512564,
+            0.7634069094874361
+          ],
+          "over_word_limit": 7,
+          "over_word_limit_rate": 0.7,
+          "over_word_limit_wilson95": [
+            0.39677814746114537,
+            0.8922087325936989
+          ],
+          "median_words": 88.0
+        },
+        "B": {
+          "n": 10,
+          "token_limit_hits": 0,
+          "token_limit_rate": 0.0,
+          "token_limit_wilson95": [
+            0.0,
+            0.2775327998628892
+          ],
+          "over_word_limit": 7,
+          "over_word_limit_rate": 0.7,
+          "over_word_limit_wilson95": [
+            0.39677814746114537,
+            0.8922087325936989
+          ],
+          "median_words": 71.5
+        }
+      },
+      "work": {
+        "A": {
+          "n": 10,
+          "token_limit_hits": 5,
+          "token_limit_rate": 0.5,
+          "token_limit_wilson95": [
+            0.236593090512564,
+            0.7634069094874361
+          ],
+          "over_word_limit": 7,
+          "over_word_limit_rate": 0.7,
+          "over_word_limit_wilson95": [
+            0.39677814746114537,
+            0.8922087325936989
+          ],
+          "median_words": 82.5
+        },
+        "B": {
+          "n": 10,
+          "token_limit_hits": 0,
+          "token_limit_rate": 0.0,
+          "token_limit_wilson95": [
+            0.0,
+            0.2775327998628892
+          ],
+          "over_word_limit": 4,
+          "over_word_limit_rate": 0.4,
+          "over_word_limit_wilson95": [
+            0.16818032970623614,
+            0.6873262302663417
+          ],
+          "median_words": 60.5
+        }
+      }
+    },
+    "token_limit_mcnemar": {
+      "both": 1,
+      "neither": 30,
+      "only_A": 29,
+      "only_B": 0,
+      "exact_p": 3.725290298461914e-09
+    },
+    "word_limit_mcnemar": {
+      "both": 20,
+      "neither": 17,
+      "only_A": 19,
+      "only_B": 4,
+      "exact_p": 0.002599477767944336
+    },
+    "note": "A was never asked for 65 words, so its word-limit rate is a reference point, not a violation."
+  },
+  "E5_host_regimes": {
+    "split_tokens_per_second": 3.5,
+    "counts": {
+      "A": {
+        "slow": 41,
+        "fast": 19
+      },
+      "B": {
+        "slow": 40,
+        "fast": 20
+      }
+    },
+    "mixed_regime_pairs": [
+      "expanded-002",
+      "expanded-025",
+      "expanded-027"
+    ],
+    "median_decode_tps": {
+      "fast": 4.847516814046134,
+      "slow": 2.44430335173144
+    },
+    "median_cpu_parallelism": {
+      "fast": 5.059254715341223,
+      "slow": 2.9692028794307763
+    },
+    "timeline": "slow for the first few generations, fast from about 08:07, slow again from about 08:16 UTC to the end (see F7)",
+    "regime_matched_latency_B_minus_A": {
+      "n_pairs": 55,
+      "mean": -2.6115756618240002,
+      "mean_bootstrap95": [
+        -4.9692173800156025,
+        -0.1284715672764419
+      ],
+      "median": -3.0757509000832215,
+      "median_bootstrap95": [
+        -5.54268250009045,
+        0.5824933000840247
+      ],
+      "hodges_lehmann": -2.8559543500014115,
+      "B_slower_pairs": 21,
+      "B_faster_pairs": 34,
+      "sign_test_p": 0.10478948242660335
+    },
+    "regime_matched_per_token_B_minus_A": {
+      "n_pairs": 55,
+      "mean": 0.05543236134832176,
+      "mean_bootstrap95": [
+        0.0434210328538423,
+        0.07083040360649064
+      ],
+      "median": 0.052656658995577976,
+      "median_bootstrap95": [
+        0.03899947037079626,
+        0.05876233386330898
+      ],
+      "hodges_lehmann": 0.05011120021964491,
+      "B_slower_pairs": 53,
+      "B_faster_pairs": 2,
+      "sign_test_p": 8.554268404736831e-14
+    },
+    "note": "Cause unrecorded (power plan, thermal limit or competing process are all possible). Within-pair order was randomised, so the shift adds noise more than bias, but pairs split across it are excluded here."
+  },
+  "E4_surface_form": {
+    "A": {
+      "n": 60,
+      "distinct_1": 0.27578585461689586,
+      "distinct_2": 0.768444666001994,
+      "asks_question_rate": 0.08333333333333333,
+      "top_opener": "it's great that",
+      "top_opener_share": 0.2833333333333333,
+      "stock_phrase_rate": {
+        "deep_breath": 0.05,
+        "understandable": 0.35,
+        "remember_that": 0.06666666666666667,
+        "reach_out": 0.06666666666666667,
+        "professional": 0.0
+      }
+    },
+    "B": {
+      "n": 60,
+      "distinct_1": 0.3030921820303384,
+      "distinct_2": 0.7737529691211401,
+      "asks_question_rate": 0.1,
+      "top_opener": "it's understandable to",
+      "top_opener_share": 0.2833333333333333,
+      "stock_phrase_rate": {
+        "deep_breath": 0.05,
+        "understandable": 0.48333333333333334,
+        "remember_that": 0.15,
+        "reach_out": 0.08333333333333333,
+        "professional": 0.0
+      }
+    },
+    "note": "Surface form only. Distinct-n falls with length, so compare it alongside median words."
+  },
+  "figures": [
+    "F1_run_timeline.png",
+    "F2_paired_latency.png",
+    "F3_latency_vs_length.png",
+    "F4_compliance_by_category.png",
+    "F5_length_distribution.png",
+    "F6_stock_phrases.png",
+    "F7_host_regimes.png"
+  ]
+}

@@ -1,0 +1,204 @@
+TAP version 13
+# Subtest: deterministic crisis rules preserved including known false alarms and misses
+ok 1 - deterministic crisis rules preserved including known false alarms and misses
+  ---
+  duration_ms: 2.4556
+  type: 'test'
+  ...
+# [Relevia] Failed to initialize engine
+# [Relevia] Using curated fallback reply
+# Subtest: failed WebGPU initialization returns curated reply without network or persistent storage
+ok 2 - failed WebGPU initialization returns curated reply without network or persistent storage
+  ---
+  duration_ms: 33.9173
+  type: 'test'
+  ...
+# Subtest: crisis handling precedes GPU access and never persists by default
+ok 3 - crisis handling precedes GPU access and never persists by default
+  ---
+  duration_ms: 10.2297
+  type: 'test'
+  ...
+# Subtest: new risk forms and user-history continuation bypass inference
+ok 4 - new risk forms and user-history continuation bypass inference
+  ---
+  duration_ms: 8.5804
+  type: 'test'
+  ...
+# Subtest: original miss now routes to deterministic support: I don’t want to live
+ok 5 - original miss now routes to deterministic support: I don’t want to live
+  ---
+  duration_ms: 4.0963
+  type: 'test'
+  ...
+# Subtest: original miss now routes to deterministic support: I want to kil myself
+ok 6 - original miss now routes to deterministic support: I want to kil myself
+  ---
+  duration_ms: 0.3195
+  type: 'test'
+  ...
+# Subtest: original miss now routes to deterministic support: Quiero quitarme la vida
+ok 7 - original miss now routes to deterministic support: Quiero quitarme la vida
+  ---
+  duration_ms: 0.4841
+  type: 'test'
+  ...
+# Subtest: original miss now routes to deterministic support: I have written my final goodbye and will not be here tomorrow.
+ok 8 - original miss now routes to deterministic support: I have written my final goodbye and will not be here tomorrow.
+  ---
+  duration_ms: 0.14
+  type: 'test'
+  ...
+# Subtest: explicit non-crisis reference does not escalate: I am not suicidal; I am looking for study tips.
+ok 9 - explicit non-crisis reference does not escalate: I am not suicidal; I am looking for study tips.
+  ---
+  duration_ms: 2.3894
+  type: 'test'
+  ...
+# Subtest: explicit non-crisis reference does not escalate: Our literature class discusses the word suicide.
+ok 10 - explicit non-crisis reference does not escalate: Our literature class discusses the word suicide.
+  ---
+  duration_ms: 0.675
+  type: 'test'
+  ...
+# Subtest: explicit non-crisis reference does not escalate: I am writing a report about suicide prevention policies.
+ok 11 - explicit non-crisis reference does not escalate: I am writing a report about suicide prevention policies.
+  ---
+  duration_ms: 0.2639
+  type: 'test'
+  ...
+# Subtest: negation does not mask a later affirmative risk clause
+ok 12 - negation does not mask a later affirmative risk clause
+  ---
+  duration_ms: 0.1579
+  type: 'test'
+  ...
+# Subtest: recent user context routes an imminent continuation; assistant text cannot
+ok 13 - recent user context routes an imminent continuation; assistant text cannot
+  ---
+  duration_ms: 0.5501
+  type: 'test'
+  ...
+# Subtest: ambiguous language gets clarification rather than a diagnosis
+ok 14 - ambiguous language gets clarification rather than a diagnosis
+  ---
+  duration_ms: 0.6023
+  type: 'test'
+  ...
+# Subtest: new sensitive forms erase opt-in storage and prevent later saving
+ok 15 - new sensitive forms erase opt-in storage and prevent later saving
+  ---
+  duration_ms: 1.4233
+  type: 'test'
+  ...
+# Subtest: curated support has bounded claims and urgent help is not delayed by exercises
+ok 16 - curated support has bounded claims and urgent help is not delayed by exercises
+  ---
+  duration_ms: 0.368
+  type: 'test'
+  ...
+# Subtest: Home letter never reintroduces saved identity or medical reassurance
+ok 17 - Home letter never reintroduces saved identity or medical reassurance
+  ---
+  duration_ms: 3.123
+  type: 'test'
+  ...
+# Subtest: default chat and names stay in memory; new page cannot read them
+ok 18 - default chat and names stay in memory; new page cannot read them
+  ---
+  duration_ms: 8.3356
+  type: 'test'
+  ...
+# Subtest: opt-in saves messages without separate name; restoration requires an explicit action
+ok 19 - opt-in saves messages without separate name; restoration requires an explicit action
+  ---
+  duration_ms: 0.7529
+  type: 'test'
+  ...
+# Subtest: independent session histories and clearing one never reads another
+ok 20 - independent session histories and clearing one never reads another
+  ---
+  duration_ms: 0.4164
+  type: 'test'
+  ...
+# Subtest: expiry enforced on memory reads and persisted reads without another message
+ok 21 - expiry enforced on memory reads and persisted reads without another message
+  ---
+  duration_ms: 0.4019
+  type: 'test'
+  ...
+# Subtest: expiry on writes preserves only recent turns
+ok 22 - expiry on writes preserves only recent turns
+  ---
+  duration_ms: 1.134
+  type: 'test'
+  ...
+# Subtest: names expire and consent withdrawal prevents stale writes
+ok 23 - names expire and consent withdrawal prevents stale writes
+  ---
+  duration_ms: 0.3013
+  type: 'test'
+  ...
+# Subtest: failed persistence keeps the reply in memory and disables saving
+ok 24 - failed persistence keeps the reply in memory and disables saving
+  ---
+  duration_ms: 0.795
+  type: 'test'
+  ...
+# Subtest: page end invalidation removes all in-memory session context
+ok 25 - page end invalidation removes all in-memory session context
+  ---
+  duration_ms: 0.3255
+  type: 'test'
+  ...
+# Subtest: deletion clears names, saved copies and invalidates pending handles
+ok 26 - deletion clears names, saved copies and invalidates pending handles
+  ---
+  duration_ms: 0.4694
+  type: 'test'
+  ...
+# Subtest: crisis text is memory-only and disables saving of future contextual replies
+ok 27 - crisis text is memory-only and disables saving of future contextual replies
+  ---
+  duration_ms: 0.6149
+  type: 'test'
+  ...
+# Subtest: blocked storage does not prevent default chat or crisis context
+ok 28 - blocked storage does not prevent default chat or crisis context
+  ---
+  duration_ms: 0.3938
+  type: 'test'
+  ...
+# Subtest: clear all removes legacy chat personalization but preserves separate journals
+ok 29 - clear all removes legacy chat personalization but preserves separate journals
+  ---
+  duration_ms: 0.3078
+  type: 'test'
+  ...
+# Subtest: malformed and expired saved records never restore
+ok 30 - malformed and expired saved records never restore
+  ---
+  duration_ms: 0.437
+  type: 'test'
+  ...
+# Subtest: local-only storage operations never call fetch
+ok 31 - local-only storage operations never call fetch
+  ---
+  duration_ms: 0.2891
+  type: 'test'
+  ...
+# Subtest: legacy IndexedDB cleanup reports blocked deletion
+ok 32 - legacy IndexedDB cleanup reports blocked deletion
+  ---
+  duration_ms: 0.4057
+  type: 'test'
+  ...
+1..32
+# tests 32
+# suites 0
+# pass 32
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 4311.4059

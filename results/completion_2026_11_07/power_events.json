@@ -1,0 +1,4 @@
+{
+  "status": "no_events_or_query_failed",
+  "error": "System.UnauthorizedAccessException,Microsoft.PowerShell.Commands.GetWinEventCommand"
+}

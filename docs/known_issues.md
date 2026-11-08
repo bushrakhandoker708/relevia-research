@@ -34,3 +34,17 @@ No issue is marked fixed by writing this report. Full production audit, medical-
 ## Milestone 2 follow-up — 2026-11-05
 
 The original table above remains the historical baseline. P01, default-storage aspects of P02/P03, P05 and R02 have implemented corrections with automated evidence. P04 has scoped chat deletion and stale-write guards; browser multi-tab/legacy verification remains open. C01 now has a disabled frontend integration and a full reachable-blob/current-bundle scan, with no match found; this does not establish provider rotation or external historical exposure. R03 has a new revision-pinned A/B harness, while legacy ML scripts remain unpinned. E01 passes only the changed-file gate; legacy lint still fails. See milestone_2_report.md and results/milestone_2/verification.json for exact scope. S01/S02 and broader safety/content evaluation remain unresolved. A new issue is the already-tracked archive/v1_original/empathy_42k.jsonl: provenance, PII and redistribution review are required before endorsing its publication.
+
+## Robustness follow-up — 2026-11-07
+
+R04: `src/evaluate.py` now reports an empty crisis/control group as a blank rate, not 0.0, and skips empty generation files instead of crashing. R05: precision is chosen from the hardware (bf16, fp16 on GPUs without bf16 such as a T4, or fp32 on CPU), and training reports how many rows exceed `max_len` and lose their ending. Truncated rows are still kept. R06: `src/make_rating_sheet.py` now requires `--conditions`, rejects duplicate replies, refuses to overwrite a sheet or key, and fails instead of writing an empty sheet when no rated-seed generations exist. `tests/test_robustness.py` covers R06. None of these changes touch a hash-frozen file.
+
+New, open: the frozen S1 rules in the application's `src/services/safety.js` miss "I wanna die" (the pattern requires "to" after "wanna"), "dont/cant" without an apostrophe, and "my self". They also lose most recall under single typos, stretched letters, leetspeak or one zero-width character. The evidence is in `results/safety/perturbation-v1/` and `notebooks/07_robustness_checks.ipynb`. A fix would be a successor detector with a newly frozen held-out set, not an edit to S1.
+
+New, open: the expanded-v1 paired latency interval is dominated by two pairs overlapping Modern Standby, and the host's decode rate halved part-way through the run for an unrecorded reason. See `results/analysis/robustness-v1/`.
+
+## S2 routing — 2026-11-08
+
+The S1 typing failures above are addressed by S2 in the application's `src/services/safety.js`, made at Bushra's request as an explicit exception to the routing-change restriction. S2 keeps the S1 rules and normalises zero-width characters, leetspeak, stretched letters, one-edit typos in risk words and common shorthand first. On 45 new cases frozen before S2 was written (`data/safety_v3/`), urgent recall is 18/24 for S2 against 9/24 for S1, with no false positives on 18 non-urgent cases. S1 stays verifiable from its frozen copy in `detectors/s1/`. See `notebooks/08_s2_routing.ipynb`.
+
+Still open, inherited from the S1 rules: "killing myself" (only "kill myself" matches), a word between "i" and "want", a dropped subject ("dont want to be here"), bare risk words routed to a check-in rather than urgent support, and indirect statements of an attempt or plan ("took all my pills to end it"). Fixing these needs another freshly frozen set; re-scoring on v3 would contaminate it. The cases and S2 were written by the same agent, so independent review remains outstanding.

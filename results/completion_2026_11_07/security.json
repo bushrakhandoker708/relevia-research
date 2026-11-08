@@ -1,0 +1,22 @@
+{
+  "scope": "all reachable Git blobs, current dist files; patterns plus exact local env value matching; no provider validation",
+  "repositories": {
+    "relevia": {
+      "blobs": 208,
+      "bytes": 56662102,
+      "matches": []
+    },
+    "relevia-research": {
+      "blobs": 174,
+      "bytes": 4165462,
+      "matches": []
+    }
+  },
+  "bundle": {
+    "files": 31,
+    "matches": []
+  },
+  "env_ignored": true,
+  "env_tracked": false,
+  "provider_validity_or_rotation": "not tested; no service changes authorized"
+}

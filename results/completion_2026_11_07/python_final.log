@@ -1,0 +1,27 @@
+test_failure_retained_without_fake_timing (test_execution_summary.ExecutionSummaryTests.test_failure_retained_without_fake_timing) ... ok
+test_interpolated_percentile_and_single_observation (test_execution_summary.ExecutionSummaryTests.test_interpolated_percentile_and_single_observation) ... ok
+test_missing_throughput_does_not_become_zero (test_execution_summary.ExecutionSummaryTests.test_missing_throughput_does_not_become_zero) ... ok
+test_disjoint_passes (test_experiment_01.ExperimentIntegrityTests.test_disjoint_passes) ... ok
+test_group_leak_fails_even_with_different_text (test_experiment_01.ExperimentIntegrityTests.test_group_leak_fails_even_with_different_text) ... ok
+test_incomplete_pairs_rejected (test_experiment_01.ExperimentIntegrityTests.test_incomplete_pairs_rejected) ... ok
+test_missing_ratings_are_not_invented (test_experiment_01.ExperimentIntegrityTests.test_missing_ratings_are_not_invented) ... ok
+test_normalised_duplicate_fails_with_different_ids (test_experiment_01.ExperimentIntegrityTests.test_normalised_duplicate_fails_with_different_ids) ... ok
+test_paired_constant_difference_interval (test_experiment_01.ExperimentIntegrityTests.test_paired_constant_difference_interval) ... ok
+test_quarantine_path_rejected_before_read (test_experiment_01.ExperimentIntegrityTests.test_quarantine_path_rejected_before_read) ... ok
+test_adaptation_not_silently_treated_as_base (test_foundation.FoundationTests.test_adaptation_not_silently_treated_as_base) ... ok
+test_export_unrated (test_foundation.FoundationTests.test_export_unrated) ... ok
+test_failure_retained (test_foundation.FoundationTests.test_failure_retained) ... ok
+test_group_split_deterministic (test_foundation.FoundationTests.test_group_split_deterministic) ... ok
+test_leak_fails (test_foundation.FoundationTests.test_leak_fails) ... ok
+test_live_data_and_duplicates_rejected (test_foundation.FoundationTests.test_live_data_and_duplicates_rejected) ... ok
+test_prepare_cli_has_no_fabricated_responses_and_refuses_overwrite (test_foundation.FoundationTests.test_prepare_cli_has_no_fabricated_responses_and_refuses_overwrite) ... ok
+test_required_revision (test_foundation.FoundationTests.test_required_revision) ... ok
+test_agreement_and_degenerate_case (test_independent_ratings.IndependentRatingsTests.test_agreement_and_degenerate_case) ... ok
+test_invalid_quality_score_rejected (test_independent_ratings.IndependentRatingsTests.test_invalid_quality_score_rejected) ... ok
+test_missing_is_not_zero (test_independent_ratings.IndependentRatingsTests.test_missing_is_not_zero) ... ok
+test_paired_sign_and_interval (test_independent_ratings.IndependentRatingsTests.test_paired_sign_and_interval) ... ok
+
+----------------------------------------------------------------------
+Ran 22 tests in 1.894s
+
+OK

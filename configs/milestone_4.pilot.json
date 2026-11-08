@@ -1,0 +1,33 @@
+{
+  "status": "proposal_only_not_executable_training_authorisation",
+  "training_enabled": false,
+  "requires_explicit_user_approval": true,
+  "baseline_review_complete": false,
+  "model_id": "Qwen/Qwen2.5-1.5B-Instruct",
+  "model_revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+  "tokenizer_revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+  "conditions": {"B": "base plus original optimised prompt", "C": "same base plus LoRA plus identical optimised prompt"},
+  "prompt_source": "configs/experiment_01.pilot.json:prompts.B",
+  "data": {
+    "candidate": "EmpatheticDialogues official-source ed-group-v2 partitions",
+    "training_partition": "data/processed/train.jsonl",
+    "training_sha256": "fea592b7ad462e191cd5fe56b3b5b21751be4bcb7f2dd92798114b2a51101fd6",
+    "selection": "seeded complete conversation groups; select at most 256 rows without splitting a group",
+    "validation_partition": "data/processed/val.jsonl",
+    "validation_selection": "freeze a disjoint conversation-group subset before hyperparameter selection",
+    "licence": "CC BY-NC 4.0; research-use plan; redistribution obligations require review",
+    "quarantined_data_allowed": false,
+    "final_test": "data/experiment_01_expanded/test.jsonl",
+    "final_test_sha256": "71c20342ee8386a01888de1c8af141c52c8c0dde456f4c22ee0443e5da7c77ff"
+  },
+  "lora": {"rank": 8, "alpha": 16, "dropout": 0.05, "target_modules": ["q_proj", "v_proj"], "bias": "none"},
+  "proposed_training": {
+    "seed": 42, "max_length": 512, "batch_size": 1, "gradient_accumulation_steps": 8,
+    "epochs": 1, "learning_rate_candidates": [0.0001, 0.0002], "weight_decay": 0.0,
+    "gradient_checkpointing": true, "assistant_only_loss": true,
+    "quantisation": "none for first LoRA pilot; choose supported dtype after hardware verification"
+  },
+  "hardware": {"measured_current": "CPU float32 inference only; no CUDA device established", "proposed": "Dedicated compatible GPU; test actual memory before selecting dtype or launching training", "memory_guarantee": null},
+  "evaluation": {"max_new_tokens": 110, "do_sample": false, "seed": 42, "safety_separate": true, "independent_ratings_required": true},
+  "instrumentation": ["setup_seconds", "training_seconds", "examples_and_tokens_processed", "peak_allocated_device_memory_if_supported", "failures", "adapter_size_bytes", "loading_seconds", "ttft", "throughput", "quality", "safety"]
+}

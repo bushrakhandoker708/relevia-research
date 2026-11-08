@@ -1,0 +1,167 @@
+[
+  {
+    "file": "pages/About.jsx",
+    "before": "Your heart is doing its job - pumping blood to help you cope",
+    "after": "A racing heartbeat can have several causes; this page cannot identify yours."
+  },
+  {
+    "file": "pages/About.jsx",
+    "before": "Shallow breathing is common during anxiety - your lungs are actually fine",
+    "after": "Breathlessness can occur with anxiety or other conditions. Seek urgent help for severe breathing difficulty."
+  },
+  {
+    "file": "pages/About.jsx",
+    "before": "Often caused by breathing changes - you're safe, even if you feel unsteady",
+    "after": "Sit somewhere supported if you feel unsteady. Seek medical advice if symptoms are new or concerning."
+  },
+  {
+    "file": "pages/About.jsx",
+    "before": "Muscle tension from stress - not your heart, even though it feels scary",
+    "after": "Chest discomfort needs appropriate medical assessment; do not assume it is anxiety."
+  },
+  {
+    "file": "pages/About.jsx",
+    "before": "Changes in blood flow during anxiety - uncomfortable but harmless",
+    "after": "Tingling has several possible causes. This page cannot determine whether yours is harmless."
+  },
+  {
+    "file": "pages/About.jsx",
+    "before": "This feeling is the panic talking - you're still you, and you're safe",
+    "after": "This feeling can be distressing. A qualified professional can help assess what is happening."
+  },
+  {
+    "file": "pages/About.jsx",
+    "before": "First, take a deep breath - you're safe, you're going to be okay, and what you're going through is more common than you might think.",
+    "after": "Panic can feel frightening. This page offers general information and cannot determine the cause of your symptoms."
+  },
+  {
+    "file": "pages/About.jsx",
+    "before": "you are not in actual danger</strong>. Your body is having a very real, very intense response to \n                something it perceives as threatening, even though there's no real threat present.",
+    "after": "similar symptoms can have other causes</strong>. Seek medical assessment for new or concerning symptoms, and urgent help if you may be in immediate danger."
+  },
+  {
+    "file": "pages/About.jsx",
+    "before": "Remember This Truth",
+    "after": "When to seek support"
+  },
+  {
+    "file": "pages/About.jsx",
+    "before": "Panic attacks are uncomfortable and scary, but they are not dangerous. They cannot hurt you, \n                  cause heart attacks, or make you \"go crazy.\" You will get through this, just like you've \n                  gotten through every difficult moment before.",
+    "after": "A website cannot confirm that your symptoms are a panic attack. If you have severe chest pain, severe breathing difficulty or another possible emergency, seek urgent medical help instead of waiting for an exercise to work."
+  },
+  {
+    "file": "pages/About.jsx",
+    "before": "Remember, these feelings are your body's way of trying to protect you - they're intense but not harmful.",
+    "after": "These symptoms can have different causes. A clinician can help assess them and discuss suitable support."
+  },
+  {
+    "file": "pages/About.jsx",
+    "before": "No matter how intense these symptoms feel, panic attacks are temporary. They have a beginning, \n                  a peak (usually within 10 minutes), and an end. Your body is designed to return to calm - \n                  it's just a matter of riding the wave until it passes.",
+    "after": "If these symptoms are recurring, consider speaking with a qualified health professional. Do not use a predicted duration to decide whether urgent medical help is needed."
+  },
+  {
+    "file": "components/ErrorBoundary.jsx",
+    "before": "<strong>You're safe and supported.</strong> Technical issues like this don't affect your progress or data.",
+    "after": "<strong>The page encountered a problem.</strong> Unsaved changes may have been lost."
+  },
+  {
+    "file": "components/ErrorBoundary.jsx",
+    "before": "<span>Crisis Hotline: <a href=\"tel:988\" className=\"font-semibold hover:underline\">988</a></span>",
+    "after": "<span>If there is immediate danger, contact your local emergency service.</span>"
+  },
+  {
+    "file": "components/CopingTechniques/Relaxation.jsx",
+    "before": "<p>• National Suicide Prevention Lifeline: <strong>988</strong></p>",
+    "after": "<p>• If there is immediate danger, contact your local emergency service now.</p>"
+  },
+  {
+    "file": "components/CopingTechniques/Relaxation.jsx",
+    "before": "Nothing can harm or disturb you.",
+    "after": "You can stop this exercise at any time."
+  },
+  {
+    "file": "components/CopingTechniques/Relaxation.jsx",
+    "before": "This feeling of calm will stay with you.",
+    "after": "Notice how you feel without expecting a particular outcome."
+  },
+  {
+    "file": "components/CopingTechniques/Relaxation.jsx",
+    "before": "Every sensation confirms your safety and comfort.",
+    "after": "An imagined setting cannot establish your physical safety."
+  },
+  {
+    "file": "pages/Resources.jsx",
+    "before": "<li>Spot the Panic Stories: Recognize the lies your mind tells you—like “I’m having a heart attack” or “I’ll pass out”—and label them as stories, not truths.</li>",
+    "after": "<li>Check your needs: this page cannot distinguish anxiety from a medical problem. Seek assessment for new or concerning symptoms.</li>"
+  },
+  {
+    "file": "pages/Resources.jsx",
+    "before": "<li>Invite the Sensations: Say, “Bring it on, panic!” Try to make your heart beat faster or your dizziness grow, proving these feelings can’t hurt you.</li>",
+    "after": "<li>Do not deliberately intensify dizziness, breathlessness or chest symptoms. Discuss exposure exercises with a qualified clinician.</li>"
+  },
+  {
+    "file": "pages/Resources.jsx",
+    "before": "<li>Use Positive Self-Talk: Remind yourself, “This is uncomfortable, but not dangerous. It’ll pass like a wave.”</li>",
+    "after": "<li>Use bounded self-talk: “I can pause, consider what I need and ask for help.”</li>"
+  },
+  {
+    "file": "pages/Resources.jsx",
+    "before": "Moving around might ease symptoms slightly, a clue it’s anxiety, not a physical ailment. Walking can feel better than sitting still, reinforcing that you’re safe.",
+    "after": "A change in symptoms when moving does not establish their cause. Do not use an exercise as a diagnostic test."
+  },
+  {
+    "file": "pages\\Resources.jsx",
+    "before": "What if the key to stopping a panic attack isn’t fighting it, but leaning into it? This unconventional strategy, inspired by Barry McDonagh’s book Dare, suggests welcoming the sensations instead of resisting them. Take Jon’s story: after 30 years of panic disorder triggered by travel, he found freedom by rethinking his approach.",
+    "after": "Some therapies explore how people respond to feared sensations. This page does not provide an individual exposure-treatment plan."
+  },
+  {
+    "file": "pages\\Resources.jsx",
+    "before": "On a flight from the UK to Austria, Jon felt the familiar rise of anxiety as the plane door closed. Instead of trying to calm down, he labeled his fearful thoughts—“What if I have a panic attack? This is catastrophic!”—as “panic story number two.” Then, he did something radical: he turned off his headphones, pumped his legs, and tapped his knees, daring the panic to get worse. To his surprise, it didn’t. The more he tried to amplify it, the more it faded, leaving him relaxed enough to watch Netflix.",
+    "after": "Exposure exercises should be discussed with a qualified clinician, including whether they are appropriate for your circumstances."
+  },
+  {
+    "file": "pages\\Resources.jsx",
+    "before": "This works because inviting panic breaks the fear cycle. By showing your brain that these sensations aren’t a threat, you prove they’re safe to experience. It’s a shift from enduring to confronting—a paper tiger that loses its power when you face it head-on.",
+    "after": "Do not deliberately provoke symptoms based on this page. Support options can be discussed with a qualified professional."
+  },
+  {
+    "file": "pages\\Resources.jsx",
+    "before": "When a panic attack hits, the go-to advice is often to “calm down” or “take slow breaths.” But here’s the catch: this can make things worse. The more you try to control symptoms like a racing heart or shortness of breath, the more you signal to your brain that these sensations are dangerous. This fuels a vicious cycle—your anxiety spikes, your heart beats faster, and the panic intensifies.",
+    "after": "People respond differently to self-help exercises. If an exercise increases discomfort, stop and consider other support."
+  },
+  {
+    "file": "pages\\Resources.jsx",
+    "before": "For example, focusing on slowing your breathing might heighten your awareness of physical discomfort, amplifying the fear. Even attempts to “embrace” the panic in a zen-like way can backfire if you’re still treating the sensations as something to endure rather than accept. This paradox reveals why conventional wisdom often falls short for those grappling with panic disorder.",
+    "after": "These activities are optional. They cannot determine whether symptoms are anxiety or a medical condition."
+  },
+  {
+    "file": "components\\CopingTechniques\\Affirmations.jsx",
+    "before": "Absolute assurance in exercise text",
+    "after": "Conditional, optional participation; no guaranteed safety or outcome"
+  },
+  {
+    "file": "components\\CopingTechniques\\Breathing.jsx",
+    "before": "Absolute assurance in exercise text",
+    "after": "Conditional, optional participation; no guaranteed safety or outcome"
+  },
+  {
+    "file": "components\\CopingTechniques\\Journaling.jsx",
+    "before": "Absolute assurance in exercise text",
+    "after": "Conditional, optional participation; no guaranteed safety or outcome"
+  },
+  {
+    "file": "components\\CopingTechniques\\Mindfulness.jsx",
+    "before": "Absolute assurance in exercise text",
+    "after": "Conditional, optional participation; no guaranteed safety or outcome"
+  },
+  {
+    "file": "components\\CopingTechniques\\Relaxation.jsx",
+    "before": "Absolute assurance in exercise text",
+    "after": "Conditional, optional participation; no guaranteed safety or outcome"
+  },
+  {
+    "file": "components\\CopingTechniques\\Visualization.jsx",
+    "before": "Absolute assurance in exercise text",
+    "after": "Conditional, optional participation; no guaranteed safety or outcome"
+  }
+]

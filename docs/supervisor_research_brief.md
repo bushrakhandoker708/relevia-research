@@ -1,0 +1,11 @@
+# Preliminary research brief: resource-aware supportive language models
+
+I am developing Relevia as a testbed for studying the trade-off between supportive response quality, safety and local inference cost. My current question is whether prompting and later low-rank adaptation improve grounded support enough to justify their systems cost on constrained devices. The work is preliminary and agent-assisted; I am preparing the evidence so that its methods and limitations can be inspected and explained.
+
+The first controlled comparison used one pinned Qwen2.5-1.5B model with a minimal safe prompt and a developed prompt. An eight-case pilot gave an inconclusive relevance difference of +0.125, with a bootstrap interval spanning −0.875 to +1.125, based on unblinded agent ratings. A frozen extension has now generated 120 responses on 60 new ordinary-context scenarios. Independent human evaluation is still outstanding. Reduced token-budget exhaustion under the developed prompt is not evidence of improved empathy.
+
+The engineering investigation has been equally important. A historical dataset was quarantined because its provenance could not be established. Conversation-level leakage checks now pass. Corrected deterministic safety rules improve a provisional synthetic routing test but retain three urgent-case misses. Runtime instrumentation exposed a long response overlapping Windows Modern Standby, demonstrating why host availability and startup must be separated from generation cost. Actual browser inference remains unverified.
+
+The proposed next comparison keeps the base model, prompt and held-out inputs fixed while adding a small LoRA adapter. Before training, I need independent blinded ratings and agreement on the dataset and safety protocol. I would welcome guidance on whether adaptation or backend/quantisation choice is the more useful next intervention, and how to design a convincing quality–cost–safety evaluation under limited computing resources.
+
+Evidence: `notebooks/01_dataset_audit.ipynb`, `03_baseline_evaluation.ipynb`, `05_safety_evaluation.ipynb`, `06_quantization_and_inference.ipynb`, and their linked raw results. This is a draft for Bushra's review, not a sent message or a claim of independent authorship of all implementation work.

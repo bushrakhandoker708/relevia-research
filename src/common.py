@@ -71,6 +71,15 @@ def build_messages(cfg, condition, user_text, fewshot=None, history=None):
     return msgs
 
 
+def pick_dtype():
+    """bf16 where the GPU supports it, fp16 on older GPUs (e.g. Colab T4), fp32 on CPU.
+    FIX (R05): I hard-coded bf16 everywhere, which breaks or crawls on a T4."""
+    import torch
+    if torch.cuda.is_available():
+        return torch.bfloat16 if torch.cuda.is_bf16_supported() else torch.float16
+    return torch.float32
+
+
 def adapter_dir(cfg, seed):
     return ROOT / cfg["output"]["adapters_dir"] / f"{cfg['model']['name']}_seed{seed}"
 

@@ -1,0 +1,16 @@
+{
+  "source": "Read-only Windows System log query; Kernel-Power provider; two events in 08:55\u201309:15 UTC window",
+  "events": [
+    {
+      "id": 506,
+      "utc": "2026-11-07T08:56:49.0369456Z",
+      "message": "The system is entering Modern Standby. Reason: Idle Timeout."
+    },
+    {
+      "id": 507,
+      "utc": "2026-11-07T09:12:57.4649390Z",
+      "message": "The system is exiting Modern Standby. Reason: Power Button."
+    }
+  ],
+  "interpretation": "Standby interval overlaps expanded-055 A. Strong evidence for a host availability confound, not proof of the original pilot outlier cause."
+}

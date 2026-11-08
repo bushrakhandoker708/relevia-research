@@ -1,0 +1,13 @@
+# Safety improvement decisions
+
+The first decision was to correct demonstrable deterministic failures before introducing another model. A local classifier could recognise broader paraphrases, but it would add training provenance, calibration, runtime and failure-mode requirements. The current evidence justifies investigating those requirements; it does not justify deploying an unvalidated classifier. S2 is therefore deferred.
+
+S0 remains available as the original expression. S1 and its held-out inputs are hash-frozen. The repeated evaluation on 7 November reproduced the prior output exactly. Better sensitivity and specificity on this small suite are useful engineering evidence, while the three remaining misses prevent a claim of comprehensive detection. The same agent created the labels and implementation, introducing bias that confidence intervals do not remove.
+
+High-risk matches use deterministic support before model inference. The response acknowledges that the system cannot provide emergency care, directs immediate danger towards real-world help and does not delay help behind a breathing exercise. Country-specific contact information is conditional. This is an agent-reviewed template against public guidance, not clinician approval. Unknown language and indirect risk remain important limitations.
+
+Storage screening deliberately remains more conservative than urgent routing. Educational references may avoid escalation but still prevent sensitive persistence. This sacrifices some saving convenience to reduce persistence of risk-related conversation. Existing opt-in, expiry, isolation, deletion and stale-handle tests must continue to pass. Local inference is not differential privacy or authentication.
+
+On 7 November, the content review found misleading reassurance outside the chat fallback utilities. Changes address assumptions about lungs and chest symptoms, deliberate symptom provocation, guarantees about data after a crash, and several absolute exercise assurances. No measured user benefit is claimed. `content_changes.json` records the individual before/after text; the regression tests cover the highest-priority patterns. A full clinical content review and browser interaction check remain separate gates.
+
+The next detector version must treat the now-inspected S1 test cases as development evidence. It needs newly authored and independently reviewed test material before its generalisation can be compared. Likewise, the new 60-case prompting test is frozen and must not become prompt-tuning material. These boundaries preserve negative results rather than improving a reported score by editing the test.

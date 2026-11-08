@@ -12,7 +12,7 @@ import argparse, json, sys, time
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from common import ROOT, load_config, read_jsonl, set_seed, build_messages, adapter_dir, load_tokenizer, chat_ids  # noqa: E402
+from common import ROOT, load_config, read_jsonl, set_seed, build_messages, adapter_dir, load_tokenizer, chat_ids, pick_dtype  # noqa: E402
 
 import torch
 from datasets import Dataset
@@ -45,14 +45,16 @@ def main():
     # ---- tokenizer + 4-bit base ----
     tok = load_tokenizer(mcfg["base_model"])
     tok.padding_side = "right"
+    dtype = pick_dtype()
+    print(f"compute dtype: {dtype}")
     quant = BitsAndBytesConfig(
         load_in_4bit=True,
         bnb_4bit_quant_type="nf4",
-        bnb_4bit_compute_dtype=torch.bfloat16,
+        bnb_4bit_compute_dtype=dtype,
         bnb_4bit_use_double_quant=True,
     ) if tcfg["load_in_4bit"] else None
     model = AutoModelForCausalLM.from_pretrained(
-        mcfg["base_model"], quantization_config=quant, device_map="auto", dtype=torch.bfloat16)
+        mcfg["base_model"], quantization_config=quant, device_map="auto", dtype=dtype)
     model.config.use_cache = False  # cache + gradient checkpointing don't mix
     if quant:
         model = prepare_model_for_kbit_training(model, use_gradient_checkpointing=True)
@@ -75,14 +77,20 @@ def main():
             # if this ever fires, the template adds something between turns and my
             # label mask would be in the wrong place - better to crash than train on junk
             raise ValueError("chat template prefix mismatch, label masking would be wrong")
+        # R05: a reply longer than max_len loses its end-of-turn token, so the model
+        # would learn to never stop. I count these instead of hiding them.
+        cut = len(full_ids) > tcfg["max_len"]
         full_ids = full_ids[: tcfg["max_len"]]
         labels = [-100] * min(len(prompt_ids), len(full_ids)) + full_ids[len(prompt_ids):]
-        return {"input_ids": full_ids, "attention_mask": [1] * len(full_ids), "labels": labels}
+        return {"input_ids": full_ids, "attention_mask": [1] * len(full_ids), "labels": labels, "truncated": cut}
 
     def prep(rows):
         ds = Dataset.from_list([tokenize(r) for r in rows])
+        cut = sum(ds["truncated"])
+        if cut:
+            print(f"  {cut}/{len(ds)} rows were longer than max_len={tcfg['max_len']} and lost their ending")
         # drop rows where the reply got cut off completely by max_len
-        return ds.filter(lambda x: any(l != -100 for l in x["labels"]))
+        return ds.filter(lambda x: any(l != -100 for l in x["labels"])).remove_columns("truncated")
 
     train_ds, val_ds = prep(train_rows), prep(val_rows)
     print(f"train rows: {len(train_ds)}  val rows: {len(val_ds)}")
@@ -111,7 +119,8 @@ def main():
             learning_rate=tcfg["lr"],
             lr_scheduler_type="cosine",
             warmup_ratio=tcfg["warmup_ratio"],
-            bf16=True,
+            bf16=dtype == torch.bfloat16,
+            fp16=dtype == torch.float16,
             gradient_checkpointing=True,
             logging_steps=25,
             eval_strategy="steps",

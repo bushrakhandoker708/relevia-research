@@ -1,0 +1,8 @@
+test_failure_retained_without_fake_timing (test_execution_summary.ExecutionSummaryTests.test_failure_retained_without_fake_timing) ... ok
+test_interpolated_percentile_and_single_observation (test_execution_summary.ExecutionSummaryTests.test_interpolated_percentile_and_single_observation) ... ok
+test_missing_throughput_does_not_become_zero (test_execution_summary.ExecutionSummaryTests.test_missing_throughput_does_not_become_zero) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.001s
+
+OK
