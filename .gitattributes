@@ -1,0 +1,3 @@
+data/**/*.jsonl -text
+data/**/freeze.json -text
+detectors/** -text

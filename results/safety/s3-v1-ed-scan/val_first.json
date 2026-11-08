@@ -1,0 +1,37 @@
+{
+  "scope": "FIRST over-routing scan, EmpatheticDialogues validation prompts, S3 at sha 1b648278 (after the v4 post-hoc fixes); reconstructed from the run log because the script overwrote its output on the second run",
+  "n": 4534,
+  "tally": {
+    "S2": {
+      "urgent": 0,
+      "check_in": 1,
+      "none": 4533
+    },
+    "S3": {
+      "emergency": 12,
+      "urgent": 1,
+      "check_in": 1,
+      "none": 4520
+    }
+  },
+  "false_alarm_ids": {
+    "emergency": [
+      "hit:236_conv:472_t2",
+      "hit:2867_conv:5734_t2",
+      "hit:3785_conv:7570_t2",
+      "hit:4524_conv:9049_t2",
+      "hit:4611_conv:9223_t2",
+      "hit:4998_conv:9996_t4",
+      "hit:7902_conv:15805_t2",
+      "hit:8226_conv:16453_t2",
+      "hit:8226_conv:16453_t4",
+      "hit:9690_conv:19380_t4",
+      "hit:9810_conv:19621_t2",
+      "hit:9819_conv:19639_t4"
+    ],
+    "urgent": [
+      "hit:10657_conv:21314_t4"
+    ]
+  },
+  "manual_review": "all 13 urgent/emergency routes read as ordinary text (outings, trips, haircut, cliff-jumping into water, loans, a pet dentist visit, a third person who did NOT hurt himself); 0 true risk"
+}

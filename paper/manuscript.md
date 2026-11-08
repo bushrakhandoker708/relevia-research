@@ -20,7 +20,7 @@ Three properties have to be measured together, because improving one can damage 
 - **Safety.** Are urgent messages routed to a fixed safe response? Does the generated reply avoid refusal, false reassurance, invented contact details and encouraging dependency?
 - **Cost.** How long do startup, time to first token and generation take on the hardware a user actually has?
 
-Warmth-oriented training of larger models has been reported to increase agreement with incorrect user beliefs, particularly when the user expresses sadness (Ibrahim et al., 2026; full-text verification pending, see `research/notes/LITERATURE_REVIEW.md`). Whether a comparable trade-off appears at 1–2B parameters, and whether it differs between prompting and adaptation, has not been tested here or, as far as the incomplete literature review shows, elsewhere. That last point is a reading gap, not a novelty claim.
+A preprint reports that training language models to be warmer made them less reliable and more likely to agree with incorrect user beliefs, especially when the user expressed sadness (Ibrahim, Hafner and Rocher, 2025, arXiv:2507.21919). Only the arXiv abstract has been checked. Earlier notes cited a Nature version with a different title, which could not be verified. Whether a comparable trade-off appears at 1–2B parameters, and whether it differs between prompting and adaptation, has not been tested here or, as far as the incomplete literature review shows, elsewhere. That last point is a reading gap, not a novelty claim.
 
 ## 3. Research questions
 
@@ -32,13 +32,13 @@ The B–C comparison is the principal one. A versus B describes prompt developme
 
 ## 4. Related work
 
-*Status: partial. Each entry below is marked with how far it has been verified. The full audit is in `research/notes/LITERATURE_REVIEW.md`.*
+*Status: partial. On 8 November 2026 the bibliographic details of every cited work were checked against arXiv or the publisher (see `references.bib`). Claims about content come from abstracts only, unless stated otherwise.*
 
 **Parameter-efficient adaptation.** LoRA freezes the pretrained weights and learns a low-rank update to selected projection matrices (Hu et al., 2021). QLoRA keeps the frozen base in 4-bit precision while training the adapter (Dettmers et al., 2023). This study uses ordinary LoRA first, so that quantisation is not a second treatment in the B–C comparison.
 
 **Empathetic dialogue data and measurement.** EmpatheticDialogues provides about 25,000 crowd-sourced conversations grounded in 32 emotion labels (Rashkin et al., 2019). EPITOME splits empathy into emotional reactions, interpretations and explorations (Sharma et al., 2020); the rating rubric in `docs/rating_guide.md` is adapted from it. ESConv frames emotional support as a strategy sequence (Liu et al., 2021) and is a candidate for future multi-turn evaluation.
 
-**Small models for supportive dialogue.** BN et al. (2025) compared zero-shot and LoRA-fine-tuned small models (0.5–5B) for PTSD dialogue support and did not find fine-tuning clearly better. This is the closest prior work found so far. The working notes on it still need to be reconciled with the paper's own conclusions before it is cited for anything specific.
+**Small models for supportive dialogue.** BN et al. (2025, EMNLP; arXiv:2505.15065) evaluated eight small models (0.5–5B) on a synthetic PTSD dialogue set, zero-shot and after fine-tuning. Their abstract reports that fine-tuning *improved* similarity to reference replies and perceived empathy, with gains that varied across scenarios and a "knowledge transfer ceiling" for the smallest models. **Correction (8 November 2026):** the project's earlier literature notes said this paper found fine-tuning "not clearly better". That reading contradicts the abstract and has been withdrawn until the full text is checked. This is the closest prior work found so far, and it makes a B versus C comparison on a 1.5B model a reasonable question rather than an expected null result.
 
 **On-device inference.** WebLLM runs quantised models in the browser on WebGPU (Ruan et al., 2024). The base model's report is Qwen Team (2024).
 
@@ -52,17 +52,18 @@ What the evidence supports today:
 2. A controlled A/B execution record (120 generations, no runtime failures) with paired re-analysis showing that an apparent latency advantage for B is a length effect plus a host-suspension confound.
 3. Three versions of a deterministic safety router, each evaluated on a set frozen before that version was written, with frozen detector copies so that old results still reproduce.
 4. A LoRA pipeline for the B–C comparison that changes only the adapter, refuses the final test set and has passed a smoke test.
-5. Browser benchmark instrumentation that separates cold and cached startup, runtime-reported prefill and decode rates, failures and unloading. It has not yet been run.
+5. Browser benchmark instrumentation that separates cold and cached startup, runtime-reported prefill and decode rates, failures and unloading, with one executed run on this laptop's integrated GPU.
+6. S3, a tiered input router with a non-generative emergency path, evaluated once on a set frozen before it was written and checked for over-routing on unseen human-written text.
 
-What is not supported: any claim that B or C is more supportive, any clinical claim, any browser performance result and any novelty claim.
+What is not supported: any claim that B or C is more supportive, any clinical claim, any browser result beyond one laptop's integrated GPU, and any novelty claim.
 
 ## 6. System architecture
 
 The application is a React client. A Web Worker hosts WebLLM 0.2.79, which runs a quantised Llama-3.2 or Qwen2.5 model on WebGPU. Each user message passes through three stages:
 
-1. **Route.** `src/services/safety.js` (S2) classifies the message as `urgent`, `check_in` or `normal`. An urgent message receives a fixed response with verified support information and is never generated.
+1. **Route.** `src/services/safetyS3.js` (S3, since 8 November 2026) classifies the message as `emergency`, `urgent`, `check_in` or `none`. Something already taken or done, or the means in hand with intent, receives a fixed emergency-services message. Other urgent messages receive a fixed support message. Neither is ever generated. S2 (`safety.js`) is kept unchanged for comparison.
 2. **Generate.** Otherwise the model streams a reply under the application's system prompt.
-3. **Guard.** `src/services/replyGuard.js` stops streaming and replaces the reply if it contains a refusal pattern or an unverified contact detail (a named hotline, or a phone-like span with seven or more digits). The guard was added on 8 November 2026 after a logged reply refused to discuss a death and gave an outdated United States hotline number.
+3. **Guard.** `src/services/replyGuard.js` (G2) checks the reply as it streams. Only checked sentences are shown, plus the unfinished one when nothing in it could still become a refusal or a contact detail. An inappropriate refusal is replaced with a fixed message. A legitimate one, such as declining to give overdose information, is kept. A sentence containing an unverifiable named service or phone number is removed, and the one verified line is added. The first version (G1) was added after a logged reply refused to discuss a death and gave an outdated United States hotline number. G2 followed an audit showing that G1 could display part of a problem before catching it.
 
 Conversation history is session-only by default. Persistence requires explicit consent and can be deleted. The research repository mirrors the generation path in Python (`scripts/generate_bc.py`) so that B and C can be compared under controlled settings. The Python path is not claimed to be numerically equivalent to the browser path.
 
@@ -102,6 +103,11 @@ The LoRA pilot selects whole conversation groups with a seeded procedure. The sm
 | LoRA smoke validation loss | 4.020 → 3.665 after 4 steps | Pipeline check only |
 | Generative safety flags on v3 (B, 45 replies) | 0 refusals, 0 reassurance/dependency/medical flags, 1 contact flag (false positive) | Lexical flags, not ratings |
 | Replies to the 6 urgent messages S2 misses | 4 of 6 read as harmful or inadequate (e.g. no emergency direction after a stated overdose); none flagged | Agent reading, not ratings (`docs/safety_failure_taxonomy.md`) |
+| Router recall on v4 (46 urgent incl. 13 emergencies), first run | S2 13/46 (0.28); S3 43/46 (0.93, 0.82–0.98); S3 emergencies 11/13 | v4 frozen before S3; same author, not independent |
+| Router false alarms on v4 (25 non-urgent) | S2 2/25; S3 0/25 | Agent labels |
+| S3 over-routing on unseen human text (ED dev, 2,873 prompts) | 1 urgent false alarm, 0 emergencies | Held-out for over-routing only; fixed afterwards |
+| Reply guard on 218 real model replies | G1: 1 correct, 1 false positive, 1 miss; G2 (after audit fix): 2 correct, 0 false positives, 0 misses found | Agent review; small n |
+| Browser, Intel UHD, Llama-3.2-1B q4f16, cached | startup 4.6 s; TTFT A 1.0 s, B 2.4 s; decode 5.6 tok/s; 0/6 failures | One machine, 3 repeats; RTX 4060 not used |
 | Supportive quality | none | Blocked on ratings |
 
 The figures behind these rows are indexed in `paper/figures/README.md`. The tables in `paper/tables/` are generated from the frozen JSON files rather than typed by hand.
@@ -115,9 +121,9 @@ The application is not a clinical service and says so. Urgent messages receive a
 ### 10.2 Limitations
 
 - **No quality evidence.** Every claim about supportiveness is withheld until independent blinded ratings exist.
-- **Agent-authored safety labels.** The S2 evaluation was written by the same agent that wrote the v3 set, so it overstates how well S2 generalises. A successor detector needs a set written by someone else.
-- **Synthetic, English-only inputs.** The scenarios are short and single-turn. Multilingual and multi-turn risk language is untested, and the router is known to miss French risk language.
-- **One model, one machine.** All measurements come from Python float32 on a single Windows laptop's CPU. The host changed decode regime partway through a run for an unrecorded reason. Browser numbers do not exist yet. On this laptop the browser chose the integrated Intel GPU, not the RTX 4060.
+- **Agent-authored safety labels.** v3 and v4 were written by the same agent that wrote S2 and S3, and that agent had seen the earlier misses. The first-run S3 recall of 0.93 is therefore optimistic. Post-hoc fixes raised it to 46/46, which is development evidence only. A set written by someone else is still needed.
+- **Synthetic, mostly English inputs.** The scenarios are short. S3 covers a few French and Spanish phrases and nine multi-turn patterns. Wider multilingual and multi-turn coverage is untested.
+- **One model, one machine.** The A/B measurements come from Python float32 on a single Windows laptop's CPU, and the host changed decode regime partway through a run for an unrecorded reason. The one browser run used a different model (Llama-3.2-1B) on the integrated Intel GPU, because Windows did not give the browser the RTX 4060.
 - **Lexical flags.** The generative safety flags are pattern matches. They will miss paraphrased harm and can fire on harmless text.
 
 ### 10.3 Assistance disclosure
@@ -126,4 +132,4 @@ The code, analysis and much of the prose in both repositories were produced with
 
 ## References
 
-See `paper/references.bib`. Entries marked `note = {unverified}` have not been checked against the source and must not be cited until they are.
+See `paper/references.bib`. Every entry's verification status is in its `note` field. The Nature version of the Ibrahim et al. work is not verified and is not cited.

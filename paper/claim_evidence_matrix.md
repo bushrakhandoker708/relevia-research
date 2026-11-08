@@ -13,8 +13,13 @@ Each claim in `manuscript.md` is listed with the evidence that supports it and h
 | 7 | S2 detects more v3 urgent messages than S1 without new false alarms | 18/24 vs 9/24; FPR 0/18 for both (`s2-v1/evaluation.json`) | Weak to moderate: same agent wrote v3 and S2; n = 42 | an independently written frozen set |
 | 8 | The LoRA pipeline runs end to end without reading the final test set | `results/lora/smoke-v1/manifest.json`: `final_test_read: false`, val loss 4.02 → 3.67 | Pipeline check only | the approved pilot |
 | 9 | The reply guard catches the logged failure | `relevia/tests/reply-guard.test.js` (11 tests) | Unit-level | live monitoring of real replies |
-| 10 | Benchmark instrumentation separates startup, TTFT, prefill/decode, failures and unloading | `relevia/tests/browser-benchmark.test.js` (5 tests, fake engine) | Code only; no measurement | an executed browser run |
+| 10 | Benchmark instrumentation separates startup, TTFT, prefill/decode, failures and unloading | 5 unit tests; one real run (`results/performance/browser-v1-intel/`) | One laptop, Intel iGPU, 3 repeats | RTX 4060 run after the Windows GPU setting; more devices |
 | 10a | Lexical flags miss the most serious generative failures | 4 of 6 S2-missed urgent replies read as inadequate, 0 flagged (`results/safety/generative-v1/analysis.json`, `docs/safety_failure_taxonomy.md`) | Weak: agent reading, n = 6 | independent hazard ratings |
+| 10b | S3 routes far more urgent messages than S2 without new false alarms | v4 first run: 43/46 vs 13/46, FP 0/25 vs 2/25; McNemar p ≈ 1.5e-8 (`results/safety/s3-v1/`) | Moderate: frozen before S3, but same author; n = 71 | an independently written set |
+| 10c | S3 rarely over-routes ordinary human text | ED dev 2,873 prompts: 1 urgent false alarm, 0 emergencies (`results/safety/s3-v1-ed-scan/dev_heldout.json`) | Moderate for over-routing; says nothing about recall | other corpora, multi-turn text |
+| 10d | Emergencies get a non-generative emergency message in the app | browser UI check 8 Nov; `tests/safety-s3.test.js` | Functional | wording review by a qualified person |
+| 10e | G2 guard has fewer errors than G1 on real replies, without leaking partial text | 218 replies (`results/safety/reply-guard-v1/`); streaming tests | Weak: 2 positives in the corpus | a larger corpus with refusals and numbers |
+| 10f | Prior work found fine-tuning helps small models' empathy | BN et al. 2025 abstract only | Weak: abstract | full text; earlier contrary note withdrawn |
 | 11 | B is more supportive than A | none | **Not supported** | 2 independent blinded reviewers, 120 items |
 | 12 | C is more supportive or safer than B | none | **Not supported** | approved pilot, final-test generation, ratings |
 | 13 | The work is novel | none | **Not supported** | completed literature review |

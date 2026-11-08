@@ -87,3 +87,7 @@ Milestone 3 is closed as exploratory groundwork ([closure audit](docs/MILESTONE_
 
 Still missing: independent ratings (0 of 120), the approved pilot on a GPU, a browser benchmark run and a safety set written by someone other than the detector's author.
 
+## Milestone 4.1: urgent safety fixes and audits
+
+S2 missed every emergency in a new frozen set (`data/safety_v4`). S3 adds an emergency tier with a fixed, non-generative response. On its single held-out run it caught 43 of 46 urgent cases (0.93, 95% interval 0.82–0.98) with no false alarms on 25 ordinary messages. On 2,873 unseen human-written EmpatheticDialogues prompts it made one false alarm. The same agent wrote the cases and the detector, so these results are not independent. The reply guard was audited on 218 real replies, all references were checked, and the first real browser benchmark ran on this laptop's integrated GPU. See the [Milestone 4.1 report](docs/MILESTONE_4_1_REPORT.md) and the [safety evidence package](docs/safety_failure_taxonomy.md).
+

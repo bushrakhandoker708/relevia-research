@@ -1,4 +1,4 @@
-# Browser benchmark: prepared, not executed
+# Browser benchmark protocol
 
 The application now contains `src/services/browserBenchmark.js`, an opt-in research harness that is not imported by the public chat. It takes an isolated engine factory, two frozen prompts and explicit model/runtime/quantisation/WASM metadata. It uses only a fixed synthetic caregiving input, records a separate warm-up and five alternating A/B repetitions, and returns a local report. It does not read chat history, contact users or upload results.
 
@@ -19,7 +19,9 @@ The harness now separates the quantities that the earlier version combined:
 | Switching and unloading | Optional `switchModel` hook, then a timed `unload` | Measured once per run. |
 | Hardware | `collectHardware()`: WebGPU adapter vendor, architecture, description, `shader-f16`, `maxBufferSize`, fallback flag, logical cores, `deviceMemory` | Shows the adapter the **browser** chose. On the development laptop this was Intel UHD even though an RTX 4060 is installed, so hardware must be recorded per run rather than assumed. |
 
-The unit tests (`tests/browser-benchmark.test.js`, five tests) use a fake engine, including an injected device-lost failure. They check the bookkeeping only and are not measurements. No browser benchmark has been executed.
+The unit tests (`tests/browser-benchmark.test.js`, five tests) use a fake engine, including an injected device-lost failure. They check the bookkeeping only and are not measurements.
+
+**First executed run (8 November 2026):** `results/performance/browser-v1-intel/`. It used the Intel integrated GPU, because Windows had no per-app GPU preference set, with Llama-3.2-1B q4f16 cached and 3 repeats. Median time to first token was 1.0 s for A and 2.4 s for B, decode was 5.6 tok/s, and there were 0/6 failures. An RTX 4060 run is pending the Windows setting.
 
 Before execution, verify immutable converted-model and WASM artifact URLs and record their checksums. The installed model catalogue contains Qwen2.5-1.5B q4f16 and q4f32 variants, but catalogue membership does not establish that their weights are identical to the Python experiment's pinned revision. The factory must create a separate benchmark engine rather than reuse a person's chat instance. Record browser, operating system, device, cache state, power mode and concurrent activity. Do not label a cached model load a network-cold load.
 

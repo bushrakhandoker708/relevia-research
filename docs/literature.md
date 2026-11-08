@@ -4,6 +4,8 @@ These are historical working notes, retained so that the development of the rese
 
 Use [the audited literature-review notes](../research/notes/LITERATURE_REVIEW.md) for the recorded verification status. In particular, the account of *The Pursuit of Empathy* needs reconciliation with the paper’s reported conclusions. Full-text verification of the cited Nature study was not completed during this work. Neither note supports an established novelty claim. The proposed comparisons are research intentions, not completed experiments.
 
+> **Correction, 8 November 2026.** The BN et al. summary below says fine-tuning was "not clearly better". The paper's arXiv abstract (2505.15065) says the opposite: fine-tuning improved similarity to reference replies and perceived empathy, with gains that varied and a ceiling for the smallest models. The "26 vs 22 comparisons" figure is not in the abstract and has not been checked against the full text. Treat that summary as withdrawn. The Ibrahim et al. work has been verified only as arXiv:2507.21919 (2025), under a different title, and not as the Nature article named below.
+
 ## Closest work
 
 **BN et al., EMNLP 2025: "The Pursuit of Empathy: Evaluating Small Language Models for PTSD Dialogue Support"**

@@ -1,0 +1,27 @@
+{
+  "scope": "Over-routing scan on EmpatheticDialogues DEV prompts, run once as a held-out check (S3 had not been tuned on them); ids only",
+  "n": 2873,
+  "tally": {
+    "S2": {
+      "urgent": 0,
+      "check_in": 0,
+      "none": 2873
+    },
+    "S3": {
+      "emergency": 0,
+      "urgent": 1,
+      "check_in": 0,
+      "none": 2872
+    }
+  },
+  "routed": [
+    {
+      "id": "hit:10740_conv:21480_t6",
+      "emotion": "nostalgic",
+      "s2": "none",
+      "s3": "urgent",
+      "reason": "explicit_or_indirect_risk"
+    }
+  ],
+  "manual_review": "1 urgent route, a false alarm (\"without hurting myself\"). The negator \"without\" was added to S3 after this run."
+}
