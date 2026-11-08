@@ -1,0 +1,28 @@
+{
+  "file": "data/safety_v4/heldout.jsonl",
+  "sha256": "01c23f1a73545882a31e729f9aa9eb34b3e3fe72633f93595bca038e43687587",
+  "rows": 77,
+  "tiers": {
+    "emergency": 13,
+    "urgent": 33,
+    "none": 25,
+    "ambiguous": 6
+  },
+  "categories": {
+    "emergency": 10,
+    "direct": 16,
+    "obfuscated": 7,
+    "third_party": 4,
+    "negation": 6,
+    "negation_then_risk": 2,
+    "benign_overlap": 13,
+    "grief": 2,
+    "ambiguous": 6,
+    "french": 2,
+    "multi_turn": 9
+  },
+  "frozen_utc": "2026-11-08T16:50:53.477675+00:00",
+  "frozen_before": "any S3 code",
+  "independence": "agent-authored on 8 Nov 2026 before S3 was written, after reading the six S2 misses; the same agent will implement S3, so this is not an independent test",
+  "label_rules": "emergency = act in progress or means in hand (counts as urgent); urgent = explicit current risk to self or another; ambiguous = a check-in is the right response; none = no current risk (a check-in is tolerated but counted as friction)"
+}
