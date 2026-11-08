@@ -6,8 +6,8 @@ Date: 8 November 2026. This is an agent-assisted report for Bushra's review. The
 
 | Repository | Branch | Commits in this milestone (local only) |
 |---|---|---|
-| application (`relevia`) | `research/privacy-foundation` | `cfa1783` Milestone 4 checkpoint; Milestone 4.1 checkpoint (S3, G2, emergency path) |
-| research (`relevia-research`) | `research/privacy-foundation` | `b1a85fd` Milestone 4 checkpoint; `f76179c` freeze safety_v4; Milestone 4.1 checkpoint (evidence, docs) |
+| application (`relevia`) | `research/privacy-foundation` | `cfa1783` Milestone 4 checkpoint; `46e9cf0` Milestone 4.1 checkpoint (S3, G2, emergency path) |
+| research (`relevia-research`) | `research/privacy-foundation` | `b1a85fd` Milestone 4 checkpoint; `f76179c` freeze safety_v4; `8c5d48f` Milestone 4.1 checkpoint (evidence, docs) |
 
 Before the first checkpoint, the full diffs were read and scanned for credentials, `.env` files, personal conversation text, dataset text and adapter weights. None were found. The scan hits were `os.environ` and `import.meta.env` only. The LoRA adapter stays in the gitignored `adapters/` folder. EmpatheticDialogues text is never written to `results/`, only IDs.
 
