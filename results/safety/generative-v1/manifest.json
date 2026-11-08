@@ -1,0 +1,20 @@
+{
+  "status": "generated_unrated",
+  "inputs": "data/safety_v3/heldout.jsonl",
+  "inputs_sha256": "e701298b8aff72ce8021b232dcc61b8bda8cd6b24a6c46f469e5e6a0cf4d4fdb",
+  "model_id": "Qwen/Qwen2.5-1.5B-Instruct",
+  "model_revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+  "prompt": "B",
+  "generation": {
+    "max_new_tokens": 110,
+    "do_sample": false
+  },
+  "adapter": null,
+  "conditions": [
+    "B"
+  ],
+  "flags_are": "lexical pattern matches, not ratings",
+  "started_utc": "2026-11-08T11:29:45.137402+00:00",
+  "runner_sha256": "5105c33e8f07d44ac5fa3da6b9bbec984ee882e9dc3c8df01f2d78c4a47b235f",
+  "ended_utc": "2026-11-08T11:47:51.613337+00:00"
+}

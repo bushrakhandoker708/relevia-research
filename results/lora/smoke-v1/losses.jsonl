@@ -1,0 +1,12 @@
+{"micro_step": 1, "loss": 0.5410675406455994, "tokens": 256}
+{"micro_step": 2, "loss": 2.8695714473724365, "tokens": 241}
+{"optimizer_step": 1, "elapsed_seconds": 46.92345529992599}
+{"micro_step": 3, "loss": 2.4939463138580322, "tokens": 230}
+{"micro_step": 4, "loss": 6.528883934020996, "tokens": 243}
+{"optimizer_step": 2, "elapsed_seconds": 94.95682550000492}
+{"micro_step": 5, "loss": 3.634532928466797, "tokens": 238}
+{"micro_step": 6, "loss": 5.0818610191345215, "tokens": 208}
+{"optimizer_step": 3, "elapsed_seconds": 135.23974370001815}
+{"micro_step": 7, "loss": 3.7131919860839844, "tokens": 213}
+{"micro_step": 8, "loss": 2.712132215499878, "tokens": 239}
+{"optimizer_step": 4, "elapsed_seconds": 176.51665899995714}

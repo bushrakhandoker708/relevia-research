@@ -1,0 +1,30 @@
+{
+ "train_ids": [
+  "hit:3896_conv:7792_t4",
+  "hit:3896_conv:7792_t2",
+  "hit:5744_conv:11488_t4",
+  "hit:5744_conv:11488_t2",
+  "hit:8262_conv:16525_t2",
+  "hit:7884_conv:15769_t2",
+  "hit:7884_conv:15769_t4",
+  "hit:11914_conv:23829_t2",
+  "hit:11914_conv:23829_t4",
+  "hit:76_conv:153_t4",
+  "hit:76_conv:153_t2",
+  "hit:1135_conv:2271_t4",
+  "hit:1135_conv:2271_t2",
+  "hit:5595_conv:11191_t2",
+  "hit:5595_conv:11191_t4",
+  "hit:11888_conv:23776_t4"
+ ],
+ "val_ids": [
+  "hit:9854_conv:19708_t2",
+  "hit:9854_conv:19708_t4",
+  "hit:6661_conv:13323_t2",
+  "hit:6661_conv:13323_t4",
+  "hit:10275_conv:20550_t2",
+  "hit:10275_conv:20550_t4",
+  "hit:11685_conv:23371_t2",
+  "hit:11685_conv:23371_t4"
+ ]
+}

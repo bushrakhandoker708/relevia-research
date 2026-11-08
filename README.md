@@ -16,7 +16,7 @@ The experiment harness records the model revision, prompt and dataset versions, 
 
 The first proposed comparison uses the same base model with a minimal safe prompt (A) and a developed prompt (B). Prompt development uses only development data. A later adapted condition (C) must use the same inference prompt as B so that an observed difference is not automatically attributable to changing both the weights and the prompt.
 
-The current harness supports A and B only. It rejects C because adaptation has not been integrated into this controlled runner. Existing training and generation scripts remain available for inspection, but their presence is not evidence of completed experiments or permission to begin the next milestone.
+`scripts/run_experiment.py` still supports A and B only. Condition C is handled by `scripts/generate_bc.py`, which loads B and C from one pinned model and toggles only the adapter. That script cannot read the final test set. A LoRA adapter has so far been trained only in a four-step CPU smoke test (see Milestone 4 below), which checks the pipeline and is not a result.
 
 ## Run the foundation checks
 
@@ -74,3 +74,16 @@ Read the [Milestone 3 report](docs/milestone_3_report.md), [dataset provenance](
 ## S2 safety routing
 
 The application now runs S2, which applies the S1 rules after normalising shorthand, typos, stretched letters, leetspeak and invisible characters. On a new held-out set frozen before S2 was written, S2 detects 18 of 24 urgent cases compared with 9 for S1, with no false positives on 18 ordinary messages. The remaining misses are gaps in the underlying rules, such as "killing myself" and indirect statements. See [notebook 08](notebooks/08_s2_routing.ipynb) and `results/safety/s2-v1/`.
+
+## Milestone 4: LoRA preparation, safety and write-up
+
+Milestone 3 is closed as exploratory groundwork ([closure audit](docs/MILESTONE_3_CLOSURE.md)). Milestone 4 so far adds:
+
+- `scripts/lora_pilot.py`, the controlled LoRA trainer. It uses the pre-registered settings from `configs/milestone_4.pilot.json`, selects whole conversation groups, computes loss on assistant tokens only and records a manifest. A `--pilot` run requires `--approved-by`. The smoke test ran four CPU steps and validation loss went from 4.02 to 3.67. That is a pipeline check, not evidence of learning. See [notebook 04](notebooks/04_lora_training.ipynb) and `results/lora/smoke-v1/`.
+- `scripts/generate_bc.py`, which generates under B and C with lexical safety flags. These flags are pattern matches, not ratings.
+- A generative safety probe and failure taxonomy that separates router misses from harmful generated text ([safety taxonomy](docs/safety_failure_taxonomy.md)).
+- Browser benchmark instrumentation in the application, documented in the [benchmark protocol](docs/browser_benchmark_protocol.md). It has not been run.
+- A manuscript draft with a claim–evidence matrix in `paper/`, and an [Edinburgh brief](docs/EDINBURGH_RESEARCH_BRIEF.md).
+
+Still missing: independent ratings (0 of 120), the approved pilot on a GPU, a browser benchmark run and a safety set written by someone other than the detector's author.
+

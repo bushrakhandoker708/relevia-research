@@ -1,0 +1,21 @@
+{
+  "status": "generated_unrated",
+  "inputs": "data/experiment_01/dev.jsonl",
+  "inputs_sha256": "99614e01c89fa1d249cf9656816fec2d73db95fd087d8ee278d3ef09354435f5",
+  "model_id": "Qwen/Qwen2.5-1.5B-Instruct",
+  "model_revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+  "prompt": "B",
+  "generation": {
+    "max_new_tokens": 110,
+    "do_sample": false
+  },
+  "adapter": "adapters\\smoke-v1",
+  "conditions": [
+    "B",
+    "C"
+  ],
+  "flags_are": "lexical pattern matches, not ratings",
+  "started_utc": "2026-11-08T11:25:07.303867+00:00",
+  "runner_sha256": "5105c33e8f07d44ac5fa3da6b9bbec984ee882e9dc3c8df01f2d78c4a47b235f",
+  "ended_utc": "2026-11-08T11:29:42.493700+00:00"
+}
