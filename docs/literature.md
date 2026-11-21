@@ -4,7 +4,9 @@ These are historical working notes, retained so that the development of the rese
 
 Use [the audited literature-review notes](../research/notes/LITERATURE_REVIEW.md) for the recorded verification status. In particular, the account of *The Pursuit of Empathy* needs reconciliation with the paper’s reported conclusions. Full-text verification of the cited Nature study was not completed during this work. Neither note supports an established novelty claim. The proposed comparisons are research intentions, not completed experiments.
 
-> **Correction, 8 November 2026.** The BN et al. summary below says fine-tuning was "not clearly better". The paper's arXiv abstract (2505.15065) says the opposite: fine-tuning improved similarity to reference replies and perceived empathy, with gains that varied and a ceiling for the smallest models. The "26 vs 22 comparisons" figure is not in the abstract and has not been checked against the full text. Treat that summary as withdrawn. The Ibrahim et al. work has been verified only as arXiv:2507.21919 (2025), under a different title, and not as the Nature article named below.
+> **Correction, 8 November 2026.** The BN et al. summary below says fine-tuning was "not clearly better". The paper's arXiv abstract (2505.15065) says the opposite: fine-tuning improved similarity to reference replies and perceived empathy, with gains that varied and a ceiling for the smallest models. The "26 vs 22 comparisons" figure is not in the abstract and has not been checked against the full text. Treat that summary as withdrawn. The Ibrahim et al. work had then been verified only as arXiv:2507.21919 (2025), under a different title.
+
+> **Update, 21 November 2026.** The Nature article named below is now confirmed: *Nature* 652(8112), 1159–1165, published 29 April 2026, doi:10.1038/s41586-026-10410-0. The record was checked on Oxford's repository (ORA); the publisher's full text was not read, so the figures in that entry remain unchecked. Two closely related papers were missing from these notes and are added under "Closest work": EmoSApp and Kharinaev et al.
 
 ## Closest work
 
@@ -19,6 +21,22 @@ Use [the audited literature-review notes](../research/notes/LITERATURE_REVIEW.md
 - Warmth SFT on Llama-3.1-8B, Mistral-Small, Qwen-2.5-32B, Llama-3.1-70B and GPT-4o: +10 to +30 pp error rate, about 40% more agreement with incorrect user beliefs, **worst when the user expresses sadness**.
 - A system-prompt version (tested only on 32B, 70B and GPT-4o) showed similar but weaker and less consistent effects.
 - **Gap:** the smallest model is 8B, and the prompt-vs-fine-tune comparison wasn't done on small models. My RQ2 tests both at 1–3B.
+
+**A et al., IJCNLP-AACL 2025: "An Offline Mobile Conversational Agent for Mental Health Support" (EmoSApp; arXiv:2507.10580; doi:10.18653/v1/2025.ijcnlp-long.191)**
+
+*Added 21 Nov 2026. Abstract only; full text not read.*
+- Fine-tuned and quantised Llama-3.2-1B-Instruct, the same model Relevia ships by default. It runs fully offline on Android phones.
+- Trained on mental-health question–answer pairs and multi-turn dialogue. Full fine-tuning, LoRA with post-training quantisation, and quantisation-aware LoRA are compared, according to search summaries; check this in the full text.
+- Evaluated qualitatively with students and mental-health professionals, and on nine commonsense and reasoning benchmarks plus two mental-health datasets.
+- **Consequence for Relevia:** "a small quantised on-device model for emotional support" is already published. So is LoRA combined with quantisation on this model. The abstract does not mention crisis escalation, safety routing, browser or WebGPU deployment, or measuring the gap between the evaluated and the deployed configuration.
+
+**Kharinaev et al., 2025: "Investigating the Impact of Quantization Methods on the Safety and Reliability of Large Language Models" (arXiv:2502.15799)**
+
+*Added 21 Nov 2026. Abstract only.*
+- Covers 66 quantised variants of four models, using four post-training and two quantisation-aware methods.
+- Human safety evaluation, plus a new 1,067-question OpenMiniSafety set and four existing benchmarks.
+- Main finding: both post-training and quantisation-aware quantisation can degrade safety alignment, and no method is consistently best.
+- **Consequence for Relevia:** quantisation-induced safety loss is established in general. What remains open is whether it affects supportive-dialogue outcomes (escalation, over-refusal, harmful agreement), and whether changing the *runtime* (PyTorch to MLC on WebGPU) matters separately from quantisation. My searches on 21 Nov found no paper on the runtime question. That is a reading gap, not a novelty claim.
 
 ## Methods references
 

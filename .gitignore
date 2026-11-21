@@ -26,3 +26,6 @@ venv/
 results/experiment_01/*key*.json
 
 results/experiment_01/**/KEY*.json
+
+# Private advisory notes, never committed
+docs/SUPERVISOR_REVIEW_*.md

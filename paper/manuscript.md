@@ -20,7 +20,7 @@ Three properties have to be measured together, because improving one can damage 
 - **Safety.** Are urgent messages routed to a fixed safe response? Does the generated reply avoid refusal, false reassurance, invented contact details and encouraging dependency?
 - **Cost.** How long do startup, time to first token and generation take on the hardware a user actually has?
 
-A preprint reports that training language models to be warmer made them less reliable and more likely to agree with incorrect user beliefs, especially when the user expressed sadness (Ibrahim, Hafner and Rocher, 2025, arXiv:2507.21919). Only the arXiv abstract has been checked. Earlier notes cited a Nature version with a different title, which could not be verified. Whether a comparable trade-off appears at 1–2B parameters, and whether it differs between prompting and adaptation, has not been tested here or, as far as the incomplete literature review shows, elsewhere. That last point is a reading gap, not a novelty claim.
+Training language models to be warmer has been reported to make them less accurate and more likely to agree with incorrect user beliefs, especially when the user expressed sadness (Ibrahim, Hafner and Rocher, 2026, *Nature*; preprint arXiv:2507.21919). The bibliographic record and the preprint abstract have been checked, but not the publisher's full text. Its smallest model has 8B parameters. Whether a comparable trade-off appears at 1–2B parameters, and whether it differs between prompting and adaptation, has not been tested here or, as far as the incomplete literature review shows, elsewhere. That last point is a reading gap, not a novelty claim.
 
 ## 3. Research questions
 
@@ -39,6 +39,10 @@ The B–C comparison is the principal one. A versus B describes prompt developme
 **Empathetic dialogue data and measurement.** EmpatheticDialogues provides about 25,000 crowd-sourced conversations grounded in 32 emotion labels (Rashkin et al., 2019). EPITOME splits empathy into emotional reactions, interpretations and explorations (Sharma et al., 2020); the rating rubric in `docs/rating_guide.md` is adapted from it. ESConv frames emotional support as a strategy sequence (Liu et al., 2021) and is a candidate for future multi-turn evaluation.
 
 **Small models for supportive dialogue.** BN et al. (2025, EMNLP; arXiv:2505.15065) evaluated eight small models (0.5–5B) on a synthetic PTSD dialogue set, zero-shot and after fine-tuning. Their abstract reports that fine-tuning *improved* similarity to reference replies and perceived empathy, with gains that varied across scenarios and a "knowledge transfer ceiling" for the smallest models. **Correction (8 November 2026):** the project's earlier literature notes said this paper found fine-tuning "not clearly better". That reading contradicts the abstract and has been withdrawn until the full text is checked. This is the closest prior work found so far, and it makes a B versus C comparison on a 1.5B model a reasonable question rather than an expected null result.
+
+**On-device support models.** EmoSApp (A et al., 2025, IJCNLP-AACL; arXiv:2507.10580) fine-tuned and quantised Llama-3.2-1B-Instruct, which is also Relevia's default browser model. It ran on Android phones fully offline and was evaluated with students and mental-health professionals and on reasoning benchmarks. This is closer to Relevia than BN et al. It means that a small, quantised, on-device support model is not itself a contribution here. Its abstract does not report crisis routing or browser deployment, and no other safety measurement is described.
+
+**Quantisation and safety.** Kharinaev et al. (2025, arXiv:2502.15799) compared 66 quantised variants of four models and report that both post-training and quantisation-aware methods can degrade safety alignment. Their safety questions are general rather than about supportive dialogue. They do not change the inference runtime, which in Relevia's case also differs between the evaluated configuration (PyTorch on a CPU) and the deployed one (MLC on WebGPU). Both papers are cited from their abstracts only.
 
 **On-device inference.** WebLLM runs quantised models in the browser on WebGPU (Ruan et al., 2024). The base model's report is Qwen Team (2024).
 
@@ -132,4 +136,4 @@ The code, analysis and much of the prose in both repositories were produced with
 
 ## References
 
-See `paper/references.bib`. Every entry's verification status is in its `note` field. The Nature version of the Ibrahim et al. work is not verified and is not cited.
+See `paper/references.bib`. Every entry's verification status is in its `note` field. The Nature record of the Ibrahim et al. work was confirmed on 21 November 2026 through Oxford's repository; its full text has not been read.

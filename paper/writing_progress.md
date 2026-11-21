@@ -13,6 +13,6 @@
 | 8 Experimental design | Draft | Add power or sample-size reasoning for the ratings |
 | 9 Metrics and results | Execution, routing (S3), guard audit and one browser run | Add quality and generative-safety results when they exist |
 | 10 Ethics and limitations | Draft | Ethics review route for human raters |
-| References | 9 entries, all checked 8 Nov 2026; the Nature version of Ibrahim et al. could not be verified, so the arXiv preprint is cited | Check BN et al. full text and ACL Anthology pages |
+| References | 11 entries. Checked 8 Nov 2026; on 21 Nov the Nature record of Ibrahim et al. was confirmed via Oxford's repository, and EmoSApp and Kharinaev et al. were added (abstracts only) | Check BN et al. full text and ACL Anthology pages |
 
 Rules kept while drafting: British English; no invented personal history; every number traceable to a JSON file through `claim_evidence_matrix.md`; agent assistance disclosed in §10.3.
