@@ -29,3 +29,28 @@ results/experiment_01/**/KEY*.json
 
 # Private advisory notes, never committed
 docs/SUPERVISOR_REVIEW_*.md
+
+# Secrets and private material (keep these outside the repository)
+.env.*
+!.env.example
+private/
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa*
+*credentials*.json
+# Raw or real conversations, chat exports, participant responses and completed rating sheets
+*chat*export*
+*conversation*export*
+data/private/
+results/rating_sheets/completed/
+results/**/ratings_raw*
+# More weight formats (adapters stay in adapters/, which is already ignored)
+*.gguf
+*.ckpt
+*.pth
+# Scratch and personal notes
+scratch/
+notes.local.md
+*.private.md

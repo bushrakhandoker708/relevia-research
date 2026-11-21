@@ -36,6 +36,8 @@ python scripts/check_leakage.py
 
 The dataset builder writes ignored local files. Review the dataset licence and provenance before acquiring or redistributing data. The tracked historical dataset under `archive/` is excluded from the active pipeline and still needs a provenance, licence and privacy review.
 
+Before committing, turn on the privacy hook with `git config core.hooksPath .githooks`. It runs `scripts/privacy_scan.py --staged`, which blocks common credential formats, personal contact details, local user paths and model-weight files, and prints fingerprints rather than values. `python scripts/privacy_scan.py --tree` checks every tracked file and also runs in CI. The scanner is the same file as the application's copy, and `tests/test_privacy_scan.py` checks that the two stay identical when both repositories are checked out side by side. It reduces risk; it does not prove that nothing private remains.
+
 For the first experiment, follow [Experiment 01](docs/experiment_01_protocol.md). Its template deliberately leaves the model revision unset. Preparation requires a verified immutable revision and creates a manifest without fabricated responses; actual generation requires the additional documented gates.
 
 ## Repository structure
