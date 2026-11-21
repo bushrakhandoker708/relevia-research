@@ -1,5 +1,7 @@
 # Preliminary research brief: resource-aware supportive language models
 
+*Written before the Milestone 4.1 work and last changed on 8 November 2026. Two statements below are out of date: one real browser run has since been recorded, on the laptop's integrated GPU, and the safety router is now S3. See the [status update in the Edinburgh brief](EDINBURGH_RESEARCH_BRIEF.md#status-update-21-november-2026).*
+
 I am developing Relevia as a testbed for studying the trade-off between supportive response quality, safety and local inference cost. My current question is whether prompting and later low-rank adaptation improve grounded support enough to justify their systems cost on constrained devices. The work is preliminary and agent-assisted; I am preparing the evidence so that its methods and limitations can be inspected and explained.
 
 The first controlled comparison used one pinned Qwen2.5-1.5B model with a minimal safe prompt and a developed prompt. An eight-case pilot gave an inconclusive relevance difference of +0.125, with a bootstrap interval spanning −0.875 to +1.125, based on unblinded agent ratings. A frozen extension has now generated 120 responses on 60 new ordinary-context scenarios. Independent human evaluation is still outstanding. Reduced token-budget exhaustion under the developed prompt is not evidence of improved empathy.

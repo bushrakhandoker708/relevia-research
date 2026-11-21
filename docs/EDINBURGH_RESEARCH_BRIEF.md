@@ -2,6 +2,16 @@
 
 This brief replaces nothing. It updates `EDINBURGH_RESEARCH_READINESS.md` (7 November) with the Milestone 4 work. It is written for a prospective supervisor in the CDT in Machine Learning Systems (Round 1 deadline 14 December 2026). Coding agents assisted with the work and the drafting, and the author reviews it.
 
+## Status update, 21 November 2026
+
+The rest of this brief describes the state on 8 November and is kept as written. Three rows of its table have since changed:
+
+- **Safety routing.** S3 adds an emergency tier with a fixed, non-generative reply. On its first run on a set frozen before it was written (`data/safety_v4`), it detected 43 of 46 urgent messages (95% interval 0.82 to 0.98) with no false alarms on 25 ordinary messages, and made one false alarm on 2,873 human-written EmpatheticDialogues prompts. The same agent wrote the cases and the detector, so this is development evidence, not independent validation. See the [Milestone 4.1 report](MILESTONE_4_1_REPORT.md).
+- **Generated-reply safety.** The application now streams only finished sentences that pass the reply guard (release policy R2, guard G3). Text that the guard's rules do not describe can still be shown.
+- **Browser cost.** One benchmark has run, on 8 November, with Llama-3.2-1B q4f16 in WebLLM on this laptop's Intel UHD integrated GPU. The RTX 4060 was not used, because the browser chose the integrated adapter. With 3 repeats per prompt, median time to first token was 1.03 s for A and 2.44 s for B, and decoding ran at about 5.6 tokens per second for both. These are measurements on one machine, not a device-class result (`results/performance/browser-v1-intel/`).
+
+A second direction has also been drafted: a study of when streamed text may be shown, comparing four release policies for latency and for unsafe text reaching the screen ([protocol](response_release_protocol.md)). The policies are implemented and unit-tested, and one replay on simulated timings has run. No browser streams have been recorded and no independent labels exist, so it has no results yet. Which of the two directions leads is still open.
+
 ## The question in one paragraph
 
 For a small language model that runs on the user's own device, is it better to invest in the prompt or in a parameter-efficient adapter? "Better" has to be judged jointly on supportive reply quality, on safety (routing and generated content) and on runtime cost on real consumer hardware. The project holds the model fixed (Qwen2.5-1.5B-Instruct at a pinned revision) and changes one factor at a time. A is a minimal prompt, B a developed prompt and C is B plus a LoRA adapter. The B–C comparison isolates the effect of the weights.
