@@ -7,3 +7,5 @@
 `s3/` is the S3 version evaluated in `results/safety/s3-v1-final/` (application file SHA-256 `3e4bbd8b…`). The only change from the application file is its import path, `./safety.js` → `../s2/safety.js`, so it runs from here. The S3 code used for the **first** v4 run (`results/safety/s3-v1/`, SHA-256 `c6fda965…`) was not saved as a file. Its hash and per-case outputs are the record.
 
 `guard_g1/` is reply guard version 1 as committed in the application at `cfa1783`, used by `scripts/audit_reply_guard.mjs`.
+
+`guard_g2/` is reply guard version 2 as committed in the application at `46e9cf0` (`replyGuard.js` SHA-256 prefix `a2fc45bb1bb7f06b`), with the `consts.js` it imported. The audit compares it with the application's current G3.

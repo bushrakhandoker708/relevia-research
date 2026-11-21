@@ -14,6 +14,8 @@
     "training_sha256": "fea592b7ad462e191cd5fe56b3b5b21751be4bcb7f2dd92798114b2a51101fd6",
     "selection": "seeded complete conversation groups; select at most 256 rows without splitting a group",
     "validation_partition": "data/processed/val.jsonl",
+    "validation_sha256": "2982dec8db703a6760f1dcf1aae1f8a8c68090017d7c171bee644d0aba4c1be2",
+    "validation_sha256_source": "Added 21 Nov 2026; equals the val hash recorded in results/milestone_2/leakage.json and later leakage checks. The 4-step smoke run (results/lora/smoke-v1) predates this check.",
     "validation_selection": "freeze a disjoint conversation-group subset before hyperparameter selection",
     "licence": "CC BY-NC 4.0; research-use plan; redistribution obligations require review",
     "quarantined_data_allowed": false,

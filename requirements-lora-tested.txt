@@ -1,0 +1,14 @@
+# Exact versions used for the CPU LoRA smoke run (results/lora/smoke-v1), recorded on
+# 21 November 2026 from the environment that ran it: Python 3.13.6, Windows 11, CPU only.
+# requirements.txt keeps broad lower bounds and is not a reproducible specification;
+# use this file to reproduce the smoke run. A GPU pilot needs its own recorded file,
+# because the torch build (CUDA version) will differ. Not tested on Linux or macOS.
+torch==2.8.0
+transformers==4.56.2
+tokenizers==0.22.1
+peft==0.17.1
+accelerate==1.10.1
+safetensors==0.6.2
+huggingface_hub==0.35.1
+numpy==2.3.3
+psutil==7.1.0

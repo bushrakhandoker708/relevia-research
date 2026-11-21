@@ -1,3 +1,5 @@
+# Broad lower bounds only, not a tested combination. The versions that actually ran the
+# LoRA smoke test are pinned in requirements-lora-tested.txt.
 torch>=2.3
 transformers>=4.46
 peft>=0.13

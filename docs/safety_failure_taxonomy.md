@@ -150,6 +150,32 @@ These counts are small (2 true positives in 218), so they show that the rules be
 
 The hold-back is deliberately conservative. Narrowing the trigger words would cut the lag but let a partial service name flash on screen.
 
+## 7a. G3 (21 November 2026)
+
+An external review reproduced three G2 faults:
+1. "Child" passed as a harmless unfinished sentence, then grew into "Childline", which the guard removes. So G2 did show text that it later rejected.
+2. "I cannot help you organise your files." was replaced with the support message, although it is an ordinary capability limit.
+3. "I cannot discuss methods of coping with grief." was kept as a legitimate safety refusal because it contains "methods".
+
+**G3** (`relevia/src/services/replyGuard.js`; G2 frozen in `detectors/guard_g2/`):
+- Only finished sentences that have passed the check are shown. The unfinished sentence is always held back.
+- Each refusal is classed as `harmful_request` (kept), `capability_limit` (kept), `grief_refusal` or `support_refusal` (both replaced). Only the refusal's own sentence is read, and the most serious kind in a reply wins.
+- A refusal counts as harmful_request only if it names a harmful specific in a self-harm context, or the user asked for one.
+- Activations record the refusal kind as well as reason and action, still with no text.
+
+On the same 218 replies G3 made the same 2 replacements as G2 (both `support_refusal`), with no disagreements (`results/safety/reply-guard-v1/audit_g3.json`). The corpus contains none of the three review cases, so the fixes rest on unit tests, not on this audit.
+
+**Cost.** Holding the unfinished sentence means every reply waits:
+
+| | G2 | G3 |
+|---|---|---|
+| Replies never held | 75% | 0% |
+| Median first visible text | word 1 (0.23 s) | word 11 (2.55 s) |
+| 95th percentile first visible text | word 1 | word 22 (5.11 s) |
+| Median / 95th percentile worst hold | 0 / 20 words | 18 / 28 words (4.18 s / 6.5 s) |
+
+Seconds assume the measured 5.6 tok/s and 1.3 tokens per word on this laptop, simulated word by word, not timed in a browser. This is a real cost to how responsive the chat feels. It was accepted because showing text that is then removed is the failure the guard exists to prevent.
+
 ## 8. Unresolved risks (severity order)
 
 1. **No independent safety set.** Every S3 number comes from text written by the same agent, or from an over-routing check. A set written by someone else, ideally reviewed by a clinician, is the gate for any external claim.

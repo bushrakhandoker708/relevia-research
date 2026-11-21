@@ -66,6 +66,42 @@ def select_groups(rows, limit, seed):
     return [r for g in chosen for r in groups[g]], chosen
 
 
+def shifted_target_count(labels):
+    """Tokens a causal-LM loss actually averages over.
+
+    Hugging Face shifts labels left by one (logits[:-1] predict labels[1:]), so the targets
+    are the unmasked entries of labels[1:]. The earlier version subtracted one from the
+    count of all unmasked labels, which undercounts by one whenever labels[0] is masked,
+    as it always is here because the prompt prefix is masked.
+    """
+    return sum(x != -100 for x in labels[1:])
+
+
+def accumulation_groups(order, accum):
+    """One epoch split into optimiser groups of `accum` examples; the last may be smaller.
+
+    The earlier loop floored len(order) / accum, so leftover examples either carried their
+    gradients into the next epoch's first step or, at the end, were never applied.
+    """
+    if accum < 1:
+        raise ValueError('accum must be at least 1')
+    return [order[i:i + accum] for i in range(0, len(order), accum)]
+
+
+def adapter_dir_for(out, root=None):
+    """Adapter folder derived from the whole output path, not just its last component.
+
+    results/lora/pilot-a and results/other/pilot-a used to share adapters/pilot-a.
+    """
+    root = Path(root or ROOT).resolve()
+    out = Path(out).resolve()
+    try:
+        name = '__'.join(out.relative_to(root).parts)
+    except ValueError:  # output outside the repository: keep the name, add a path hash
+        name = f'{out.name}-{hashlib.sha256(str(out).encode()).hexdigest()[:8]}'
+    return root / 'adapters' / name
+
+
 def build_example(tok, system, row, max_length):
     """Token ids with labels only on the final assistant reply; None if it is cut off entirely."""
     msgs = [{'role': 'system', 'content': system}, *row['history'], {'role': 'user', 'content': row['prompt']}]
@@ -91,6 +127,8 @@ def main():
     ap.add_argument('--lr', type=float, default=2e-4)
     ap.add_argument('--approved-by', default=None, help='required for --pilot: who approved it and when')
     ap.add_argument('--out', type=Path, required=True)
+    ap.add_argument('--drop-truncated', action='store_true',
+                    help='leave out examples whose assistant reply is cut by max_length (default: keep and report them)')
     args = ap.parse_args()
 
     m4 = json.loads((ROOT / 'configs/milestone_4.pilot.json').read_text(encoding='utf-8'))
@@ -107,6 +145,10 @@ def main():
             raise SystemExit('Quarantined data is not allowed')
     if sha(ROOT / data['training_partition']) != data['training_sha256']:
         raise SystemExit('Training partition changed since it was frozen')
+    if 'validation_sha256' not in data:
+        raise SystemExit('No validation_sha256 in the config: the validation partition must be frozen too')
+    if sha(ROOT / data['validation_partition']) != data['validation_sha256']:
+        raise SystemExit('Validation partition changed since it was frozen')
 
     tp = m4['proposed_training']
     settings = dict(SMOKE) if args.smoke else {'train_rows': 256, 'val_rows': 64, 'max_length': tp['max_length'],
@@ -117,8 +159,10 @@ def main():
     if set(train_groups) & set(val_groups):
         raise SystemExit('Training and validation groups overlap')
 
+    adapter_dir = adapter_dir_for(args.out)  # adapters/ is gitignored
+    if adapter_dir.exists():
+        raise SystemExit(f'{adapter_dir} already exists; adapters are never overwritten')
     args.out.mkdir(parents=True, exist_ok=False)
-    adapter_dir = ROOT / 'adapters' / args.out.name  # adapters/ is gitignored
     manifest = {
         'status': 'starting', 'mode': 'smoke' if args.smoke else 'pilot', 'approved_by': args.approved_by,
         'started_utc': datetime.now(timezone.utc).isoformat(),
@@ -129,6 +173,7 @@ def main():
         'train_ids_sha256': hashlib.sha256('\n'.join(r['id'] for r in train_rows).encode()).hexdigest(),
         'val_rows': len(val_rows), 'val_groups': len(val_groups),
         'val_ids_sha256': hashlib.sha256('\n'.join(r['id'] for r in val_rows).encode()).hexdigest(),
+        'val_sha256': data['validation_sha256'], 'truncation_policy': 'drop' if args.drop_truncated else 'keep',
         'final_test_read': False, 'python': platform.python_version(), 'platform': platform.platform(),
         'runner_sha256': sha(__file__), 'adapter_dir': str(adapter_dir.relative_to(ROOT)),
     }
@@ -170,20 +215,25 @@ def main():
         save()
 
         def encode(rows):
-            out, cut, dropped = [], 0, 0
+            # A partly truncated reply trains the model on a reply that stops mid-sentence.
+            # The ids are recorded so how often it happens can be reviewed; with
+            # --drop-truncated those examples are left out instead.
+            out, cut_ids, dropped = [], [], 0
             for r in rows:
                 ex, was_cut = build_example(tok, exp['prompts']['B'], r, settings['max_length'])
-                cut += was_cut
-                if ex is None:
+                if was_cut:
+                    cut_ids.append(r['id'])
+                if ex is None or (was_cut and args.drop_truncated):
                     dropped += 1
                 else:
                     out.append(ex)
-            return out, cut, dropped
+            return out, cut_ids, dropped
         train, t_cut, t_drop = encode(train_rows)
         val, v_cut, v_drop = encode(val_rows)
-        manifest.update(train_examples=len(train), train_truncated=t_cut, train_dropped_fully_truncated=t_drop,
-                        val_examples=len(val), val_truncated=v_cut, val_dropped_fully_truncated=v_drop,
-                        train_target_tokens=sum(sum(x != -100 for x in e['labels']) for e in train))
+        manifest.update(train_examples=len(train), train_truncated=len(t_cut), train_truncated_ids=t_cut,
+                        train_truncated_share=len(t_cut) / max(len(train_rows), 1), train_dropped=t_drop,
+                        val_examples=len(val), val_truncated=len(v_cut), val_truncated_ids=v_cut, val_dropped=v_drop,
+                        train_target_tokens=sum(shifted_target_count(e['labels']) for e in train))
         device = next(model.parameters()).device
 
         def batch(e):
@@ -195,9 +245,11 @@ def main():
             with torch.no_grad():
                 for e in val:
                     ids, labels = batch(e)
-                    n = sum(x != -100 for x in e['labels']) - 1  # shifted targets
-                    total += model(input_ids=ids, labels=labels).loss.item() * max(n, 1)
-                    tokens += max(n, 1)
+                    n = shifted_target_count(e['labels'])
+                    if n == 0:
+                        continue  # no target tokens, nothing to average
+                    total += model(input_ids=ids, labels=labels).loss.item() * n  # loss is a per-token mean
+                    tokens += n
             model.train()
             return total / tokens if tokens else None
 
@@ -208,29 +260,35 @@ def main():
         model.train()
         order = list(range(len(train)))
         random.Random(seed).shuffle(order)
-        steps_per_epoch = len(order) // settings['grad_accum']
-        max_steps = settings['max_steps'] or steps_per_epoch * tp['epochs']
+        groups = accumulation_groups(order, settings['grad_accum'])
+        if not groups:
+            raise SystemExit('No training examples left after encoding')
+        max_steps = settings['max_steps'] or len(groups) * tp['epochs']
+        manifest.update(steps_per_epoch=len(groups), final_group_size=len(groups[-1]))
         if cuda:
             torch.cuda.reset_peak_memory_stats()
         t_train, step, micro = time.perf_counter(), 0, 0
         while step < max_steps:
-            for i in order:
-                ids, labels = batch(train[i])
-                loss = model(input_ids=ids, labels=labels).loss
-                if not torch.isfinite(loss):
-                    raise FloatingPointError('Non-finite training loss')
-                (loss / settings['grad_accum']).backward()
-                micro += 1
-                losses.write(json.dumps({'micro_step': micro, 'loss': loss.item(), 'tokens': ids.shape[1]}) + '\n')
-                if micro % settings['grad_accum'] == 0:
-                    opt.step()
-                    opt.zero_grad()
-                    step += 1
-                    losses.write(json.dumps({'optimizer_step': step, 'elapsed_seconds': time.perf_counter() - t_train}) + '\n')
-                    losses.flush()
-                    print(f'step {step}/{max_steps} loss {loss.item():.3f}', flush=True)
-                    if step >= max_steps:
-                        break
+            for group in groups:
+                # Each optimiser step averages over its own group, so a smaller final group
+                # gets the same per-example weight instead of being scaled down.
+                for i in group:
+                    ids, labels = batch(train[i])
+                    loss = model(input_ids=ids, labels=labels).loss
+                    if not torch.isfinite(loss):
+                        raise FloatingPointError('Non-finite training loss')
+                    (loss / len(group)).backward()
+                    micro += 1
+                    losses.write(json.dumps({'micro_step': micro, 'loss': loss.item(), 'tokens': ids.shape[1]}) + '\n')
+                opt.step()
+                opt.zero_grad()
+                step += 1
+                losses.write(json.dumps({'optimizer_step': step, 'group_size': len(group),
+                                         'elapsed_seconds': time.perf_counter() - t_train}) + '\n')
+                losses.flush()
+                print(f'step {step}/{max_steps} loss {loss.item():.3f}', flush=True)
+                if step >= max_steps:
+                    break
         manifest.update(training_seconds=time.perf_counter() - t_train, optimizer_steps=step, micro_steps=micro,
                         val_loss_after=val_loss(), rss_after_training_bytes=proc.memory_info().rss,
                         peak_allocated_device_bytes=torch.cuda.max_memory_allocated() if cuda else None)
