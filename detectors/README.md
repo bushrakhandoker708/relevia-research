@@ -9,3 +9,5 @@
 `guard_g1/` is reply guard version 1 as committed in the application at `cfa1783`, used by `scripts/audit_reply_guard.mjs`.
 
 `guard_g2/` is reply guard version 2 as committed in the application at `46e9cf0` (`replyGuard.js` SHA-256 prefix `a2fc45bb1bb7f06b`), with the `consts.js` it imported. The audit compares it with the application's current G3.
+
+`release_v1/` holds the release policies R0–R3 (`releasePolicy.js`, SHA-256 prefix `8df1958e9e5689d2`), reply guard G3 (`replyGuard.js`, `88d923e23ada4eb7`) and the `consts.js` it imports, byte-identical to application commit `3195335`. These are the files the release replays in `results/release/` used, and `scripts/replay_release.mjs` now imports them by default. `tests/test_replay_release.py` checks the hashes.

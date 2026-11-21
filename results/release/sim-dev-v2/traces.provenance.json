@@ -1,0 +1,19 @@
+{
+  "corpora": {
+    "experiment_01/dev-v1": "input hash matches a development file",
+    "experiment_01/dev-v2": "input hash matches a development file",
+    "lora/smoke-v1-generations": "input hash matches a development file"
+  },
+  "devInputs": [
+    "data/experiment_01/dev.jsonl",
+    "data/synthetic_dev.jsonl",
+    "data/safety_v2/development.jsonl"
+  ],
+  "protectedInputs": [
+    "data/experiment_01/test.jsonl",
+    "data/experiment_01_expanded/test.jsonl",
+    "data/safety_v2/heldout.jsonl",
+    "data/safety_v3/heldout.jsonl",
+    "data/safety_v4/heldout.jsonl"
+  ]
+}

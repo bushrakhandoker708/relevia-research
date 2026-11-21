@@ -1,16 +1,6 @@
 [
-  {"rule": "phone_link", "path": "detectors/*/consts.js", "fingerprint": "f79c97b0cbe94c59",
-   "reason": "Samaritans 116 123 link in frozen, hash-recorded detector copies (must not be edited)"},
-  {"rule": "phone_link", "path": "detectors/*/consts.js", "fingerprint": "a0d199728f184975",
-   "reason": "Same public Samaritans 116 123 line, as written in the app's consts.js from G2 onwards (frozen in detectors/guard_g2/)"},
-  {"rule": "phone_link", "path": "results/safety/reply-guard-v1/*.json", "fingerprint": "a0d199728f184975",
-   "reason": "Samaritans 116 123 in recorded guard-audit outputs"},
-  {"rule": "windows_user_path", "path": "results/milestone_*/verification.json", "fingerprint": "094d2f0047842e07",
-   "reason": "Generic Windows account name 'User'; not identifying. A different user name would still be blocked"},
-  {"rule": "email", "path": "results/completion_2026_11_07/lint_before.log", "fingerprint": "d65687ebdde646bc", "pending": true,
-   "reason": "Lint output that copied the app Contact page. Same owner decision as the app; redact if the contact details are not meant to be public"},
-  {"rule": "phone_link", "path": "results/completion_2026_11_07/lint_before.log", "fingerprint": "853822f1b44ff08b", "pending": true,
-   "reason": "As above"},
-  {"rule": "social_profile_id", "path": "results/completion_2026_11_07/lint_before.log", "fingerprint": "6172d8027e417041", "pending": true,
-   "reason": "As above"}
+  {"rule": "phone_link", "path": "detectors/*/consts.js", "fingerprint": "f79c97b0cbe94c59", "reason": "Samaritans 116 123 link in frozen, hash-recorded detector copies (must not be edited)"},
+  {"rule": "phone_link", "path": "detectors/*/consts.js", "fingerprint": "a0d199728f184975", "reason": "Same public Samaritans 116 123 line, as written in the app's consts.js from G2 onwards (frozen in detectors/guard_g2/)"},
+  {"rule": "phone_link", "path": "results/safety/reply-guard-v1/*.json", "fingerprint": "a0d199728f184975", "reason": "Samaritans 116 123 in recorded guard-audit outputs"},
+  {"rule": "windows_user_path", "path": "results/milestone_*/verification.json", "fingerprint": "094d2f0047842e07", "reason": "Generic Windows account name 'User'; not identifying. A different user name would still be blocked"}
 ]

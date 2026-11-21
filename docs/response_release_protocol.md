@@ -2,7 +2,7 @@
 
 **Working title:** From model output to user-visible response: safety, quality and latency in browser-based supportive dialogue
 
-*Status: proposal, 21 November 2026. Agent-drafted from an external review and the project's own records, for Bushra's review and decision. No experiment in this document has been run. Nothing here is a result.*
+*Status: proposal, first drafted 21 November 2026 and agent-assisted, for Bushra's review and decision. It is not a preregistration: the four release policies were written before this protocol was finalised. Current state (section 9): R0–R3 are implemented in the application and covered by unit tests; one simulated replay on development data has run; no real browser stream has been recorded; no independently labelled evaluation has been done. Nothing here is a finding about safety or quality.*
 
 ## 1. The problem, as it actually happened
 
@@ -39,7 +39,7 @@ R3 only protects against what the rules know about, and so does R2. Harm that a 
 
 **Streams.** Generate replies in the browser with WebLLM and record every chunk with its timestamp. The 217 existing research generations came from PyTorch and have no chunk timing, so they cannot be replayed faithfully. Replaying the same recorded streams through every policy isolates the policy from model variation. A smaller live run then measures real guard overhead, rendering and cancellation.
 
-**Prompts.** The existing corpus had only 2 guard-relevant replies in 218, which is too few. The development set will be built to produce the failures of interest, using contrastive pairs that change one detail. Examples: grief without current danger against current risk; a past event against an ongoing one; a fictional character against a personal disclosure; a capability limit against a refusal to support; a contact detail split across chunks; ordinary numbers such as litres of water or breathing counts. Groups are split by underlying scenario, not wording. The final test set must be written by someone other than the method developer and frozen before R3 is fixed. CRADLE Bench and MindGuard's released test set are candidates for external input-side checks, after their terms are checked.
+**Prompts.** The existing corpus had only 2 guard-relevant replies in 218, which is too few. The development set will be built to produce the failures of interest, using contrastive pairs that change one detail. Examples: grief without current danger against current risk; a past event against an ongoing one; a fictional character against a personal disclosure; a capability limit against a refusal to support; a contact detail split across chunks; ordinary numbers such as litres of water or breathing counts. Groups are split by underlying scenario, not wording. The final test set must be written by someone other than the method developer and frozen before any further change to R3. R3 itself already exists, so it was not designed blind to the development data. CRADLE Bench and MindGuard's released test set are candidates for external input-side checks, after their terms are checked.
 
 **Labels.** Two annotators independently mark unsafe spans in each reply (harmful specifics, invented or wrong contacts, inappropriate refusals) and whether the reply is appropriate. They follow written instructions, disagreements are recorded, and neither annotator sees the guard's decision. High-risk labels need a qualified reviewer. Agent-written cases are not described as clinically validated.
 
@@ -70,10 +70,25 @@ These are fixed before testing:
 
 This is one model family, one browser and English only. Rule-based checks do not understand meaning. Simulated replay cannot reproduce rendering or cancellation, which the live run covers only partly. No participants are recruited for the primary study. Annotators are voluntary adults. Institutional ethics guidance is needed before recruiting anyone or collecting real disclosures. The test set would include high-risk synthetic content, so it is kept out of the public repository until its release is reviewed.
 
-## 8. Order of work
+## 8. Targets to decide before measuring
+
+These are product decisions for Bushra, not values to choose after seeing results. Suggested starting points:
+
+- **Supported devices:** one integrated-GPU laptop (the current Intel test machine) and one discrete-GPU machine, both in Chrome with WebGPU. Anything else is reported as unsupported, not as a failure.
+- **Time to first visible text:** a target per device class, and what the app does when it cannot meet it (for example a visible "still writing" state). The current simulated figures are 2.55 s (R2) and 0.23 s (R3) at 5.6 tok/s.
+- **Safety outcomes:** missed emergencies, visible unsafe spans and unnecessary interventions are reported separately with their severity. There is no single "safe above X%" threshold.
+
+## 9. Progress, 21 November 2026
+
+- R0–R3 are implemented in the application (`src/services/releasePolicy.js`), with every-prefix tests. The app still uses R2.
+- The app records time to first chunk, time to first visible text and policy cost per reply, in memory and without text (`src/services/responseTiming.js`). The browser benchmark now keeps chunk timings, so its runs can be replayed.
+- `scripts/replay_release.mjs` replays traces through every policy and measures exposure against labelled spans. On simulated streams of 201 unlabelled development replies, R3 cut the median time to first visible text from 2.55 s to 0.23 s (`results/release/sim-dev-v1/`). Exposure has not been measured: there are no labelled traces yet.
+- Audit, 21 November 2026: 177 of the 201 traces in `sim-dev-v1` were replies to test or held-out inputs, so that run is not development-only as first described. It is kept unchanged with an audit note. `results/release/sim-dev-v2/` reruns the replay on the 24 development replies only, with the frozen policy copies in `detectors/release_v1/`: median time to first visible text 2.78 s (R2) and 0.23 s (R3). Timing is still simulated and the replies are unlabelled. The test inputs `sim-dev-v1` read must be reported as seen during development if they are used in the study. See `docs/REPRODUCIBILITY_AUDIT_2026-11-21.md`.
+
+## 10. Order of work
 
 1. Finish the full-method reading listed at the end of the related-work note, and narrow the claim.
-2. Add chunk-timestamp recording to the app's research build, and implement R0, R1 and R3 next to the current R2, with every-prefix tests like those for G3.
+2. ~~Add chunk-timestamp recording and implement R0, R1 and R3 next to R2, with every-prefix tests.~~ Done (section 9). Frozen copies of the policies are now in `detectors/release_v1/` (section 9). Still to do: record real browser traces with the benchmark.
 3. Write the annotation guide, pilot it on the development set, and freeze the analysis plan.
 4. Replay, then the live browser run, then independent labels and the analysis.
 

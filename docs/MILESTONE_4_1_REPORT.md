@@ -1,6 +1,6 @@
 # Milestone 4.1 report
 
-Date: 8 November 2026. This is an agent-assisted report for Bushra's review. The milestone was a follow-up to Milestone 4, requested after the generative safety probe showed harmful replies to urgent messages that S2 missed. Nothing in it has been pushed, merged or deployed. No full LoRA training was started.
+Date: 8 November 2026. This is an agent-assisted report for Bushra's review. The milestone was a follow-up to Milestone 4, requested after the generative safety probe showed harmful replies to urgent messages that S2 missed. At the time of writing, nothing in it had been pushed, merged or deployed; parts of it were published to GitHub later. No full LoRA training was started. This report describes the state on 8 November 2026, not the current repository.
 
 ## Repository state
 

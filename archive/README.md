@@ -2,7 +2,7 @@
 
 This archive preserves the earlier development history and its known failures. It is excluded from the current evaluation pipeline and must not supply experimental results. The descriptions below reflect the existing archive account, not a new reproduction of its training or dataset construction.
 
-The tracked `v1_original/empathy_42k.jsonl` still needs a provenance, licence and privacy review before redistribution can be endorsed. Its filename does not establish the dataset size or source. Keeping a historical artifact for inspection is not evidence that it is suitable for training or public release.
+The earlier `v1_original/empathy_42k.jsonl` (now quarantined and no longer tracked; it remains in commits 413ffd5 and 2b9699c) still needs a provenance, licence and privacy review before redistribution can be endorsed. Its filename does not establish the dataset size or source. Keeping a historical artifact for inspection is not evidence that it is suitable for training or public release.
 
 | Folder | What | Why it's archived |
 |---|---|---|

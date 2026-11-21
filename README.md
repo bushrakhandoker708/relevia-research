@@ -6,6 +6,20 @@ The investigation begins with an engineering problem. Local inference alone did 
 
 This is ongoing research, with agent-assisted implementation and documentation for my review. A small Milestone 3 prompting pilot has now run; its preliminary agent ratings do not establish a quality improvement. No successful fine-tuning run or measured clinical benefit is claimed.
 
+## Start here
+
+The sections below this one are milestone records in date order, so earlier sections describe earlier states of the project. For the current picture:
+
+| Question | Where to look | State on 21 November 2026 |
+|---|---|---|
+| Does a developed prompt (B) change replies compared with a minimal one (A)? | [Milestone 3](#milestone-3-first-controlled-prompting-pilot), `results/experiment_01/expanded-v1/` | Ran on 60 synthetic scenarios. B hit the output limit in 1 of 60 replies against 30 of 60 for A. This is completion behaviour, not reply quality: 0 of 120 replies have independent ratings |
+| Does LoRA adaptation (C) help beyond B? | [Milestone 4](#milestone-4-lora-preparation-safety-and-write-up), `results/lora/smoke-v1/` | Not tested. Only a four-step CPU smoke test of the pipeline has run |
+| Can rules route urgent messages away from the model? | [Milestone 4.1 report](docs/MILESTONE_4_1_REPORT.md), [safety evidence](docs/safety_failure_taxonomy.md) | S3 caught 43 of 46 urgent synthetic cases on its first held-out run. The same agent wrote the cases and the detector, so this is development evidence, not validation |
+| When may streamed text be shown to the user? | [Release protocol](docs/response_release_protocol.md), `results/release/sim-dev-v2/` | Proposed study. Policies implemented and replayed on simulated timings only; no recorded browser streams or independent labels yet |
+| What does it cost in the browser? | `results/performance/browser-v1-intel/` | One run on one integrated-GPU laptop |
+
+The [claim–evidence matrix](paper/claim_evidence_matrix.md) lists which claims the evidence does and does not support. The [manuscript](paper/manuscript.md) is a working draft, not a submitted paper. Known problems with earlier records, and how they were handled, are in the [reproducibility audit](docs/REPRODUCIBILITY_AUDIT_2026-11-21.md) and the [dataset provenance report](docs/dataset_provenance_report.md). The historical dataset in `archive/` is quarantined and excluded from every experiment; it has not had a licence or privacy review.
+
 ## What the current foundation establishes
 
 The application now uses session memory by default and explicit consent for bounded local saving. In this repository, prompt development uses reserved training conversations. Previously exposed validation groups are quarantined, and all six partitions are checked at conversation level. The recorded rebuild found zero overlap across all 15 partition pairs while preserving the existing test-file hashes.
@@ -56,7 +70,7 @@ For the first experiment, follow [Experiment 01](docs/experiment_01_protocol.md)
 
 ## Evidence and remaining work
 
-The recorded run passed eight Python tests and the application’s 18 JavaScript tests. The application build and changed-file lint passed; legacy lint failures remain documented. No matching credential was found in the scoped history and bundle scan, which does not prove that external or unreachable historical artifacts are free of secrets.
+This section records the Milestone 2 state. The recorded run passed eight Python tests and the application’s 18 JavaScript tests. The application build and changed-file lint passed; legacy lint failures remain documented. No matching credential was found in the scoped history and bundle scan, which does not prove that external or unreachable historical artifacts are free of secrets.
 
 The browser exception has been accepted for local research, and the unresolved historical dataset is quarantined. Milestone 3 is authorised for the controlled local pilot; public-release verification remains open. Passing these foundation checks will still leave the central research question unanswered: it requires controlled model runs, reviewed safety scenarios, blinded ratings and deployment measurements.
 
@@ -84,10 +98,10 @@ Milestone 3 is closed as exploratory groundwork ([closure audit](docs/MILESTONE_
 - `scripts/lora_pilot.py`, the controlled LoRA trainer. It uses the pre-registered settings from `configs/milestone_4.pilot.json`, selects whole conversation groups, computes loss on assistant tokens only and records a manifest. A `--pilot` run requires `--approved-by`. The smoke test ran four CPU steps and validation loss went from 4.02 to 3.67. That is a pipeline check, not evidence of learning. See [notebook 04](notebooks/04_lora_training.ipynb) and `results/lora/smoke-v1/`.
 - `scripts/generate_bc.py`, which generates under B and C with lexical safety flags. These flags are pattern matches, not ratings.
 - A generative safety probe and failure taxonomy that separates router misses from harmful generated text ([safety taxonomy](docs/safety_failure_taxonomy.md)).
-- Browser benchmark instrumentation in the application, documented in the [benchmark protocol](docs/browser_benchmark_protocol.md). It has not been run.
+- Browser benchmark instrumentation in the application, documented in the [benchmark protocol](docs/browser_benchmark_protocol.md). It had not been run at this stage; the first run is recorded under Milestone 4.1.
 - A manuscript draft with a claim–evidence matrix in `paper/`, and an [Edinburgh brief](docs/EDINBURGH_RESEARCH_BRIEF.md).
 
-Still missing: independent ratings (0 of 120), the approved pilot on a GPU, a browser benchmark run and a safety set written by someone other than the detector's author.
+Still missing at this stage: independent ratings (0 of 120), the approved pilot on a GPU, a browser benchmark run (one run on a single laptop followed in Milestone 4.1) and a safety set written by someone other than the detector's author.
 
 ## Milestone 4.1: urgent safety fixes and audits
 

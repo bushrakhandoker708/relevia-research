@@ -1,0 +1,3 @@
+# Redaction note
+
+On 21 November 2026, three values in `lint_before.log` were replaced with `[redacted email]`, `[redacted phone_link]` and `[redacted social_profile_id]`. The log had copied personal contact details from an earlier version of the application's Contact page, through ESLint's source excerpt. Nothing else in the file was changed: the lint findings, counts and file names are as recorded. The masked values were matched with the rules in `scripts/privacy_scan.py` and identified by fingerprint, so they were never printed. The original remains in the repository's Git history until that history is cleaned.
