@@ -74,7 +74,7 @@ This section records the Milestone 2 state. The recorded run passed eight Python
 
 The browser exception has been accepted for local research, and the unresolved historical dataset is quarantined. Milestone 3 is authorised for the controlled local pilot; public-release verification remains open. Passing these foundation checks will still leave the central research question unanswered: it requires controlled model runs, reviewed safety scenarios, blinded ratings and deployment measurements.
 
-Start with the [milestone report](docs/milestone_2_report.md), [privacy decisions](docs/privacy_design_decisions.md), [test evidence](docs/storage_test_results.md), [leakage report](docs/dataset_leakage_report.md) and [experiment protocol](docs/experiment_01_protocol.md). The [writing guide](docs/WRITING_VOICE_GUIDE.md) records how future work should preserve reasoning, limitations and authorship accurately.
+Start with the [milestone report](docs/milestone_2_report.md), [privacy decisions](docs/privacy_design_decisions.md), [test evidence](docs/storage_test_results.md), [leakage report](docs/dataset_leakage_report.md) and [experiment protocol](docs/experiment_01_protocol.md).
 
 
 ## Milestone 3: first controlled prompting pilot

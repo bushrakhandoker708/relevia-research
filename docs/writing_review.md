@@ -6,7 +6,7 @@ Date: 5 November 2026. Scope: the Relevia application and Relevia research repos
 
 I want the project descriptions to explain what Relevia is investigating, why its implementation choices matter and what the evidence can support. Both READMEs now follow that progression. They distinguish the prototype’s intended purpose from measured outcomes, explain the storage compromise and identify incomplete research. They also disclose agent assistance rather than implying independent personal implementation or testing.
 
-Both repositories now contain `docs/WRITING_VOICE_GUIDE.md` and `AGENTS.md`. The guide preserves the supplied tone, narrative and integrity requirements. Its quoted constructions are labelled as user-supplied style examples; no extended coursework sample or personal research memory has been invented. Subsequent agents are directed to consult the guide before substantial writing.
+A writing guide and agent instructions were also added at this point. They were later removed from both repositories and are kept privately.
 
 The active protocol, plan, prompt log, rating guide, deployment guidance and notebook Markdown were reviewed. The review corrected validation-based prompt-development instructions, unsupported deployment thresholds and unmeasured runtime or model-quality claims. Existing audit documents retain their historical findings with a reading-context note pointing to Milestone 2. Historical decision entries and experimental evidence have not been rewritten to hide failures.
 

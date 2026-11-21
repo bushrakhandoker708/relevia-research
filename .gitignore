@@ -54,3 +54,7 @@ results/**/ratings_raw*
 scratch/
 notes.local.md
 *.private.md
+
+# Local-only working notes, kept out of the repository
+AGENTS.md
+docs/WRITING_VOICE_GUIDE.md
